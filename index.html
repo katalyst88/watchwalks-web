@@ -18,6 +18,8 @@
     <span class="spacer"></span>
     <a class="navlink" href="#how">How it works</a>
     <a class="navlink" href="#trails">Trails</a>
+    <a class="navlink" href="#companion">App</a>
+    <a class="navlink" href="#trial">Trial</a>
     <a class="navlink" href="#privacy">Privacy</a>
     <a class="navlink" href="privacy.html">Policy</a>
   </div>
@@ -146,17 +148,47 @@
 
   <!-- COMPANION -->
   <section id="companion">
+    <span class="eyebrow">Companion app</span>
+    <h2>Your trails, all in one place.</h2>
+    <p class="sub">A free phone app — Android first, iPhone to follow — that turns your journeys into a collection. Open it to see every trail at a glance and the badges you've earned.</p>
     <div class="cols">
-      <div>
-        <span class="eyebrow">Companion app</span>
-        <h2>Collect every trail.</h2>
-        <p class="sub">A free companion app (coming soon) shows your progress and earns you a badge for every trail you finish — all from your phone, all stored locally.</p>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:10px">One passport, every journey</h3>
-        <p style="color:var(--subtle)">Watch each badge fill in as you conquer trail after trail. No account, no server — your collection lives on your phone.</p>
+      <ul class="feat">
+        <li>See <b>live progress</b> for every trail you're walking</li>
+        <li>Earn a <b>badge</b> for each trail you complete to 100%</li>
+        <li><b>Private by design</b> — it reads from your watch over Bluetooth and keeps everything on your phone</li>
+        <li><b>Free</b> — no sign-up, no account, no server</li>
+      </ul>
+      <div style="display:grid;place-items:center">
+        <svg width="186" height="372" viewBox="0 0 190 380" aria-hidden="true">
+          <rect x="5" y="5" width="180" height="370" rx="30" fill="#05080f" stroke="#1a2640" stroke-width="2"/>
+          <rect x="14" y="20" width="162" height="344" rx="20" fill="#0b1322"/>
+          <text x="95" y="52" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="system-ui">Badges</text>
+          <circle cx="50" cy="112" r="26" fill="rgba(46,213,115,.16)" stroke="#2ed573" stroke-width="2"/><path d="M38 122 L50 100 L62 122 Z" fill="#2ed573"/>
+          <circle cx="95" cy="112" r="26" fill="rgba(46,213,115,.16)" stroke="#2ed573" stroke-width="2"/><path d="M83 122 L95 100 L107 122 Z" fill="#2ed573"/>
+          <circle cx="140" cy="112" r="26" fill="rgba(46,213,115,.16)" stroke="#2ed573" stroke-width="2"/><path d="M128 122 L140 100 L152 122 Z" fill="#2ed573"/>
+          <circle cx="50" cy="188" r="26" fill="#18233c" stroke="#243049" stroke-width="2"/><path d="M38 198 L50 176 L62 198 Z" fill="#3a4763"/>
+          <circle cx="95" cy="188" r="26" fill="#18233c" stroke="#243049" stroke-width="2"/><path d="M83 198 L95 176 L107 198 Z" fill="#3a4763"/>
+          <circle cx="140" cy="188" r="26" fill="#18233c" stroke="#243049" stroke-width="2"/><path d="M128 198 L140 176 L152 198 Z" fill="#3a4763"/>
+          <text x="95" y="252" text-anchor="middle" fill="#9fb0c9" font-size="12" font-family="system-ui">3 of 11 earned</text>
+        </svg>
       </div>
     </div>
+  </section>
+
+  <!-- TRIAL SIGNUP -->
+  <section id="trial" class="privacy-band">
+    <span class="eyebrow">Early access</span>
+    <h2>Join the trial.</h2>
+    <p class="sub">Want to test Watch Walks — including the companion app — before launch? Leave your email and we'll send you an invite when the trial opens.</p>
+    <form id="trialForm" class="signup">
+      <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New Watch Walks trial signup">
+      <input type="hidden" name="from_name" value="Watch Walks site">
+      <input type="email" name="email" required placeholder="you@email.com" class="email-in" aria-label="Email address">
+      <button type="submit" class="btn">Join the trial</button>
+      <p id="trialMsg" class="trial-msg" role="status"></p>
+    </form>
+    <p style="color:var(--subtle);font-size:14px;margin-top:12px">No spam — just the invite, then nothing else.</p>
   </section>
 
   <!-- CTA -->
@@ -180,6 +212,35 @@
     <span>© 2026 Watch Walks</span>
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById('trialForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      const msg = document.getElementById('trialMsg');
+      btn.disabled = true;
+      const label = btn.textContent;
+      btn.textContent = 'Joining…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          form.style.display = 'none';
+          msg.textContent = "You're on the list — we'll email your invite when the trial opens.";
+        } else {
+          msg.textContent = 'Hmm, that didn’t go through. Please try again.';
+          btn.disabled = false; btn.textContent = label;
+        }
+      } catch (err) {
+        msg.textContent = 'Network error — please try again.';
+        btn.disabled = false; btn.textContent = label;
+      }
+    });
+  }
+</script>
 
 </body>
 </html>

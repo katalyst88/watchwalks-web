@@ -124,6 +124,21 @@ footer .spacer { flex: 1; }
 .legal p, .legal li { color: var(--subtle); font-size: 16px; }
 .legal ul { margin: 8px 0 8px 22px; }
 
+/* feature list */
+.feat { list-style: none; display: grid; gap: 13px; }
+.feat li { position: relative; padding-left: 30px; color: var(--subtle); font-size: 16px; }
+.feat li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+.feat b { color: var(--text); }
+
+/* email signup */
+.signup { display: flex; gap: 10px; max-width: 480px; flex-wrap: wrap; }
+.email-in {
+  flex: 1; min-width: 220px; background: var(--bg2); border: 1px solid var(--line);
+  color: var(--text); border-radius: 999px; padding: 13px 20px; font-size: 15px; outline: none;
+}
+.email-in:focus { border-color: var(--accent); }
+.trial-msg { width: 100%; color: var(--accent); font-size: 14px; margin-top: 8px; min-height: 18px; }
+
 @media (max-width: 860px) {
   .hero, .cols { grid-template-columns: 1fr; }
   .grid3, .trails, .devices { grid-template-columns: 1fr; }
