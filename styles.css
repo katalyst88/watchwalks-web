@@ -154,6 +154,13 @@ footer .spacer { flex: 1; }
 .feat li { position: relative; padding-left: 30px; color: var(--subtle); font-size: 16px; }
 .feat li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
 .feat b { color: var(--text); }
+.feat-two { grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+
+/* companion screenshots */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; justify-items: center; max-width: 720px; margin: 0 auto 34px; }
+.shot { display: grid; justify-items: center; gap: 10px; margin: 0; }
+.shot img { width: 100%; max-width: 220px; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 22px 50px rgba(0,0,0,.5); display: block; }
+.shot figcaption { color: var(--subtle); font-size: 14px; font-weight: 600; }
 
 /* email signup */
 .signup { display: flex; gap: 10px; max-width: 480px; flex-wrap: wrap; }
@@ -175,8 +182,9 @@ footer .spacer { flex: 1; }
 }
 
 @media (max-width: 860px) {
-  .hero, .cols { grid-template-columns: 1fr; }
+  .hero, .cols, .feat-two { grid-template-columns: 1fr; }
   .grid3, .trails, .devices { grid-template-columns: 1fr; }
+  .shots { grid-template-columns: 1fr 1fr; }
   .devices { gap: 30px; }
   .hero-art { order: -1; }
 }
