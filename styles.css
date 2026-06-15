@@ -139,6 +139,15 @@ footer .spacer { flex: 1; }
 .email-in:focus { border-color: var(--accent); }
 .trial-msg { width: 100%; color: var(--accent); font-size: 14px; margin-top: 8px; min-height: 18px; }
 .eo-embed { max-width: 480px; }
+/* attempt to theme the EmailOctopus embed to match the dark site */
+.eo-embed input[type="email"], .eo-embed input[type="text"] {
+  background: #111c34 !important; border: 1px solid #2a374f !important; color: #f1f5fb !important;
+  border-radius: 999px !important; padding: 13px 20px !important;
+}
+.eo-embed button, .eo-embed input[type="submit"] {
+  background: #2ed573 !important; color: #06210f !important; border: none !important;
+  border-radius: 999px !important; font-weight: 700 !important; padding: 13px 24px !important; cursor: pointer;
+}
 
 @media (max-width: 860px) {
   .hero, .cols { grid-template-columns: 1fr; }
