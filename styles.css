@@ -7,7 +7,19 @@
   --line: #212d45;
   --accent: #2ed573;
   --accent-dark: #15803d;
+  --btn-text: #06210f;
   --radius: 16px;
+}
+html[data-theme="light"] {
+  --bg: #eef2f7;
+  --bg2: #ffffff;
+  --bg3: #f1f5f9;
+  --text: #0f172a;
+  --subtle: #475569;
+  --line: #d8dee8;
+  --accent: #15803d;
+  --accent-dark: #0f5c2e;
+  --btn-text: #ffffff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,13 +47,16 @@ header {
 .nav .spacer { flex: 1; }
 .nav a.navlink { color: var(--subtle); font-weight: 600; font-size: 15px; }
 .nav a.navlink:hover { color: var(--text); }
+.theme-toggle { background: none; border: 1px solid var(--line); color: var(--subtle); width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; flex: none; padding: 0; }
+.theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
 
 /* buttons */
 .btn {
   display: inline-block; font-weight: 700; font-size: 15px;
   padding: 13px 24px; border-radius: 999px;
   background: linear-gradient(180deg, var(--accent), var(--accent-dark));
-  color: #06210f; border: none; cursor: pointer;
+  color: var(--btn-text); border: none; cursor: pointer;
 }
 .btn.ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
 .btn:hover { filter: brightness(1.07); }

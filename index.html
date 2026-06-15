@@ -6,6 +6,7 @@
 <title>Watch Walks — Walk the world's greatest trails on your Garmin watch</title>
 <meta name="description" content="Watch Walks turns your everyday steps into a virtual journey along the world's most famous trails — on your Garmin watch. Private by design. Try the Inca Trail free.">
 <link rel="stylesheet" href="styles.css">
+<script>if(localStorage.getItem('ww-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 <body>
 
@@ -20,8 +21,8 @@
     <a class="navlink" href="#trails">Trails</a>
     <a class="navlink" href="#companion">App</a>
     <a class="navlink" href="#trial">Trial</a>
-    <a class="navlink" href="#privacy">Privacy</a>
-    <a class="navlink" href="privacy.html">Policy</a>
+    <a class="navlink" href="privacy.html">Privacy</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
   </div>
 </header>
 
@@ -206,6 +207,15 @@
     <span>© 2026 Watch Walks</span>
   </div>
 </footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    if (h.getAttribute('data-theme') === 'light') { h.removeAttribute('data-theme'); localStorage.setItem('ww-theme', 'dark'); }
+    else { h.setAttribute('data-theme', 'light'); localStorage.setItem('ww-theme', 'light'); }
+  });
+</script>
 
 </body>
 </html>
