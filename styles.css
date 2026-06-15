@@ -106,9 +106,19 @@ section .sub { color: var(--subtle); margin-top: 10px; margin-bottom: 34px; font
 .card p { color: var(--subtle); font-size: 15px; }
 
 /* device mockup row */
-.devices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; justify-items: center; }
+.devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; justify-items: center; }
 .device { display: grid; justify-items: center; gap: 14px; }
 .device .label { color: var(--subtle); font-size: 14px; font-weight: 600; }
+.postcard {
+  width: 188px; min-height: 188px; box-sizing: border-box;
+  background: linear-gradient(180deg, var(--bg2), color-mix(in srgb, var(--bg2) 70%, var(--bg)));
+  border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: 0 18px 44px rgba(0,0,0,.5);
+  padding: 18px 16px; display: flex; flex-direction: column; gap: 5px; text-align: left;
+}
+.postcard .pc-name { color: var(--accent); font-weight: 800; font-size: 16px; }
+.postcard .pc-loc { color: var(--subtle); font-size: 11px; }
+.postcard .pc-story { color: var(--text); font-size: 12px; line-height: 1.5; margin-top: 4px; }
 
 /* privacy */
 .privacy-band { background: linear-gradient(180deg, rgba(46,213,115,.06), transparent); }
