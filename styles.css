@@ -156,10 +156,10 @@ footer .spacer { flex: 1; }
 .feat b { color: var(--text); }
 .feat-two { grid-template-columns: 1fr 1fr; gap: 13px 28px; }
 
-/* try-it demo */
+/* demo video */
 .demo-frame { display: grid; place-items: center; margin-top: 10px; }
-.demo-frame iframe { width: 390px; height: 770px; max-width: 100%; border: none; background: var(--bg2); border-radius: 24px; }
-.demo-note { color: var(--subtle); font-size: 14px; text-align: center; margin-top: 14px; }
+.demo-frame video { width: 300px; max-width: 78%; height: auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 22px 50px rgba(0,0,0,.45); display: block; background: var(--bg2); }
+.demo-note { color: var(--subtle); font-size: 14px; text-align: center; margin-top: 16px; }
 
 /* companion screenshots */
 .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-items: center; max-width: 960px; margin: 0 auto 34px; }
