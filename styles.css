@@ -193,3 +193,26 @@ footer .spacer { flex: 1; }
   .devices { gap: 30px; }
   .hero-art { order: -1; }
 }
+
+/* phones / small tablets: the section-jump links crowd and overflow the bar, so hide them
+   (the page scrolls, Privacy lives in the footer, and Join the beta is the hero button).
+   Keeps a clean brand + theme-toggle header that never overflows. */
+@media (max-width: 720px) {
+  .nav { height: 60px; }
+  .nav .spacer { display: none; }
+  .nav a.navlink { display: none; }
+  .brand { flex: 1 1 auto; }
+}
+
+/* phones: tighten gutters, scale the hero watch + glow to fit, stack the signup form */
+@media (max-width: 480px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 48px 0 40px; }
+  section { padding: 44px 0; }
+  .legal { padding: 40px 0; }
+  .hero-art .watch { width: min(72vw, 290px); height: min(72vw, 290px); }
+  .hero-art::before { width: min(80vw, 320px); height: min(80vw, 320px); }
+  .eo-embed { max-width: 100%; }
+  .eo-embed input[type="email"], .eo-embed input[type="text"],
+  .eo-embed button, .eo-embed input[type="submit"] { width: 100% !important; }
+}
