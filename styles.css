@@ -157,9 +157,9 @@ footer .spacer { flex: 1; }
 .feat-two { grid-template-columns: 1fr 1fr; gap: 13px 28px; }
 
 /* companion screenshots */
-.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; justify-items: center; max-width: 720px; margin: 0 auto 34px; }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-items: center; max-width: 960px; margin: 0 auto 34px; }
 .shot { display: grid; justify-items: center; gap: 10px; margin: 0; }
-.shot img { width: 100%; max-width: 220px; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 22px 50px rgba(0,0,0,.5); display: block; }
+.shot img { width: 100%; max-width: 210px; border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 18px 42px rgba(0,0,0,.45); display: block; }
 .shot figcaption { color: var(--subtle); font-size: 14px; font-weight: 600; }
 
 /* email signup */
