@@ -138,6 +138,7 @@ footer .spacer { flex: 1; }
 }
 .email-in:focus { border-color: var(--accent); }
 .trial-msg { width: 100%; color: var(--accent); font-size: 14px; margin-top: 8px; min-height: 18px; }
+.eo-embed { max-width: 480px; }
 
 @media (max-width: 860px) {
   .hero, .cols { grid-template-columns: 1fr; }
