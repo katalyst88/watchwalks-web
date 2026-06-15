@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're on the beta list — Watch Walks</title>
+<meta name="description" content="Thanks for joining the Watch Walks beta.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 19 L9 7 L13 13 L16 9 L22 19 Z" fill="#2ed573"/><path d="M9 7 L7.2 10 L9 9 L10.8 10 Z" fill="#fff"/></svg>
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="index.html">Home</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap" style="text-align:center;max-width:640px;padding:84px 24px 96px">
+  <div style="width:104px;height:104px;border-radius:50%;background:var(--accent);display:inline-grid;place-items:center;box-shadow:0 18px 46px rgba(46,213,115,.4)">
+    <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13 L9 17 L19 6" stroke="#06210f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h1 style="font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-0.02em;margin-top:26px">You're on the beta list.</h1>
+  <p class="sub" style="margin:14px auto 0;max-width:30em">Thanks for signing up to help test Watch Walks. We're starting with Garmin watch owners on Android.</p>
+  <p style="color:var(--subtle);margin-top:16px;max-width:32em;margin-left:auto;margin-right:auto">We'll email you at the address you just gave us the moment your beta invite is ready. Nothing else will land in your inbox before then.</p>
+  <div style="margin-top:34px">
+    <a href="index.html" style="display:inline-block;background:var(--accent);color:var(--btn-text);padding:14px 28px;border-radius:999px;font-weight:800;text-decoration:none">Back to home</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="spacer"></span>
+    <a href="index.html">Home</a>
+    <span>&copy; 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
+  });
+</script>
+
+</body>
+</html>
