@@ -180,6 +180,11 @@ footer .spacer { flex: 1; }
   background: var(--accent) !important; color: var(--btn-text) !important; border: none !important;
   border-radius: 999px !important; font-weight: 700 !important; padding: 13px 24px !important; cursor: pointer;
 }
+/* hide the EmailOctopus "powered by" branding in the embed */
+.eo-embed a[href*="emailoctopus"], .eo-embed [class*="powered"], .eo-embed [class*="Powered"],
+.eo-embed img[alt*="EmailOctopus" i], .eo-embed img[src*="emailoctopus"], .eo-embed img[src*="eomail"] {
+  display: none !important;
+}
 
 @media (max-width: 860px) {
   .hero, .cols, .feat-two { grid-template-columns: 1fr; }
