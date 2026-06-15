@@ -181,9 +181,6 @@
     <h2>Join the trial.</h2>
     <p class="sub">Want to test Watch Walks — including the companion app — before launch? Leave your email and we'll send you an invite when the trial opens.</p>
     <form id="trialForm" class="signup">
-      <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
-      <input type="hidden" name="subject" value="New Watch Walks trial signup">
-      <input type="hidden" name="from_name" value="Watch Walks site">
       <input type="email" name="email" required placeholder="you@email.com" class="email-in" aria-label="Email address">
       <button type="submit" class="btn">Join the trial</button>
       <p id="trialMsg" class="trial-msg" role="status"></p>
@@ -214,26 +211,29 @@
 </footer>
 
 <script>
+  // Buttondown subscribe endpoint — swap in the Watch Walks Buttondown username.
+  const BUTTONDOWN_USER = 'BUTTONDOWN_USERNAME';
   const form = document.getElementById('trialForm');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button');
       const msg = document.getElementById('trialMsg');
+      const email = form.email.value.trim();
+      if (!email) { return; }
       btn.disabled = true;
       const label = btn.textContent;
       btn.textContent = 'Joining…';
       try {
-        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
-        const data = await res.json();
-        if (data.success) {
-          form.reset();
-          form.style.display = 'none';
-          msg.textContent = "You're on the list — we'll email your invite when the trial opens.";
-        } else {
-          msg.textContent = 'Hmm, that didn’t go through. Please try again.';
-          btn.disabled = false; btn.textContent = label;
-        }
+        await fetch('https://buttondown.com/api/emails/embed-subscribe/' + BUTTONDOWN_USER, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email: email })
+        });
+        form.reset();
+        form.style.display = 'none';
+        msg.textContent = "Almost there — check your inbox to confirm, and we'll send your trial invite.";
       } catch (err) {
         msg.textContent = 'Network error — please try again.';
         btn.disabled = false; btn.textContent = label;
