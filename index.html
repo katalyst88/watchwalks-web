@@ -6,7 +6,7 @@
 <title>Watch Walks — Walk the world's greatest trails on your Garmin watch</title>
 <meta name="description" content="Watch Walks turns your everyday steps into a virtual journey along the world's most famous trails — on your Garmin watch. Private by design. Try the Inca Trail free.">
 <link rel="stylesheet" href="styles.css">
-<script>if(localStorage.getItem('ww-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
 <body>
 
@@ -212,8 +212,9 @@
   var tg = document.getElementById('themeToggle');
   if (tg) tg.addEventListener('click', function () {
     var h = document.documentElement;
-    if (h.getAttribute('data-theme') === 'light') { h.removeAttribute('data-theme'); localStorage.setItem('ww-theme', 'dark'); }
-    else { h.setAttribute('data-theme', 'light'); localStorage.setItem('ww-theme', 'light'); }
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
   });
 </script>
 
