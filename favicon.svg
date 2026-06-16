@@ -4,31 +4,35 @@
       <stop offset="0" stop-color="#33BE78"/><stop offset="1" stop-color="#136848"/>
     </linearGradient>
     <radialGradient id="glow" cx="34" cy="30" r="80" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="bezel" x1="54" y1="32" x2="54" y2="76" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bezel" x1="54" y1="30" x2="54" y2="78" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#E7DCCB"/>
     </linearGradient>
-    <linearGradient id="sky" x1="54" y1="36" x2="54" y2="72" gradientUnits="userSpaceOnUse">
+    <linearGradient id="sky" x1="54" y1="34" x2="54" y2="74" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#DCEFEA"/><stop offset="1" stop-color="#F6EFE0"/>
     </linearGradient>
-    <radialGradient id="sun" cx="64.5" cy="44" r="5.5" gradientUnits="userSpaceOnUse">
+    <radialGradient id="sun" cx="64" cy="42" r="6" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FFF6D8"/><stop offset="1" stop-color="#FFD879"/>
     </radialGradient>
-    <clipPath id="face"><circle cx="54" cy="54" r="18"/></clipPath>
+    <clipPath id="face"><circle cx="54" cy="54" r="20"/></clipPath>
   </defs>
   <rect width="108" height="108" rx="24" fill="url(#bg)"/>
   <rect width="108" height="108" rx="24" fill="url(#glow)"/>
-  <path d="M36,44 H24 a7,7 0 0 0 -7,7 V57 a7,7 0 0 0 7,7 H36 Z" fill="#F4EFE6"/>
-  <path d="M72,44 H84 a7,7 0 0 1 7,7 V57 a7,7 0 0 1 -7,7 H72 Z" fill="#F4EFE6"/>
-  <circle cx="54" cy="54" r="22" fill="url(#bezel)"/>
-  <circle cx="54" cy="54" r="18" fill="url(#sky)"/>
-  <g clip-path="url(#face)">
-    <circle cx="64.5" cy="44" r="4.5" fill="url(#sun)"/>
-    <path d="M34,70 L45,53 L53,61 L62,49 L76,70 Z" fill="#92C0AA"/>
-    <path d="M35,70 L51,49 L69,70 Z" fill="#2E7D55"/>
-    <path d="M51,49 L47,54 L49,53 L51,54.5 L53,52.5 L55,54 Z" fill="#fff"/>
+  <!-- launcher foreground, scaled 1.35x about centre to match the app icon framing -->
+  <g transform="translate(-18.9,-18.9) scale(1.35)">
+    <path d="M30,57 a24,24 0 1,0 48,0 a24,24 0 1,0 -48,0 z" fill="#2B000000"/>
+    <path d="M34,43 H18 a8,8 0 0 0 -8,8 V57 a8,8 0 0 0 8,8 H34 Z" fill="#F4EFE6"/>
+    <path d="M74,43 H90 a8,8 0 0 1 8,8 V57 a8,8 0 0 1 -8,8 H74 Z" fill="#F4EFE6"/>
+    <circle cx="54" cy="54" r="24" fill="url(#bezel)"/>
+    <circle cx="54" cy="54" r="20" fill="url(#sky)"/>
+    <g clip-path="url(#face)">
+      <circle cx="64" cy="42" r="5" fill="url(#sun)"/>
+      <path d="M30,72 L43,51 L52,60 L63,47 L80,72 Z" fill="#92C0AA"/>
+      <path d="M31,72 L50,47 L72,72 Z" fill="#2E7D55"/>
+      <path d="M50,47 L45.5,53 L48,52 L50,53.5 L52.5,51.5 L54.5,53 Z" fill="#fff"/>
+    </g>
+    <circle cx="54" cy="54" r="20" fill="none" stroke="#DCD0BB" stroke-width="1"/>
+    <path d="M37,42 A24,24 0 0 1 50,31.5" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2.4" stroke-linecap="round"/>
   </g>
-  <circle cx="54" cy="54" r="18" fill="none" stroke="#DCD0BB" stroke-width="1"/>
-  <path d="M39,44 A22,22 0 0 1 51,34" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2.2" stroke-linecap="round"/>
 </svg>
