@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "key": "pct",
+  "maxzoom": 7,
+  "hillshade": [
+    [
+      32.435613,
+      -122.750244
+    ],
+    [
+      49.15297,
+      -116.30127
+    ]
+  ],
+  "tilesBytes": 2865888,
+  "terrain": true,
+  "terrainBytes": 739692,
+  "milestones": [
+    {
+      "index": 0,
+      "image": "m/0.jpg",
+      "bytes": 78855,
+      "credit": "marker_geo1"
+    },
+    {
+      "index": 3,
+      "image": "m/3.jpg",
+      "bytes": 63909,
+      "credit": "lvl5"
+    },
+    {
+      "index": 6,
+      "image": "m/6.jpg",
+      "bytes": 182210,
+      "credit": "clydel"
+    },
+    {
+      "index": 7,
+      "image": "m/7.jpg",
+      "bytes": 89630,
+      "credit": "lvl5"
+    },
+    {
+      "index": 8,
+      "image": "m/8.jpg",
+      "bytes": 162267,
+      "credit": "danbjoseph"
+    },
+    {
+      "index": 10,
+      "image": "m/10.jpg",
+      "bytes": 38067,
+      "credit": "glassman"
+    },
+    {
+      "index": 11,
+      "image": "m/11.jpg",
+      "bytes": 61525,
+      "credit": "nkeene"
+    },
+    {
+      "index": 12,
+      "image": "m/12.jpg",
+      "bytes": 163847,
+      "credit": "nmixter"
+    },
+    {
+      "index": 14,
+      "image": "m/14.jpg",
+      "bytes": 41266,
+      "credit": "lvl5"
+    }
+  ]
+}
