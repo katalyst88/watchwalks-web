@@ -1,27 +1,37 @@
+/* "Field Journal" type — self-hosted (privacy brand, no Google CDN). Variable fonts, one file each. */
+@font-face { font-family:'Fraunces'; src:url('fonts/fraunces-var.woff2') format('woff2'); font-weight:400 700; font-display:swap; font-style:normal; }
+@font-face { font-family:'Hanken Grotesk'; src:url('fonts/hanken-var.woff2') format('woff2'); font-weight:400 800; font-display:swap; font-style:normal; }
+
 :root {
-  /* Light is the default theme. Dark applies only via html[data-theme="dark"]
-     (set by the inline script when the browser prefers dark, or the user toggles). */
-  --bg: #eef2f7;
-  --bg2: #ffffff;
-  --bg3: #f1f5f9;
-  --text: #0f172a;
-  --subtle: #475569;
-  --line: #d8dee8;
-  --accent: #15803d;
-  --accent-dark: #0f5c2e;
-  --btn-text: #ffffff;
+  /* Light = warm "paper". Dark = "dusk". Earthy, editorial — keeps the green+gold equity, no
+     blue-grays / pure white-black. The whole site recolours through these tokens. See DESIGN.md. */
+  --bg: #F4EDDF;        /* warm cream paper */
+  --bg2: #FBF6EC;       /* raised surface */
+  --bg3: #EFE6D4;
+  --text: #23211C;      /* ink */
+  --subtle: #7A6F5C;    /* muted brown-grey */
+  --line: #E4D8C0;      /* warm hairline */
+  --accent: #1F5C3D;    /* deep pine (primary green) */
+  --accent-dark: #143E29;
+  --btn-text: #FBF6EC;
+  --gold: #E0A52E;      /* achievement / accent */
+  --clay: #B4623B;      /* warm secondary */
   --radius: 16px;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-text: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
 }
 html[data-theme="dark"] {
-  --bg: #080d18;
-  --bg2: #101a2e;
-  --bg3: #18233c;
-  --text: #f4f7fc;
-  --subtle: #9fb0c9;
-  --line: #212d45;
-  --accent: #2ed573;
-  --accent-dark: #15803d;
-  --btn-text: #06210f;
+  --bg: #14160F;
+  --bg2: #1C2016;
+  --bg3: #232717;
+  --text: #F3EFE2;
+  --subtle: #A7A08C;
+  --line: #2C2E20;
+  --accent: #3FB477;
+  --accent-dark: #1F5C3D;
+  --btn-text: #0E1A10;
+  --gold: #E9B450;
+  --clay: #CC7A52;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,10 +39,25 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-text);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  position: relative;
 }
+/* Paper grain — a very subtle tiling noise so backgrounds read as warm paper, not flat fill. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body > * { position: relative; z-index: 1; }
+/* Display face: Fraunces for headlines, the wordmark, eyebrows, trail names and big numerals. */
+h1, h2, h3, .brand, .eyebrow, .hero h1, section h2, .cta-band h2,
+.legal h1, .legal h2, .join-hero h1, .t-name, .pc-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.eyebrow, .t-name { letter-spacing: 0; }
 a { color: var(--accent); text-decoration: none; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
