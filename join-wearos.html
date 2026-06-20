@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<!-- NOTE: the "Join the testers group" links below point at https://groups.google.com/g/watchwalks-testers
+     Create that Google Group (set "Who can join" = Anyone can join) and add it to the Closed testing
+     track in Play Console, OR change these links to your group's join URL. Same group on both join pages. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the beta on Wear OS &amp; Samsung | Watch Walks</title>
+<meta name="description" content="Join the Watch Walks beta on your Wear OS or Samsung Galaxy Watch: join the testers group, then install Watch Walks from Google Play. The Inca Trail is free.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="join-garmin.html">Garmin beta</a>
+    <a class="navlink" href="index.html">Home</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <img class="banner" src="img/wearos-banner.png" alt="Watch Walks: walk the world's greatest trails, the free companion for your Wear OS watch">
+
+  <h1>Join the beta on Wear OS &amp; Samsung</h1>
+  <p class="updated">For Samsung Galaxy Watch, Google Pixel Watch, Mobvoi TicWatch, OnePlus Watch and other Wear OS watches</p>
+
+  <p>Welcome aboard! Two quick steps and you're walking: <strong>join the testers group</strong>, then install <strong>Watch Walks</strong> from Google Play onto your watch. The <strong>Inca Trail is free</strong>.</p>
+
+  <h2>Step 1 &middot; Join the testers group</h2>
+  <p>Watch Walks is in invite-only beta, so Google Play only lets you install it once you're in our testers group. Joining is what unlocks the download.</p>
+  <ul>
+    <li>Use the <strong>same Google account</strong> that's signed in on your watch and phone Play Store.</li>
+    <li>Tap join, then accept &mdash; no forms, nothing to fill in.</li>
+    <li><em>Heads up:</em> it can take a few minutes (occasionally an hour or two) before Google Play shows you the app.</li>
+  </ul>
+  <p style="margin-top:14px"><a class="btn" href="https://groups.google.com/g/watchwalks-testers" target="_blank" rel="noopener">Join the testers group</a></p>
+
+  <h2>Step 2 &middot; Install Watch Walks on your watch</h2>
+  <p>Once you're in the group, become a tester and install the app:</p>
+  <ul>
+    <li>Open the tester opt-in link below and tap <strong>Become a tester</strong>, then <strong>Download it on Google Play</strong>.</li>
+    <li>On your <strong>watch</strong>, open the Play Store, find <strong>Watch Walks</strong> and install it (start with the free Inca Trail).</li>
+    <li>Open Watch Walks on the watch once and just start walking &mdash; your everyday steps carry you down the trail, all on your wrist, no phone pairing needed.</li>
+  </ul>
+  <p style="margin-top:14px"><a class="btn" href="https://play.google.com/apps/testing/com.watchwalks.companion" target="_blank" rel="noopener">Become a tester &amp; install</a></p>
+  <p>Want every detail? See the full <a href="setup-wearos.html">Wear OS &amp; Samsung setup guide</a>.</p>
+
+  <h2>Step 3 &middot; (Optional) Get the companion phone app</h2>
+  <p>The free <strong>Watch Walks companion</strong> for Android turns your steps into a living map, unlocks a short story at every landmark, and gives you a badge for each trail you finish. It's the same beta access, so once you're in the group you can install it too.</p>
+  <p style="margin-top:14px"><a class="btn ghost" href="https://play.google.com/apps/testing/com.watchwalks.companion" target="_blank" rel="noopener">Get the companion on Google Play</a></p>
+
+  <h2>Trouble getting in?</h2>
+  <ul>
+    <li><strong>Google Play says the app isn't available or "not a tester".</strong> Give it a little longer after joining the group, and make sure your watch/phone Play Store is signed in with the same Google account you used to join.</li>
+    <li><strong>I can't find it on my watch.</strong> Make sure it installed (the watch needs a Wi-Fi or Bluetooth connection), then open the Play Store on the watch and search <em>Watch Walks</em>.</li>
+    <li><strong>Still stuck?</strong> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> &mdash; we'll get you walking.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="spacer"></span>
+    <a href="join-garmin.html">Garmin beta</a>
+    <a href="index.html">Home</a>
+    <span>© 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
+  });
+</script>
+
+</body>
+</html>

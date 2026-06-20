@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<!-- NOTE: the "Join the testers group" links below point at https://groups.google.com/g/watchwalks-testers
+     Create that Google Group (set "Who can join" = Anyone can join) and add it to the Closed testing
+     track in Play Console, OR change these links to your group's join URL. Same group on both join pages. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the beta on Garmin | Watch Walks</title>
+<meta name="description" content="Join the Watch Walks beta on your Garmin watch: join the testers group, then install the free Inca Trail from the Connect IQ store.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="join-wearos.html">Wear OS beta</a>
+    <a class="navlink" href="index.html">Home</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <img class="banner" src="img/beta-banner.png" alt="Watch Walks: walk the world's greatest trails, the free companion for your Garmin watch">
+
+  <h1>Join the beta on Garmin</h1>
+  <p class="updated">For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches</p>
+
+  <p>Welcome aboard! Two quick steps and you're walking: <strong>join the testers group</strong>, then add the <strong>free Inca Trail</strong> to your Garmin from the Connect IQ store. The whole thing takes about five minutes.</p>
+
+  <h2>Step 1 &middot; Join the testers group</h2>
+  <p>Watch Walks is in invite-only beta, so we add testers through a Google Group. Joining it unlocks the free <strong>companion phone app</strong> on Google Play during the beta.</p>
+  <ul>
+    <li>Use the <strong>same Google account</strong> you use on your phone's Play Store.</li>
+    <li>Tap join, then accept &mdash; that's it, no forms.</li>
+    <li><em>Heads up:</em> it can take a few minutes (occasionally an hour or two) before your access goes live.</li>
+  </ul>
+  <p style="margin-top:14px"><a class="btn" href="https://groups.google.com/g/watchwalks-testers" target="_blank" rel="noopener">Join the testers group</a></p>
+
+  <h2>Step 2 &middot; Add the Inca Trail to your Garmin</h2>
+  <p>The Inca Trail watch app is <strong>free and live now</strong> on the Connect IQ store &mdash; you don't have to wait for the group for this part.</p>
+  <ul>
+    <li>Make sure you have the free <strong>Garmin Connect</strong> app with your watch paired.</li>
+    <li>Open the listing below, tap <strong>Download</strong>, and pick your watch. It installs on the next sync.</li>
+    <li>On the watch, open <strong>Watch Walks</strong> once &mdash; it picks up today's steps and starts you down the trail.</li>
+  </ul>
+  <p style="margin-top:14px"><a class="btn" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get the Inca Trail on Connect IQ</a></p>
+  <p>Want every detail? See the full <a href="setup-garmin.html">Garmin setup guide</a>.</p>
+
+  <h2>Step 3 &middot; (Optional) Get the companion phone app</h2>
+  <p>Once your group access is live, install the free <strong>Watch Walks companion</strong> for Android. It turns your steps into a living map, unlocks a short story at every landmark, and gives you a badge for each trail you finish &mdash; reading your progress straight from your watch over Bluetooth.</p>
+  <p style="margin-top:14px"><a class="btn ghost" href="https://play.google.com/apps/testing/com.watchwalks.companion" target="_blank" rel="noopener">Get the companion on Google Play</a></p>
+
+  <h2>Trouble getting in?</h2>
+  <ul>
+    <li><strong>"You're not a tester yet" or the app won't install.</strong> Give it a little longer after joining the group, and make sure you're signed in with the same Google account you used to join.</li>
+    <li><strong>The trail didn't appear on my watch.</strong> Open Garmin Connect and sync again; it installs on the next sync.</li>
+    <li><strong>Still stuck?</strong> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> &mdash; we'll get you walking.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="spacer"></span>
+    <a href="join-wearos.html">Wear OS beta</a>
+    <a href="index.html">Home</a>
+    <span>© 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
+  });
+</script>
+
+</body>
+</html>
