@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wear OS &amp; Samsung setup guide | Watch Walks</title>
+<meta name="description" content="How to set up Watch Walks on a Wear OS watch (Samsung Galaxy Watch, Google Pixel Watch and more): install from Google Play on the watch and start walking.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="setup-garmin.html">Garmin guide</a>
+    <a class="navlink" href="index.html">Home</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <h1>Setting up Watch Walks on Wear OS</h1>
+  <p class="updated">For Samsung Galaxy Watch, Google Pixel Watch, Mobvoi TicWatch, OnePlus Watch and other Wear OS watches</p>
+
+  <p>On Wear OS, Watch Walks runs <strong>right on your watch</strong> &mdash; there's no pairing dance and nothing to leave running. The <strong>Inca Trail is free</strong>, and more trails unlock as in-app purchases. Setup takes a couple of minutes.</p>
+
+  <h2>What you'll need</h2>
+  <ul>
+    <li>A watch running <strong>Wear OS 3 or newer</strong> (most Samsung Galaxy Watch 4 and later, Pixel Watch, recent TicWatch and OnePlus Watch models).</li>
+    <li>The watch signed in to your Google account, on Wi-Fi or with its phone nearby for data.</li>
+  </ul>
+
+  <h2>Step 1 &middot; Open the Play Store on the watch</h2>
+  <ol>
+    <li>On the <strong>watch</strong>, press the crown/button to open the app list and tap the <strong>Play Store</strong>.</li>
+    <li>If prompted, confirm it's signed in to the same Google account you use on your phone.</li>
+  </ol>
+  <p>Tip: you can also open the Play Store on your phone, search Watch Walks, and use the device selector to send it to the watch &mdash; but installing from the watch's own Play Store is the simplest path.</p>
+
+  <h2>Step 2 &middot; Install Watch Walks</h2>
+  <ol>
+    <li>Search for <strong>Watch Walks</strong> on the watch's Play Store.</li>
+    <li>Tap <strong>Install</strong>. It downloads straight to the watch.</li>
+  </ol>
+
+  <h2>Step 3 &middot; Open it and allow two permissions</h2>
+  <ol>
+    <li>Launch <strong>Watch Walks</strong> from the watch's app list.</li>
+    <li>Allow <strong>Physical activity</strong> &mdash; this lets the watch count your steps so they carry you down the trail.</li>
+    <li>Allow <strong>Notifications</strong> &mdash; so you get a little celebration on your wrist when you reach a landmark.</li>
+    <li>That's it. It's standalone: no phone pairing, no account, nothing to set up.</li>
+  </ol>
+
+  <h2>Step 4 &middot; Add the Tile for a glance</h2>
+  <ol>
+    <li>From the watch face, swipe across to the <strong>Tiles</strong> carousel and tap to add a tile.</li>
+    <li>Choose the <strong>Watch Walks</strong> tile to see your distance, percent and next landmark at a glance &mdash; no need to open the app.</li>
+  </ol>
+
+  <h2>Step 5 &middot; (Optional) Add the phone companion</h2>
+  <p>The free companion app gives you the big-screen view: your journey on a living map, the story of each landmark, and your wall of trail badges.</p>
+
+  <h2>How walking works on Wear OS</h2>
+  <p>Just live your life. The watch counts your everyday steps &mdash; even while the app is closed &mdash; and they move you along the trail. Open the app whenever you like to see how far you've come, tap a landmark you've passed to read its story, and watch the celebration when you reach a new one. No GPS, no tracking a workout, no battery drain from a live activity.</p>
+
+  <h2>Choosing and getting more trails</h2>
+  <p>Open <strong>Choose a trail</strong> in the app to see your trails. Only one trail is active at a time &mdash; the one your steps are counting toward. The Inca Trail is live now and free; more trails are coming soon as in-app purchases. A trail you buy is tied to your Google account, so it's there on every device signed in with it.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><strong>My steps aren't moving the trail.</strong> Open the app, go to system Settings &rarr; Apps &rarr; Watch Walks &rarr; Permissions, and make sure <strong>Physical activity</strong> is allowed.</li>
+    <li><strong>I didn't get a milestone celebration.</strong> Check that <strong>Notifications</strong> are allowed for Watch Walks.</li>
+    <li><strong>The watch Play Store can't find it.</strong> Confirm the watch is on Wear OS 3+ and signed in to your Google account; give it a minute after the watch comes online.</li>
+    <li><strong>"Not compatible" on my phone.</strong> That message means a build was offered to the wrong device &mdash; install the watch app from the <em>watch's</em> Play Store, and the phone companion from the <em>phone's</em> Play Store.</li>
+    <li><strong>Still stuck?</strong> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</li>
+  </ul>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="spacer"></span>
+    <a href="setup-garmin.html">Garmin guide</a>
+    <a href="index.html">Home</a>
+    <span>© 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garmin setup guide | Watch Walks</title>
+<meta name="description" content="How to set up Watch Walks on your Garmin watch: install a trail from the Connect IQ store, sync it, and start walking.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="setup-wearos.html">Wear OS guide</a>
+    <a class="navlink" href="index.html">Home</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <h1>Setting up Watch Walks on Garmin</h1>
+  <p class="updated">For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches</p>
+
+  <p>On Garmin, each trail is its own app in the Connect IQ store. The <strong>Inca Trail is free</strong> &mdash; start there. The whole setup takes about five minutes.</p>
+
+  <h2>What you'll need</h2>
+  <ul>
+    <li>A Garmin watch that supports Connect IQ apps (most models from the last few years).</li>
+    <li>The free <strong>Garmin Connect</strong> app on your phone, with your watch paired to it.</li>
+    <li>A Wi-Fi or Bluetooth connection so the watch can download the app.</li>
+  </ul>
+
+  <h2>Step 1 &middot; Install Garmin Connect and pair your watch</h2>
+  <ol>
+    <li>Install <strong>Garmin Connect</strong> from the App Store or Google Play.</li>
+    <li>Open it, sign in (or create a free Garmin account), and follow the prompts to pair your watch over Bluetooth.</li>
+    <li>Make sure the watch shows as <em>connected</em> in Garmin Connect before moving on.</li>
+  </ol>
+
+  <h2>Step 2 &middot; Add the Inca Trail from the Connect IQ store</h2>
+  <ol>
+    <li>In Garmin Connect, open the menu and choose <strong>Connect IQ Store</strong> (or install the separate <em>Connect IQ</em> app and open that).</li>
+    <li>Search for <strong>Watch Walks</strong>.</li>
+    <li>Open the <strong>Inca Trail</strong> listing and tap <strong>Download</strong> (it's free). Choose your watch if you have more than one.</li>
+    <li>Garmin queues the app and installs it the next time your watch syncs.</li>
+  </ol>
+
+  <h2>Step 3 &middot; Sync your watch</h2>
+  <ol>
+    <li>Keep your watch close to your phone with Bluetooth on.</li>
+    <li>In Garmin Connect, pull down to sync (or wait for the automatic sync). The app transfers to your watch.</li>
+  </ol>
+
+  <h2>Step 4 &middot; Open it once on your watch</h2>
+  <ol>
+    <li>On the watch, open the app list (or glance/widget list) and launch <strong>Watch Walks</strong> once.</li>
+    <li>It reads the steps you've already taken today and starts you down the trail.</li>
+  </ol>
+
+  <h2>Step 5 &middot; (Optional) Add the phone companion</h2>
+  <p>The free Watch Walks companion app shows your journey on a living map, the story of each landmark, and the badge for every trail you finish.</p>
+  <ol>
+    <li>Install the companion app on your phone.</li>
+    <li>Open it &mdash; it reads your progress straight from your watch over Bluetooth (through Connect IQ). Tap <strong>Sync</strong> any time to refresh.</li>
+  </ol>
+
+  <h2>How walking works on Garmin</h2>
+  <p>Your everyday steps move you along the trail &mdash; no GPS, no tracking a walk. One Garmin detail to know: the watch only <strong>sends</strong> your steps to the trail while the Watch Walks app is open. So open it on your watch now and then (and before you sync to the companion) to bring your progress up to date. Reach a landmark and its short story unlocks; reach the end and you've conquered the trail.</p>
+
+  <h2>Getting more trails</h2>
+  <p>Each additional trail is its own item in the Connect IQ store. Search <strong>Watch Walks</strong>, open the trail you want, and download it the same way &mdash; it appears alongside the Inca Trail on your watch.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><strong>The app didn't appear on my watch.</strong> Open Garmin Connect and sync again; downloads install on the next sync. Check the watch has enough free space.</li>
+    <li><strong>My progress looks behind.</strong> Open Watch Walks on the watch to send the latest steps, then sync the companion.</li>
+    <li><strong>The companion shows "no trail on your watch yet."</strong> Make sure the trail finished installing on the watch and that you've opened it once.</li>
+    <li><strong>Still stuck?</strong> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</li>
+  </ul>
+
+  <p style="margin-top:30px"><a class="btn" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get the Inca Trail on Garmin, free</a></p>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="spacer"></span>
+    <a href="setup-wearos.html">Wear OS guide</a>
+    <a href="index.html">Home</a>
+    <span>© 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script>
+  var tg = document.getElementById('themeToggle');
+  if (tg) tg.addEventListener('click', function () {
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('ww-theme', next);
+  });
+</script>
+
+</body>
+</html>
