@@ -150,7 +150,7 @@ footer .row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
 footer .spacer { flex: 1; }
 
 /* beta join banner (the Reddit graphic, reused as a page banner) */
-.banner { display: block; width: 100%; max-width: 820px; height: auto; margin: 0 auto 26px;
+.banner { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto 22px;
   border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 18px 44px rgba(0,0,0,.28); }
 
 /* "pick your watch" choice cards on the beta section */
@@ -158,6 +158,21 @@ footer .spacer { flex: 1; }
 .choice h3 { font-size: 19px; }
 .choice p { color: var(--subtle); font-size: 15px; flex: 1; }
 .choice .btn { align-self: flex-start; margin-top: 4px; }
+
+/* dedicated beta / join pages (join-garmin, join-wearos) — richer than the legal layout */
+.join-hero { border-top: none; padding: 30px 0 6px; text-align: center; }
+.join-hero .eyebrow { display: block; margin-top: 4px; }
+.join-hero h1 { font-size: clamp(28px, 4.6vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-top: 8px; }
+.join-hero .sub { margin: 12px auto 0; }
+.join-steps { border-top: none; padding: 22px 0 44px; }
+.join-steps .card { display: flex; flex-direction: column; }
+.join-steps .card h3 { font-size: 18px; margin: 4px 0 6px; }
+.join-steps .card p { flex: 1; color: var(--subtle); font-size: 15px; }
+.join-steps .card .btn { align-self: flex-start; margin-top: 16px; }
+@media (max-width: 480px) {
+  .join-hero { padding: 18px 0 4px; }
+  .join-steps .card .btn { align-self: stretch; text-align: center; }
+}
 
 /* legal page */
 .legal { max-width: 760px; padding: 52px 0; }
