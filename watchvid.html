@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* Transparent page so the captured frames carry alpha (the watch is a circular opaque
+     element; everything around it stays clear and blends onto the hero in any theme). */
+  html, body { margin: 0; width: 360px; height: 360px; background: transparent; overflow: hidden; }
+  #stage { width: 360px; height: 360px; display: grid; place-items: center; }
+  .watch {
+    position: relative; width: 304px; height: 304px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 32%, #16233d, #05080f);
+    border: 9px solid #04070d; box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  }
+  .screen { position: absolute; inset: 0; display: grid; place-items: center; }
+  .screen svg { width: 232px; height: 232px; }
+  .tlabel { font-family: system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="watch">
+    <div class="screen" id="s0"></div>
+    <div class="screen" id="s1"></div>
+    <div class="screen" id="s2"></div>
+    <div class="screen" id="s3"></div>
+  </div>
+</div>
+<script>
+  // Deterministic: the whole watch state is a pure function of ?t (0..1 loop position), so each
+  // captured frame is reproducible. Four screens cycle with a short crossfade; screen 0's
+  // progress ring counts up while it is on.
+  function qt() {
+    var m = /[?&]t=([0-9.]+)/.exec(location.search);
+    return m ? Math.max(0, Math.min(0.99999, parseFloat(m[1]))) : 0;
+  }
+
+  var C = 2 * Math.PI * 86; // ring circumference for r=86
+
+  function progressSVG(frac) {
+    var pct = Math.round(frac * 100);
+    var km = (frac * 43).toFixed(1);
+    var dash = (frac * C).toFixed(1) + ' ' + C.toFixed(1);
+    return '<svg viewBox="0 0 206 206">' +
+      '<circle cx="103" cy="103" r="86" fill="none" stroke="#243049" stroke-width="11"/>' +
+      '<circle cx="103" cy="103" r="86" fill="none" stroke="#2ed573" stroke-width="11" stroke-linecap="round" ' +
+        'stroke-dasharray="' + dash + '" transform="rotate(-90 103 103)"/>' +
+      '<text class="tlabel" x="103" y="96" text-anchor="middle" fill="#fff" font-size="40" font-weight="700">' + km + '</text>' +
+      '<text class="tlabel" x="103" y="124" text-anchor="middle" fill="#9fb0c9" font-size="15">of 43 km</text>' +
+      '<text class="tlabel" x="103" y="158" text-anchor="middle" fill="#2ed573" font-size="15" font-weight="700">' + pct + '%</text>' +
+      '</svg>';
+  }
+
+  function storySVG() {
+    return '<svg viewBox="0 0 206 206">' +
+      '<text class="tlabel" x="103" y="66" text-anchor="middle" fill="#2ed573" font-size="21" font-weight="700">Sun Gate</text>' +
+      '<text class="tlabel" x="103" y="96" text-anchor="middle" fill="#e3e9f2" font-size="13">You step through Inti</text>' +
+      '<text class="tlabel" x="103" y="114" text-anchor="middle" fill="#e3e9f2" font-size="13">Punku and there it is,</text>' +
+      '<text class="tlabel" x="103" y="132" text-anchor="middle" fill="#e3e9f2" font-size="13">Machu Picchu far below.</text>' +
+      '<text class="tlabel" x="103" y="160" text-anchor="middle" fill="#9fb0c9" font-size="12">41 km from start</text>' +
+      '</svg>';
+  }
+
+  function awardSVG(pulse) {
+    var r1 = 46 + pulse * 5, r2 = 34 + pulse * 4;
+    return '<svg viewBox="0 0 206 206">' +
+      '<circle cx="103" cy="80" r="' + r1.toFixed(1) + '" fill="none" stroke="#2ed573" stroke-width="3" opacity="0.24"/>' +
+      '<circle cx="103" cy="80" r="' + r2.toFixed(1) + '" fill="none" stroke="#2ed573" stroke-width="3" opacity="0.5"/>' +
+      '<path d="M103 58 L108 73 L124 73 L112 83 L116 98 L103 89 L90 98 L94 83 L82 73 L98 73 Z" fill="#feca57"/>' +
+      '<text class="tlabel" x="103" y="134" text-anchor="middle" fill="#2ed573" font-size="14" font-weight="700">MILESTONE REACHED</text>' +
+      '<text class="tlabel" x="103" y="156" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Machu Picchu</text>' +
+      '<text class="tlabel" x="103" y="176" text-anchor="middle" fill="#9fb0c9" font-size="12">43 km from start</text>' +
+      '</svg>';
+  }
+
+  function glanceSVG() {
+    return '<svg viewBox="0 0 206 206">' +
+      '<path d="M52 70 L66 52 L80 70 Z" fill="#2ed573"/>' +
+      '<text class="tlabel" x="92" y="68" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Inca Trail</text>' +
+      '<rect x="48" y="92" width="110" height="14" rx="7" fill="#404040"/>' +
+      '<rect x="48" y="92" width="62" height="14" rx="7" fill="#2ed573"/>' +
+      '<text class="tlabel" x="48" y="132" text-anchor="start" fill="#fff" font-size="14">24 / 43 km</text>' +
+      '<text class="tlabel" x="158" y="132" text-anchor="end" fill="#2ed573" font-size="14" font-weight="700">56%</text>' +
+      '</svg>';
+  }
+
+  function smooth(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); }
+
+  function render() {
+    var t = qt();
+    var seg = t * 4;           // 0..4
+    var i = Math.floor(seg) % 4;
+    var frac = seg - Math.floor(seg);   // 0..1 within the current screen
+    var fadeStart = 0.84;
+
+    // Opacities: current screen full, crossfading into the next over the last slice.
+    var op = [0, 0, 0, 0];
+    if (frac < fadeStart) { op[i] = 1; }
+    else {
+      var f = smooth((frac - fadeStart) / (1 - fadeStart));
+      op[i] = 1 - f; op[(i + 1) % 4] = f;
+    }
+
+    // Screen 0 ring counts up to 24.5/43 while it is the active screen, then holds full.
+    var TARGET = 24.5 / 43;
+    var ringFrac = (i === 0) ? smooth(Math.min(1, frac / 0.6)) * TARGET : TARGET;
+    // Award rings gently pulse while screen 2 shows.
+    var pulse = (i === 2) ? (0.5 + 0.5 * Math.sin(frac * Math.PI * 3)) : 0.5;
+
+    document.getElementById('s0').innerHTML = progressSVG(ringFrac);
+    document.getElementById('s1').innerHTML = storySVG();
+    document.getElementById('s2').innerHTML = awardSVG(pulse);
+    document.getElementById('s3').innerHTML = glanceSVG();
+    for (var k = 0; k < 4; k++) document.getElementById('s' + k).style.opacity = op[k];
+    document.title = 'ready';
+  }
+  render();
+</script>
+</body>
+</html>

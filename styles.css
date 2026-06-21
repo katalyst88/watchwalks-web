@@ -97,21 +97,37 @@ header {
 }
 .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
+/* topographic contour motif — the signature Field Journal texture, echoing the app headers */
+.hero { position: relative; }
+.hero::before {
+  content: ""; position: absolute; left: -24px; right: -24px; top: -8px; height: 340px; z-index: 0;
+  background: url("img/contour.svg") top center / 1200px auto repeat-x;
+  opacity: .4; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+          mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+}
+.hero > * { position: relative; z-index: 1; }
+
 /* hero */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding: 84px 0 70px; }
 .hero h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.025em; margin: 20px 0 0; }
 .hero h1 .grn { color: var(--accent); }
 .hero p.lead { color: var(--subtle); font-size: 19px; margin: 20px 0 30px; max-width: 32em; }
 .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+/* editorial kicker (replaces the generic "● Works with…" pill) */
+.kicker { color: var(--subtle); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
 .hero-art { position: relative; display: grid; place-items: center; }
+/* a faint contour disc behind the watch — texture, not a generic glow */
 .hero-art::before {
-  content: ""; position: absolute; width: 320px; height: 320px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(46,213,115,.22), transparent 62%); filter: blur(8px);
+  content: ""; position: absolute; width: 300px; height: 300px; border-radius: 50%;
+  background: url("img/contour.svg") center / 360px auto no-repeat; opacity: .35;
+  -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 70%);
+          mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
 .watch {
   position: relative; width: 290px; height: 290px; border-radius: 50%;
-  background: radial-gradient(circle at 50% 32%, #16233d, #05080f);
-  border: 11px solid #04070d; display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 32%, #2a2418, #0d0b06);
+  border: 11px solid #0d0b06; display: grid; place-items: center;
   box-shadow: 0 34px 80px rgba(0,0,0,.6);
 }
 .watch.sm { width: 188px; height: 188px; border-width: 8px; box-shadow: 0 18px 44px rgba(0,0,0,.5); overflow: hidden; }
@@ -163,8 +179,8 @@ section .sub { color: var(--subtle); margin-top: 10px; margin-bottom: 34px; font
 .trail .t-name { font-weight: 700; font-size: 15px; }
 .trail .t-meta { color: var(--subtle); font-size: 13px; }
 .tag { margin-left: auto; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; }
-.tag.free { background: rgba(46,213,115,.18); color: var(--accent); }
-.tag.soon { background: rgba(159,176,201,.14); color: var(--subtle); }
+.tag.free { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+.tag.soon { background: color-mix(in srgb, var(--subtle) 16%, transparent); color: var(--subtle); }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
 .cta-band { text-align: center; }
@@ -219,6 +235,28 @@ footer .spacer { flex: 1; }
 .demo-frame video { width: 150px; max-width: 45%; height: auto; border-radius: 22px; border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(0,0,0,.4); display: block; background: var(--bg2); }
 @media (max-width: 480px) { .demo-frame video { width: 180px; max-width: 60%; } }
 .demo-note { color: var(--subtle); font-size: 14px; text-align: center; margin-top: 16px; }
+
+/* milestone "postcards" — the keepsake stories, a distinctive Field Journal object */
+.postcards-intro { color: var(--subtle); text-align: center; max-width: 40em; margin: 30px auto 20px; font-size: 16px; }
+.postcards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 920px; margin: 0 auto; }
+.postcards .postcard {
+  width: 264px; min-height: auto; position: relative;
+  box-shadow: 0 14px 34px rgba(0,0,0,.10);
+}
+.postcards .postcard::after {
+  content: ""; position: absolute; top: 16px; right: 16px; width: 22px; height: 27px;
+  background: color-mix(in srgb, var(--gold) 20%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--gold) 55%, transparent); border-radius: 3px;
+}
+.postcards .postcard .pc-name { padding-right: 30px; }
+@media (max-width: 480px) { .postcards .postcard { width: 100%; max-width: 320px; } }
+
+/* companion — real phone device mockups (the frame IS the device; just float it with a shadow) */
+.phones { display: flex; gap: 56px; justify-content: center; align-items: flex-end; flex-wrap: wrap; margin: 6px auto 40px; }
+.phone-mock { margin: 0; display: grid; justify-items: center; gap: 14px; }
+.phone-mock img { width: 248px; max-width: 62vw; height: auto; display: block; filter: drop-shadow(0 34px 64px rgba(0,0,0,.34)); }
+.phone-mock figcaption { color: var(--subtle); font-size: 15px; font-weight: 600; }
+@media (max-width: 480px) { .phones { gap: 28px; } .phone-mock img { width: 168px; } }
 
 /* companion screenshots */
 .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-items: center; max-width: 960px; margin: 0 auto 34px; }
