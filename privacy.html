@@ -7,7 +7,6 @@
 <meta name="description" content="Watch Walks privacy policy. We collect no personal data. Your progress stays on your watch and your phone.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
-<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
 <body>
 
@@ -19,7 +18,6 @@
     </a>
     <span class="spacer"></span>
     <a class="navlink" href="index.html">Home</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
   </div>
 </header>
 
@@ -30,13 +28,18 @@
   <p>Watch Walks is built around a simple promise: your data stays yours. Our apps are designed to work <strong>without collecting any personal information</strong>. This policy explains exactly what that means.</p>
 
   <h2>The short version</h2>
-  <p>We do not collect, store on our servers, sell, rent, or share any of your personal data. There are no user accounts, no analytics, no advertising, and no tracking. Everything happens on your own devices.</p>
+  <p>We never sell, rent, or share your personal data, and there are no analytics, no advertising, and no tracking or profiling. By default there is no account and everything happens on your own devices. Two features are optional and use Google services <em>only if you choose to use them</em> — cloud backup (Google sign-in) and buying a paid trail (Google Play) — described below.</p>
 
   <h2>The watch app</h2>
   <p>When you install a Watch Walks trail on your Garmin watch, the app reads your daily step and distance data <strong>on the watch itself</strong> to work out how far you've travelled along your chosen trail. This information is processed entirely on your device and is never sent to us or to anyone else. Your trail progress is saved in the app's local storage on your watch.</p>
 
   <h2>The companion app</h2>
-  <p>The optional Watch Walks companion app for your phone reads your trail progress directly from your watch over Bluetooth and stores it <strong>locally on your phone</strong>, so it can show your progress and the badges you've earned. It does not create an account, does not use any server, and does not transmit your data anywhere. Standard device backups (such as iCloud or Android backup) are controlled by you through your phone's own settings.</p>
+  <p>The optional Watch Walks companion app for your phone reads your trail progress directly from your watch over Bluetooth and stores it <strong>locally on your phone</strong>, so it can show your progress and the badges you've earned. By default it creates no account and sends your data nowhere. Two optional features use Google services, only if you use them:</p>
+  <ul>
+    <li><strong>Cloud backup (optional).</strong> If you sign in with your Google account, your owned trails, progress and finisher badges are backed up to Google's Firebase so they sync across your devices ("buy once, sync everywhere"). You can sign out at any time; we store no payment details and no other personal information.</li>
+    <li><strong>Buying a trail (optional).</strong> Paid trails are purchased through <strong>Google Play Billing</strong>, and a purchased trail's offline map is downloaded from <strong>Google Play</strong>. Google handles the payment; we never see your card or billing details.</li>
+  </ul>
+  <p>Standard device backups (such as iCloud or Android backup) are controlled by you through your phone's own settings.</p>
 
   <h2>This website</h2>
   <p>This website is a set of static pages. We do not set tracking cookies, run analytics, or embed advertising. Our hosting provider may keep basic, anonymised server logs (such as IP addresses) for security and reliability, as is standard for any website; we do not use these to identify or profile you.</p>
@@ -45,7 +48,7 @@
   <p>Watch Walks is not directed at children, and because we collect no personal data, we do not knowingly collect any information from anyone, including children.</p>
 
   <h2>Your control</h2>
-  <p>Because your data lives only on your own devices, you are always in control of it. Uninstalling an app removes its stored progress from that device.</p>
+  <p>You are always in control. By default your data lives only on your own devices; if you turned on cloud backup, signing out stops syncing and you can delete the backed-up data from your account. Uninstalling an app removes its stored progress from that device.</p>
 
   <h2>Changes to this policy</h2>
   <p>If we ever change how the apps handle data, we will update this page and revise the date above. Material changes will be reflected here before they take effect.</p>
@@ -62,15 +65,6 @@
   </div>
 </footer>
 
-<script>
-  var tg = document.getElementById('themeToggle');
-  if (tg) tg.addEventListener('click', function () {
-    var h = document.documentElement;
-    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    h.setAttribute('data-theme', next);
-    localStorage.setItem('ww-theme', next);
-  });
-</script>
 
 </body>
 </html>

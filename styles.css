@@ -20,19 +20,6 @@
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-text: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
 }
-html[data-theme="dark"] {
-  --bg: #14160F;
-  --bg2: #1C2016;
-  --bg3: #232717;
-  --text: #F3EFE2;
-  --subtle: #A7A08C;
-  --line: #2C2E20;
-  --accent: #3FB477;
-  --accent-dark: #1F5C3D;
-  --btn-text: #0E1A10;
-  --gold: #E9B450;
-  --clay: #CC7A52;
-}
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 [hidden] { display: none !important; }   /* keep the post-beta "Get" buttons hidden over .btn's display */
@@ -182,6 +169,8 @@ section .sub { color: var(--subtle); margin-top: 10px; margin-bottom: 34px; font
 .tag { margin-left: auto; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; }
 .tag.free { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
 .tag.soon { background: color-mix(in srgb, var(--subtle) 16%, transparent); color: var(--subtle); }
+.tag.price { background: color-mix(in srgb, var(--gold) 18%, transparent); color: color-mix(in srgb, var(--gold) 72%, var(--text)); letter-spacing: 0; }
+.hero-note { margin-top: 14px; font-size: 14px; color: var(--subtle); }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
 .cta-band { text-align: center; }

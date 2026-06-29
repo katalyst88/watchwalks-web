@@ -7,7 +7,6 @@
 <meta name="description" content="How to set up Watch Walks on your Garmin watch: install a trail from the Connect IQ store, sync it, and start walking.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
-<script>(function(){var s=localStorage.getItem('ww-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
 <body>
 
@@ -20,7 +19,6 @@
     <span class="spacer"></span>
     <a class="navlink" href="setup-wearos.html">Wear OS guide</a>
     <a class="navlink" href="index.html">Home</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
   </div>
 </header>
 
@@ -97,15 +95,6 @@
   </div>
 </footer>
 
-<script>
-  var tg = document.getElementById('themeToggle');
-  if (tg) tg.addEventListener('click', function () {
-    var h = document.documentElement;
-    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    h.setAttribute('data-theme', next);
-    localStorage.setItem('ww-theme', next);
-  });
-</script>
 
 </body>
 </html>
