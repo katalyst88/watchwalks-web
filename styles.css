@@ -9,7 +9,7 @@
   --bg2: #FBF6EC;       /* raised surface */
   --bg3: #EFE6D4;
   --text: #23211C;      /* ink */
-  --subtle: #7A6F5C;    /* muted brown-grey */
+  --subtle: #665B49;    /* muted brown-grey — darkened to pass WCAG AA 4.5:1 on the cream paper */
   --line: #E4D8C0;      /* warm hairline */
   --accent: #1F5C3D;    /* deep pine (primary green) */
   --accent-dark: #143E29;
@@ -23,7 +23,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 [hidden] { display: none !important; }   /* keep the post-beta "Get" buttons hidden over .btn's display */
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -130,6 +131,7 @@ header {
   border-radius: 30px; box-shadow: 0 30px 72px rgba(0,0,0,.45); border: 1px solid var(--line); }
 /* Round watch video inside the bezel (matches .watch.sm img). */
 .watch video { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+.watch img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
 /* Two watch demos side by side in the "On your wrist" section. */
 .devices.two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; justify-items: center; max-width: 700px; margin: 0 auto; }
 
@@ -176,7 +178,7 @@ section .sub { color: var(--subtle); margin-top: 10px; margin-bottom: 34px; font
 .tag { margin-left: auto; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; }
 .tag.free { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
 .tag.soon { background: color-mix(in srgb, var(--subtle) 16%, transparent); color: var(--subtle); }
-.tag.price { background: color-mix(in srgb, var(--gold) 18%, transparent); color: color-mix(in srgb, var(--gold) 72%, var(--text)); letter-spacing: 0; }
+.tag.price { background: color-mix(in srgb, var(--gold) 22%, transparent); color: var(--text); letter-spacing: 0; }
 .hero-note { margin-top: 14px; font-size: 14px; color: var(--subtle); }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
