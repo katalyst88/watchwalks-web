@@ -135,11 +135,11 @@ header {
 /* Two watch demos side by side in the "On your wrist" section. */
 .devices.two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; justify-items: center; max-width: 700px; margin: 0 auto; }
 
-/* sections */
-section { padding: 70px 0; border-top: 1px solid var(--line); }
+/* sections — generous vertical rhythm so blocks breathe */
+section { padding: 88px 0; border-top: 1px solid var(--line); }
 .eyebrow { color: var(--accent); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
 section h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-top: 10px; }
-section .sub { color: var(--subtle); margin-top: 10px; margin-bottom: 34px; font-size: 17px; max-width: 44em; }
+section .sub { color: var(--subtle); margin-top: 12px; margin-bottom: 40px; font-size: 17px; max-width: 44em; }
 
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .card {
@@ -309,7 +309,7 @@ footer .spacer { flex: 1; }
 @media (max-width: 480px) {
   .wrap { padding: 0 16px; }
   .hero { padding: 48px 0 40px; }
-  section { padding: 44px 0; }
+  section { padding: 56px 0; }
   .legal { padding: 40px 0; }
   .hero-art .watch { width: min(72vw, 290px); height: min(72vw, 290px); }
   .hero-art::before { width: min(80vw, 320px); height: min(80vw, 320px); }
@@ -329,3 +329,78 @@ footer .spacer { flex: 1; }
 /* Single centered device image (was a 3-watch row; JD: one screenshot + availability). */
 .devices-one{justify-content:center}
 .devices-one .watch{margin:0 auto}
+
+/* ============================================================
+   WS2 overhaul — frameless shots, feature rows, repeated CTAs,
+   Health Connect list, compatibility + contact pages
+   ============================================================ */
+
+/* Frameless app screenshots: clean UI captures, no device chrome.
+   Just soft rounded corners + a gentle float, never a phone/watch frame. */
+.shot-frameless {
+  display: block; height: auto; width: 100%; max-width: 260px;
+  border-radius: 26px; margin: 0 auto;
+  box-shadow: 0 30px 66px rgba(45,35,24,.30);
+}
+.hero-shot { max-width: 300px; }
+@media (max-width: 480px) { .shot-frameless { max-width: 220px; } .hero-shot { max-width: 240px; } }
+
+/* repeated download CTA — three stores, always one tap away */
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.cta-row.center { justify-content: center; }
+.cta-band .cta-row { margin-top: 4px; }
+@media (max-width: 480px) { .cta-row .btn { flex: 1 1 100%; text-align: center; } }
+
+/* alternating feature rows in the "why" section */
+.feat-eyebrow { display: block; color: var(--accent); font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+.feature-row {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+  margin: 8px 0 56px;
+}
+.feature-row.reverse .feature-text { order: 2; }
+.feature-row.reverse .feature-art { order: 1; }
+.feature-text h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(21px, 2.6vw, 27px); letter-spacing: -0.015em; margin-bottom: 12px; }
+.feature-text p { color: var(--subtle); font-size: 17px; max-width: 34em; }
+.feature-art { display: grid; place-items: center; }
+@media (max-width: 820px) {
+  .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 28px; margin-bottom: 44px; }
+  .feature-row .feature-text, .feature-row.reverse .feature-text { order: 1; }
+  .feature-row .feature-art, .feature-row.reverse .feature-art { order: 2; }
+}
+.why-cards { margin-top: 44px; }
+.why-cards .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 19px; margin: 2px 0 7px; }
+
+/* Health Connect step-source band */
+.hc-band {
+  margin-top: 40px; padding: 28px; border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--bg2), color-mix(in srgb, var(--bg2) 70%, var(--bg)));
+  border: 1px solid var(--line);
+}
+.hc-title { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin-bottom: 4px; }
+.hc-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
+.hc-list li {
+  background: var(--bg3); border: 1px solid var(--line); color: var(--text);
+  font-weight: 600; font-size: 14px; padding: 8px 14px; border-radius: 999px;
+}
+.hc-note { color: var(--subtle); font-size: 14px; line-height: 1.6; max-width: 60em;
+  border-left: 3px solid var(--gold); padding-left: 14px; }
+
+/* contact form */
+.contact-form { max-width: 560px; display: grid; gap: 16px; margin-top: 8px; }
+.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--text); }
+.contact-form input, .contact-form textarea {
+  background: var(--bg2); border: 1px solid var(--line); color: var(--text);
+  border-radius: 12px; padding: 12px 14px; font-size: 15px; font-family: var(--font-text); outline: none; width: 100%;
+}
+.contact-form textarea { min-height: 150px; resize: vertical; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+.contact-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form .btn { justify-self: start; }
+.form-msg { font-size: 15px; min-height: 20px; margin-top: 4px; }
+.form-msg.ok { color: var(--accent); }
+.form-msg.err { color: var(--clay); }
+
+/* compatibility page groups */
+.compat-group { margin-top: 40px; }
+.compat-group h2 { font-size: 24px; margin-bottom: 6px; }
+.compat-group .card h3 { font-family: var(--font-display); font-weight: 600; }

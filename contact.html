@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Watch Walks</title>
+<meta name="description" content="Get in touch with the Watch Walks team. Ask a question, report a problem, or tell us what you have and we will help you get walking.">
+<link rel="canonical" href="https://watchwalks.com/contact.html">
+<meta name="theme-color" content="#1F5C3D">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" style="color:inherit">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="index.html#why">Why you'll love it</a>
+    <a class="navlink" href="compatibility.html">Compatibility</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="navlink" href="index.html#get">Get it</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;display:block;padding:64px 0 24px">
+    <span class="eyebrow">Contact</span>
+    <h1 style="font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;margin-top:10px">Get in touch.</h1>
+    <p class="lead" style="max-width:40em">A question, a problem, or just not sure your watch will work? Send us a message and a real person will reply. Many answers are already in the <a href="faq.html">questions page</a> and the <a href="compatibility.html">compatible devices</a> list.</p>
+  </section>
+
+  <section style="border-top:none;padding-top:8px">
+    <form class="contact-form" id="contactForm" novalidate>
+      <label>Your name
+        <input type="text" name="name" autocomplete="name" required maxlength="120">
+      </label>
+      <label>Your email
+        <input type="email" name="email" autocomplete="email" required maxlength="200" placeholder="so we can reply">
+      </label>
+      <label>Message
+        <textarea name="message" required maxlength="4000" placeholder="Tell us what is on your mind. If it is about a device, let us know which watch or phone you have."></textarea>
+      </label>
+      <!-- honeypot: real people leave this empty; bots fill it -->
+      <div class="hp" aria-hidden="true">
+        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <button class="btn" type="submit" id="sendBtn">Send message</button>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="sub" style="margin-top:22px;font-size:15px">Prefer your own mail app? Write to <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="brand" style="font-size:16px">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </span>
+    <span class="spacer"></span>
+    <a href="index.html">Home</a>
+    <a href="compatibility.html">Compatible devices</a>
+    <a href="faq.html">Questions</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <span>© 2026 Watch Walks</span>
+  </div>
+</footer>
+
+<script src="openin.js"></script>
+<script>
+(function(){
+  // Firebase Cloud Function endpoint (region us-central1, project watchwalks-app).
+  var ENDPOINT = "https://us-central1-watchwalks-app.cloudfunctions.net/contact";
+  var form = document.getElementById('contactForm');
+  var msg  = document.getElementById('formMsg');
+  var btn  = document.getElementById('sendBtn');
+
+  function say(text, ok){ msg.textContent = text; msg.className = 'form-msg ' + (ok ? 'ok' : 'err'); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = {
+      name:    form.name.value.trim(),
+      email:   form.email.value.trim(),
+      message: form.message.value.trim(),
+      website: form.website.value  // honeypot
+    };
+    if (!data.name || !data.email || !data.message){ say('Please fill in your name, email and message.', false); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){ say('That email address does not look right.', false); return; }
+
+    btn.disabled = true; say('Sending your message...', true);
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
+    .then(function(res){
+      if (res.ok && res.j && res.j.ok){
+        form.reset();
+        say('Thank you. Your message is on its way and we will reply soon.', true);
+      } else {
+        say((res.j && res.j.error) || 'Something went wrong sending that. Please email watchwalksupport@gmail.com instead.', false);
+      }
+    })
+    .catch(function(){
+      say('Could not reach the server. Please email watchwalksupport@gmail.com instead.', false);
+    })
+    .finally(function(){ btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
