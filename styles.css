@@ -325,3 +325,7 @@ footer .spacer { flex: 1; }
 .demo-shots img { width: 210px; max-width: 44%; height: auto; border-radius: 26px; box-shadow: 0 22px 46px rgba(45,35,24,.16); }
 .grid3.grid-compat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (min-width: 940px) { .grid3.grid-compat { grid-template-columns: repeat(4, 1fr); } }
+
+/* Single centered device image (was a 3-watch row; JD: one screenshot + availability). */
+.devices-one{justify-content:center}
+.devices-one .watch{margin:0 auto}
