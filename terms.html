@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -20,15 +21,26 @@
     <span class="spacer"></span>
     <a class="navlink" href="privacy.html">Privacy</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="privacy.html">Privacy</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
-  <h1>Terms &amp; purchases</h1>
+<!-- .legal is what carries the heading sizes and the paragraph margins. Without it this page rendered
+     as one unbroken wall of text (* { margin: 0 } zeroes everything and nothing put it back). -->
+<main id="main" tabindex="-1" class="wrap legal">
+  <h1>Terms and purchases</h1>
   <p class="sub">Last updated: 4 July 2026. Plain-English terms for using Watch Walks and buying trails. Using the app or site means you agree to these.</p>
 
   <h2>What Watch Walks is</h2>
-  <p>Watch Walks turns your everyday steps into a virtual journey along real-world trails, on your watch and phone. The Inca Trail is free. Other trails are optional one-time purchases. It is for enjoyment and motivation, not a navigation or safety device — don't rely on it for real-world routefinding.</p>
+  <p>Watch Walks turns your everyday steps into a virtual journey along real-world trails, on your watch and phone. The Inca Trail is free. Other trails are optional one-time purchases. It is for enjoyment and motivation, not a navigation or safety device. Don't rely on it for real-world routefinding.</p>
 
   <h2>Buying trails</h2>
   <ul class="feat">
@@ -41,17 +53,17 @@
   <h2>Refunds</h2>
   <p>Refunds are handled by the store you bought from, under that store's policy:</p>
   <ul class="feat">
-    <li><b>Google Play</b> — request via Google Play's refund process (Google typically allows self-service refunds within a short window after purchase).</li>
-    <li><b>Apple App Store</b> — request via <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
-    <li><b>Garmin Connect IQ</b> — contact Garmin support for Connect IQ purchases.</li>
+    <li><b>Google Play.</b> Request it through Google Play's refund process (Google typically allows self-service refunds within a short window after purchase).</li>
+    <li><b>Apple App Store.</b> Request it at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
+    <li><b>Garmin Connect IQ.</b> Contact Garmin support for Connect IQ purchases.</li>
   </ul>
-  <p>Because the <b>Inca Trail is free</b>, you can try the full experience before paying for anything — we recommend walking it first. If something isn't right with a purchase, email us and we'll help.</p>
+  <p>Because the <b>Inca Trail is free</b>, you can try the full experience before paying for anything, and we'd recommend walking it first. If something isn't right with a purchase, email us and we'll help.</p>
 
-  <h2>Availability &amp; changes</h2>
+  <h2>Availability and changes</h2>
   <p>We may add, update, or occasionally retire trails or features. If a trail you own is ever removed, we'll aim to keep it working for you or make it right. The app is provided "as is"; we can't guarantee it's uninterrupted or error-free, and to the extent the law allows, our liability is limited to what you paid.</p>
 
   <h2>Your data</h2>
-  <p>How we handle your data — spoiler: no accounts required, no tracking, no selling — is in our <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>No accounts required, no tracking, nothing sold. The whole of it is in our <a href="privacy.html">Privacy Policy</a>.</p>
 
   <h2>Contact</h2>
   <p>Questions about these terms or a purchase? Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</p>

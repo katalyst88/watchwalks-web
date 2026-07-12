@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -25,10 +26,22 @@
     <a class="navlink" href="compatibility.html">Compatibility</a>
     <a class="navlink" href="faq.html">Questions</a>
     <a class="navlink" href="index.html#get">Get it</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="index.html#why">Why you'll love it</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Compatibility</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
 
   <section class="hero" style="border-top:none;display:block;padding:64px 0 24px">
     <span class="eyebrow">Contact</span>
@@ -38,7 +51,7 @@
 
   <section style="border-top:none;padding-top:8px">
     <div class="card contact-card">
-      <h3>Email us</h3>
+      <h2>Email us</h2>
       <p class="contact-email"><a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a></p>
       <p class="sub" style="margin:0">A real person reads every message and will reply as soon as they can. If it is about a device, let us know which watch or phone you have and we will point you the right way.</p>
       <p style="margin-top:18px"><a class="btn" href="mailto:watchwalksupport@gmail.com?subject=Watch%20Walks%20support">Send us an email</a></p>

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -23,19 +24,32 @@
     <a class="navlink" href="join-garmin.html">Garmin</a>
     <a class="navlink" href="join-wearos.html">Wear OS</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="join-garmin.html">Garmin</a>
+        <a href="join-wearos.html">Wear OS</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <img class="banner" src="img/beta-banner.png" alt="Watch Walks: walk the world's greatest trails, the free companion for iPhone and Apple Watch">
-    <span class="eyebrow">iPhone &amp; Apple Watch</span>
+    <!-- This carried img/beta-banner.png, whose artwork reads "the free companion for your Garmin watch".
+         An Apple page was showing a Garmin banner. There is no Apple banner artwork yet, and a wrong image
+         is worse than none, so the page leads on its words until one is made. -->
+    <span class="eyebrow">iPhone and Apple Watch</span>
     <h1>Let's get you walking.</h1>
     <p class="sub">Watch Walks for <b>iPhone</b> and <b>Apple Watch</b> is coming soon to the App&nbsp;Store. Your everyday steps will carry you down the Inca Trail, and it's <b>free</b> to begin. For iPhone (iOS&nbsp;16+) with Apple Watch Series&nbsp;4 or later (watchOS&nbsp;10+).</p>
     <p style="margin-top:18px"><a class="btn" href="coming-soon.html">Coming soon to the App&nbsp;Store</a></p>
   </section>
 
   <section class="join-steps">
+    <h2 class="sr-only">Set up your iPhone and Apple Watch in three steps</h2>
     <div class="grid3">
       <div class="card">
         <div class="n">1</div>
@@ -46,13 +60,13 @@
       <div class="card">
         <div class="n">2</div>
         <h3>Open it and allow Apple Health</h3>
-        <p>Open Watch Walks and, when asked, allow it to read your <b>step count</b> from Apple Health. That's the one permission that matters &mdash; your steps are what carry you down the trail. No account needed.</p>
+        <p>Open Watch Walks and, when asked, allow it to read your <b>step count</b> from Apple Health. That's the one permission that matters, because your steps are what carry you down the trail. No account needed.</p>
         <a class="btn ghost" href="setup-apple.html">Apple setup guide</a>
       </div>
       <div class="card">
         <div class="n">3</div>
         <h3>Add the Watch app</h3>
-        <p>The <b>Apple Watch</b> app installs alongside the iPhone app &mdash; open the Watch app on your iPhone if it doesn't appear automatically. A glanceable progress ring and every landmark's story, right on your wrist.</p>
+        <p>The <b>Apple Watch</b> app installs alongside the iPhone app. Open the Watch app on your iPhone if it doesn't appear automatically. A glanceable progress ring and every landmark's story, right on your wrist.</p>
         <a class="btn ghost" href="setup-apple.html">Apple setup guide</a>
       </div>
     </div>
@@ -61,11 +75,11 @@
 
   <section class="privacy-band">
     <span class="eyebrow">Need a hand?</span>
-    <h2>We'll get you walking.</h2>
+    <h2>Stuck? Start with Apple Health.</h2>
     <ul class="feat">
-      <li><b>My Apple Watch app didn't appear</b> &mdash; open the <b>Watch</b> app on your iPhone, scroll to <i>Available Apps</i>, and install Watch Walks.</li>
-      <li><b>No steps are counting</b> &mdash; open Watch Walks and allow <b>Apple Health</b> access for step count; that's what carries you down the trail.</li>
-      <li><b>Progress looks behind</b> &mdash; pull to refresh in the app; it re-reads Apple Health and syncs with your watch.</li>
+      <li><b>My Apple Watch app didn't appear.</b> Open the <b>Watch</b> app on your iPhone, scroll to <i>Available Apps</i>, and install Watch Walks.</li>
+      <li><b>No steps are counting.</b> Open Watch Walks and allow <b>Apple Health</b> access for step count; that's what carries you down the trail.</li>
+      <li><b>Progress looks behind.</b> Pull to refresh in the app; it re-reads Apple Health and syncs with your watch.</li>
       <li><b>Still stuck?</b> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> and we'll sort it out.</li>
     </ul>
   </section>

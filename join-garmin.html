@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -19,24 +20,36 @@
     <span class="spacer"></span>
     <a class="navlink" href="join-wearos.html">Wear OS</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="join-wearos.html">Wear OS</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <img class="banner" src="img/beta-banner.png" alt="Watch Walks: walk the world's greatest trails, the free companion for your Garmin watch">
+    <!-- The file was img/beta-banner.png. The beta is over; the artwork is Garmin-specific, so it is now
+         named for what it actually is and only used here. -->
+    <img class="banner" src="img/garmin-banner.png" width="1024" height="500" alt="Watch Walks: walk the world's greatest trails, the free companion for your Garmin watch">
     <span class="eyebrow">Garmin</span>
     <h1>Let's get you walking.</h1>
-    <p class="sub">Two quick steps and your everyday steps start carrying you down the Inca Trail &mdash; it's <b>free</b>. For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches. Most people are walking in about five minutes.</p>
+    <p class="sub">Two quick steps and your everyday steps start carrying you down the Inca Trail. It's <b>free</b>. For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches. Most people are walking in about five minutes.</p>
     <p style="margin-top:18px"><a class="btn" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get it on Connect IQ</a></p>
   </section>
 
   <section class="join-steps">
+    <h2 class="sr-only">Set up your Garmin in three steps</h2>
     <div class="grid3">
       <div class="card">
         <div class="n">1</div>
         <h3>Add the Inca Trail</h3>
-        <p>The Inca Trail is <b>free</b> on the Connect IQ store. You'll need the free <b>Garmin Connect</b> app with your watch paired. Open the Connect IQ Store, search <b>Watch Walks</b>, and download the Inca Trail.</p>
+        <p>The Inca Trail is <b>free</b> on the Connect IQ store. You'll need the free <b>Garmin Connect</b> app with your watch paired. Open the Connect IQ Store, search <b>Watch Walks</b>, and download it.</p>
         <a class="btn" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get it on Connect IQ</a>
       </div>
       <div class="card">
@@ -48,7 +61,7 @@
       <div class="card">
         <div class="n">3</div>
         <h3>Get the companion <span style="white-space:nowrap">(optional)</span></h3>
-        <p>The free phone app turns your steps into a living map, opens a story at every landmark, and gives you a badge for each trail &mdash; reading straight from your watch over Bluetooth.</p>
+        <p>The free phone app turns your steps into a living map, opens a story at every landmark, and gives you a badge for each trail, reading straight from your watch over Bluetooth.</p>
         <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Companion on Google Play</a>
       </div>
     </div>
@@ -57,10 +70,10 @@
 
   <section class="privacy-band">
     <span class="eyebrow">Need a hand?</span>
-    <h2>We'll get you walking.</h2>
+    <h2>Stuck? It's almost always one of these three.</h2>
     <ul class="feat">
-      <li><b>The trail didn't appear on my watch</b> &mdash; open Garmin Connect and sync again; it installs on the next sync. Check the watch has enough free space.</li>
-      <li><b>My progress looks behind</b> &mdash; open Watch Walks on the watch to send the latest steps, then sync the companion.</li>
+      <li><b>The app didn't appear on my watch.</b> Open Garmin Connect and sync again. It installs on the next sync, and the watch needs enough free space.</li>
+      <li><b>My progress looks behind.</b> Open Watch Walks on the watch to send the latest steps, then sync the companion.</li>
       <li><b>Still stuck?</b> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> and we'll sort it out.</li>
     </ul>
   </section>

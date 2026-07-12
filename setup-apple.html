@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Setting up Watch Walks on iPhone &amp; Apple Watch | Watch Walks</title>
-<meta name="description" content="How to set up Watch Walks on iPhone and Apple Watch: install from the App Store, allow Apple Health, and start walking the Inca Trail — free.">
+<meta name="description" content="How to set up Watch Walks on iPhone and Apple Watch: install from the App Store, allow Apple Health, and start walking the Inca Trail, free.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -20,43 +21,55 @@
     <a class="navlink" href="join-apple.html">Get it on Apple</a>
     <a class="navlink" href="faq.html">Questions</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="join-apple.html">Get it on Apple</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
-  <h1>Setting up Watch Walks on iPhone &amp; Apple Watch</h1>
-  <p class="sub">Your everyday steps carry you down famous real-world trails, right on your wrist and in your pocket. No account, nothing to start — just walk. Here's the whole setup, start to finish.</p>
+<!-- .legal is what carries the heading sizes and the paragraph margins. Without it this page rendered
+     as one unbroken wall of text (* { margin: 0 } zeroes everything and nothing put it back). -->
+<main id="main" tabindex="-1" class="wrap legal">
+  <h1>Setting up Watch Walks on iPhone and Apple Watch</h1>
+  <p class="sub">Your everyday steps carry you down famous real-world trails, right on your wrist and in your pocket. No account, nothing to start. Just walk. Here's the whole setup, start to finish.</p>
 
   <h2>What you'll need</h2>
   <ul class="feat">
     <li>An <b>iPhone</b> (iOS 16 or later).</li>
-    <li>An <b>Apple Watch</b> Series 4 or later (watchOS 10 or later) — optional, but lovely on the wrist.</li>
-    <li>The <b>Health</b> app (built in) — Watch Walks reads your step count from it.</li>
+    <li>An <b>Apple Watch</b> Series 4 or later (watchOS 10 or later). Optional, but lovely on the wrist.</li>
+    <li>The <b>Health</b> app, built in. Watch Walks reads your step count from it.</li>
   </ul>
 
   <h2>Step 1 &middot; Install the app</h2>
-  <p>Get <b>Watch Walks</b> from the <a href="join-apple.html">App&nbsp;Store</a> on your iPhone — it's free to install, and the Inca Trail is free to walk.</p>
+  <p>Get <b>Watch Walks</b> from the <a href="join-apple.html">App&nbsp;Store</a> on your iPhone. It's free to install, and the Inca Trail is free to walk.</p>
 
   <h2>Step 2 &middot; Open it and allow Apple Health</h2>
-  <p>Open Watch Walks and, when asked, allow it to read your <b>step count</b> from Apple Health. That's the one permission that matters — your steps and distance are what carry you along the trail. You can also allow <b>notifications</b> so a quiet nudge arrives the moment you reach a landmark.</p>
+  <p>Open Watch Walks and, when asked, allow it to read your <b>step count</b> from Apple Health. That's the one permission that matters, because your steps are what carry you along the trail. You can also allow <b>notifications</b> so a quiet nudge arrives the moment you reach a landmark.</p>
 
   <h2>Step 3 &middot; Add the Apple Watch app</h2>
   <p>The <b>Apple Watch</b> app installs alongside the iPhone app automatically. If it doesn't appear, open the <b>Watch</b> app on your iPhone, scroll to <i>Available Apps</i>, and tap <b>Install</b> next to Watch Walks. Add the <b>complication</b> to your watch face for a glanceable progress ring.</p>
 
   <h2>Step 4 &middot; Just start walking</h2>
-  <p>That's it — there's nothing to start and no activity to record. Wear your watch, live your day, and each day's steps move you further down the trail. Glance at the app (or your watch face) whenever you like to see how far you've come and what's ahead.</p>
+  <p>That's it. There's nothing to start and no activity to record. Wear your watch, live your day, and each day's steps move you further down the trail. Glance at the app (or your watch face) whenever you like to see how far you've come and what's ahead.</p>
 
   <h2>How walking works on Apple</h2>
-  <p>Watch Walks reads the steps Apple Health already records — from your iPhone and Apple Watch together — including the steps in a tracked walk or run. Non-step activities (cycling, swimming) add no steps, so they add no trail distance. Everything stays on your devices; there's no account and no server. Optional iCloud backup can carry your progress to a new device.</p>
+  <p>Watch Walks reads the steps Apple Health already records from your iPhone and Apple Watch together, including the steps in a tracked walk or run. Non-step activities (cycling, swimming) add no steps, so they add no trail distance. Everything stays on your devices; there's no account and no server. Optional iCloud backup can carry your progress to a new device.</p>
 
   <h2>Choosing and getting more trails</h2>
-  <p>The <b>Inca Trail is free</b>. In the <b>Trails</b> tab you can browse them all, filter by region, length or terrain, and unlock any other trail with a one-time purchase — yours forever. Finish a trail and you can walk it again, forward or in reverse, and earn a rank on its badge.</p>
+  <p>The <b>Inca Trail is free</b>. In the <b>Trails</b> tab you can browse them all, filter by region, length or terrain, and buy any other trail once. It's then yours forever. Finish a trail and you can walk it again, forward or in reverse, and earn a rank on its badge.</p>
 
   <h2>Troubleshooting</h2>
   <ul class="feat">
-    <li><b>No steps are counting</b> — open Watch Walks &rarr; Settings, or the iPhone <b>Health</b> app &rarr; Sharing, and make sure Watch Walks can read <i>Steps</i>.</li>
-    <li><b>The Watch app is missing</b> — open the <b>Watch</b> app on iPhone &rarr; <i>Available Apps</i> &rarr; install Watch Walks.</li>
-    <li><b>Progress looks behind</b> — pull to refresh in the app; it re-reads Health and syncs with your watch.</li>
+    <li><b>No steps are counting.</b> Open Watch Walks &rarr; Settings, or the iPhone <b>Health</b> app &rarr; Sharing, and make sure Watch Walks can read <i>Steps</i>.</li>
+    <li><b>The Watch app is missing.</b> Open the <b>Watch</b> app on iPhone &rarr; <i>Available Apps</i> &rarr; install Watch Walks.</li>
+    <li><b>Progress looks behind.</b> Pull to refresh in the app; it re-reads Health and syncs with your watch.</li>
     <li><b>Still stuck?</b> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</li>
   </ul>
 

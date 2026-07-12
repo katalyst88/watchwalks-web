@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -19,10 +20,21 @@
     <span class="spacer"></span>
     <a class="navlink" href="index.html">Home</a>
     <a class="navlink" href="privacy.html">Privacy</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<!-- .legal is what carries the heading sizes and the paragraph margins. Without it this page rendered
+     as one unbroken wall of text (* { margin: 0 } zeroes everything and nothing put it back). -->
+<main id="main" tabindex="-1" class="wrap legal">
   <section style="border-top:none">
     <span class="eyebrow">Credits</span>
     <h1>Attribution</h1>
@@ -32,17 +44,17 @@
 
     <h2>Device mockups</h2>
     <ul class="feat">
-      <li><b>Phone frame (Google Pixel 9 Pro)</b> — device frame from the open
+      <li><b>Phone frame (Google Pixel 9 Pro).</b> Device frame from the open
         <a href="https://github.com/jamesjingyi/mockup-device-frames" target="_blank" rel="noopener">mockup-device-frames</a>
         collection by James Jingyi (GitHub). Used to present screenshots of the Watch Walks companion app.</li>
       <!-- WATCH-MOCKUP-CREDIT: replaced once the licensed round-watch mockup is added. -->
     </ul>
 
-    <h2>Maps &amp; imagery</h2>
+    <h2>Maps and imagery</h2>
     <ul class="feat">
-      <li><b>Trail maps</b> — vector basemap &copy; <a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      <li><b>Trail maps.</b> Vector basemap &copy; <a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
         contributors, tiles by <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>; terrain hillshade derived from public-domain elevation data.</li>
-      <li><b>Landmark photos</b> in the companion app are from <a href="https://www.mapillary.com" target="_blank" rel="noopener">Mapillary</a>
+      <li><b>Landmark photos</b> in the companion app come from <a href="https://www.mapillary.com" target="_blank" rel="noopener">Mapillary</a>
         contributors, used under CC BY-SA with per-photo credit in the app.</li>
     </ul>
 

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -20,12 +21,22 @@
     <a class="navlink" href="join-garmin.html">Garmin</a>
     <a class="navlink" href="join-wearos.html">Wear OS</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="join-garmin.html">Garmin</a>
+        <a href="join-wearos.html">Wear OS</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <span class="eyebrow">iPhone &amp; Apple Watch</span>
+    <span class="eyebrow">iPhone and Apple Watch</span>
     <h1>Coming soon to the App Store.</h1>
     <p class="sub">Watch Walks for <b>iPhone</b> and <b>Apple Watch</b> is on its final approach to the App&nbsp;Store. Your everyday steps will carry you down the Inca Trail and dozens of the world's greatest routes, with a story unlocked at every landmark and medals to earn. There is nothing to start and no GPS to drain your battery. Just walk, and watch your journey unfold on your wrist.</p>
     <p class="sub" style="margin-top:14px">We are putting the final touches on the App&nbsp;Store listing. Please check back here soon.</p>

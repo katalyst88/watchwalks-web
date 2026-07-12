@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -19,10 +20,19 @@
     <span class="spacer"></span>
     <a class="navlink" href="setup-wearos.html">Wear OS guide</a>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="setup-wearos.html">Wear OS guide</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap legal">
+<main id="main" tabindex="-1" class="wrap legal">
   <h1>Setting up Watch Walks on Garmin</h1>
   <p class="updated">For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches</p>
 

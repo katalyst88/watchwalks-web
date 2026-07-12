@@ -10,7 +10,11 @@
   --bg3: #EFE6D4;
   --text: #23211C;      /* ink */
   --subtle: #665B49;    /* muted brown-grey — darkened to pass WCAG AA 4.5:1 on the cream paper */
-  --line: #E4D8C0;      /* warm hairline */
+  --line: #E4D8C0;      /* warm hairline — decorative dividers/card frames only */
+  /* A control whose ONLY visual boundary is its border must clear 3:1 (WCAG 1.4.11). --line is 1.21:1
+     on the paper, so the ghost button, the menu toggle and the continent chips were invisible as
+     controls. This is the same hairline, darkened to 3.37:1. */
+  --line-strong: #8C7F66;
   --accent: #1F5C3D;    /* deep pine (primary green) */
   --accent-dark: #143E29;
   --btn-text: #FBF6EC;
@@ -45,8 +49,11 @@
     --text: #F3EFE2;
     --subtle: #A79C86;
     --line: #333A28;
+    --line-strong: #697358;   /* 3.64:1 on dusk — see the note on --line-strong above */
     --accent: #3FB477;
-    --accent-dark: #2C8A59;
+    /* Was #2C8A59: the button is a gradient down to this, and the near-black label on it measured
+       4.34:1, under the 4.5 floor for 15px bold. Lifted to 5.34:1. */
+    --accent-dark: #329B65;
     --btn-text: #101408;
     --gold: #E9B450;
     --clay: #CC7A52;
@@ -117,9 +124,6 @@ header {
 .nav .spacer { flex: 1; }
 .nav a.navlink { color: var(--subtle); font-weight: 600; font-size: 15px; }
 .nav a.navlink:hover { color: var(--text); }
-.theme-toggle { background: none; border: 1px solid var(--line); color: var(--subtle); width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; flex: none; padding: 0; }
-.theme-toggle:hover { color: var(--text); border-color: var(--accent); }
-.theme-toggle svg { width: 18px; height: 18px; }
 
 /* buttons */
 .btn {
@@ -128,17 +132,9 @@ header {
   background: linear-gradient(180deg, var(--accent), var(--accent-dark));
   color: var(--btn-text); border: none; cursor: pointer;
 }
-.btn.ghost { background: transparent; border: 1px solid var(--line); color: var(--text); }
+/* Its border is the only thing that says "control", so the border carries the 3:1 duty. */
+.btn.ghost { background: transparent; border: 1px solid var(--line-strong); color: var(--text); }
 .btn:hover { filter: brightness(1.07); }
-
-/* pills */
-.pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 700; color: var(--subtle);
-  background: var(--bg2); border: 1px solid var(--line);
-  padding: 7px 14px; border-radius: 999px;
-}
-.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
 /* topographic contour motif — the signature Field Journal texture, echoing the app headers */
 .hero { position: relative; }
@@ -168,27 +164,9 @@ header {
   -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 70%);
           mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
-.watch {
-  position: relative; width: 290px; height: 290px; border-radius: 50%;
-  background: radial-gradient(circle at 50% 32%, #2a2418, #0d0b06);
-  border: 11px solid #0d0b06; display: grid; place-items: center;
-  box-shadow: 0 34px 80px rgba(0,0,0,.6);
-}
-.watch.sm { width: 188px; height: 188px; border-width: 8px; box-shadow: 0 18px 44px rgba(0,0,0,.5); overflow: hidden; }
-/* Real Wear OS app screenshot inside the round bezel. */
-.watch.sm img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-/* Animated watch in the hero: the video carries its own dark bezel and a transparent margin,
-   so it blends on the hero background in either theme. */
-.hero-watch { width: min(67vw, 288px); height: auto; display: block; margin: 0 auto;
-  filter: drop-shadow(0 24px 50px rgba(0,0,0,.5)); }
-/* Hero now shows the phone companion app in motion (tall video, rounded, floating). */
-.hero-phone { width: min(62vw, 250px); height: auto; display: block; margin: 0 auto;
-  border-radius: 30px; box-shadow: 0 30px 72px rgba(0,0,0,.45); border: 1px solid var(--line); }
-/* Round watch video inside the bezel (matches .watch.sm img). */
-.watch video { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-.watch img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-/* Two watch demos side by side in the "On your wrist" section. */
-.devices.two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; justify-items: center; max-width: 700px; margin: 0 auto; }
+/* The CSS-drawn watch bezel (.watch/.hero-watch/.hero-phone/.devices.two) lived here and BRAND §3 bans it
+   outright ("no CSS-drawn bezels"). No page in the site used it; the only consumer, watchvid.html, carries
+   its own local copy of the rule and never loads this stylesheet. Deleted. */
 
 /* sections — generous vertical rhythm so blocks breathe */
 section { padding: 88px 0; border-top: 1px solid var(--line); }
@@ -213,10 +191,6 @@ section .sub { color: var(--subtle); margin-top: 12px; margin-bottom: 40px; font
 .card h3 { font-size: 18px; margin-bottom: 7px; }
 .card p { color: var(--subtle); font-size: 15px; }
 
-/* device mockup row */
-.devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; justify-items: center; }
-.device { display: grid; justify-items: center; gap: 14px; }
-.device .label { color: var(--subtle); font-size: 14px; font-weight: 600; }
 .postcard {
   width: 188px; min-height: 188px; box-sizing: border-box;
   background: linear-gradient(180deg, var(--bg2), color-mix(in srgb, var(--bg2) 70%, var(--bg)));
@@ -239,17 +213,24 @@ section .sub { color: var(--subtle); margin-top: 12px; margin-bottom: 40px; font
 .trail .t-meta { color: var(--subtle); font-size: 13px; }
 .tag { margin-left: auto; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; }
 .tag.free { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
-.tag.soon { background: color-mix(in srgb, var(--subtle) 16%, transparent); color: var(--subtle); }
 .tag.price { background: color-mix(in srgb, var(--gold) 22%, transparent); color: var(--text); letter-spacing: 0; }
 .hero-note { margin-top: 14px; font-size: 14px; color: var(--subtle); }
 
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; }
 .cta-band { text-align: center; }
 .cta-band h2 { margin-bottom: 14px; }
 
 footer { border-top: 1px solid var(--line); padding: 34px 0; color: var(--subtle); font-size: 14px; }
 footer .row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
 footer .spacer { flex: 1; }
+/* Every footer link measured 22px tall, under WCAG 2.5.8's 24px target floor. Padding, not a font bump. */
+footer .row a { display: inline-block; padding: 5px 0; }
+
+/* A visible label is better than a hidden one, but a hidden heading is better than a level skip:
+   these sections have cards at h3 hanging straight off the page h1 with no h2 between (WCAG 1.3.1). */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 
 /* beta join banner (the Reddit graphic, reused as a page banner) */
 .banner { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto 22px;
@@ -291,10 +272,6 @@ footer .spacer { flex: 1; }
 .feat b { color: var(--text); }
 .feat-two { grid-template-columns: 1fr 1fr; gap: 13px 28px; }
 
-/* demo video */
-.demo-frame { display: grid; place-items: center; margin-top: 18px; }
-.demo-frame video { width: 264px; max-width: 70%; height: auto; display: block; border-radius: 30px; box-shadow: 0 26px 52px rgba(45,35,24,.18); }
-@media (max-width: 480px) { .demo-frame video { width: 218px; max-width: 78%; } }
 .demo-note { color: var(--subtle); font-size: 14px; text-align: center; margin-top: 16px; }
 
 /* milestone "postcards" — the keepsake stories, a distinctive Field Journal object */
@@ -319,78 +296,23 @@ footer .spacer { flex: 1; }
 .phone-mock figcaption { color: var(--subtle); font-size: 15px; font-weight: 600; }
 @media (max-width: 480px) { .phones { gap: 28px; } .phone-mock img { width: 168px; } }
 
-/* companion screenshots */
-.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-items: center; max-width: 960px; margin: 0 auto 34px; }
-.shot { display: grid; justify-items: center; gap: 10px; margin: 0; }
-.shot img { width: 100%; max-width: 210px; border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 18px 42px rgba(0,0,0,.45); display: block; }
-.shot figcaption { color: var(--subtle); font-size: 14px; font-weight: 600; }
-
-/* email signup */
-.signup { display: flex; gap: 10px; max-width: 480px; flex-wrap: wrap; }
-.email-in {
-  flex: 1; min-width: 220px; background: var(--bg2); border: 1px solid var(--line);
-  color: var(--text); border-radius: 999px; padding: 13px 20px; font-size: 15px; outline: none;
-}
-.email-in:focus { border-color: var(--accent); }
-.trial-msg { width: 100%; color: var(--accent); font-size: 14px; margin-top: 8px; min-height: 18px; }
-.eo-embed { max-width: 480px; }
-/* theme the EmailOctopus embed to follow the active theme (light or dark) */
-.eo-embed input[type="email"], .eo-embed input[type="text"] {
-  background: var(--bg2) !important; border: 1px solid var(--line) !important; color: var(--text) !important;
-  border-radius: 999px !important; padding: 13px 20px !important;
-}
-.eo-embed button, .eo-embed input[type="submit"] {
-  background: var(--accent) !important; color: var(--btn-text) !important; border: none !important;
-  border-radius: 999px !important; font-weight: 700 !important; padding: 13px 24px !important; cursor: pointer;
-}
-/* hide the EmailOctopus "powered by" branding in the embed */
-.eo-embed a[href*="emailoctopus"], .eo-embed [class*="powered"], .eo-embed [class*="Powered"],
-.eo-embed img[alt*="EmailOctopus" i], .eo-embed img[src*="emailoctopus"], .eo-embed img[src*="eomail"] {
-  display: none !important;
-}
+/* The dead email-signup form (.signup/.email-in/.trial-msg) and the EmailOctopus embed skin (.eo-embed)
+   lived here. The form was replaced by the three store buttons months ago and no page has carried an
+   embed since; likewise .shots/.shot (superseded by .feature-row) and .devices-one. Deleted. */
 
 @media (max-width: 860px) {
-  .hero, .cols, .feat-two { grid-template-columns: 1fr; }
-  .grid3, .trails, .devices { grid-template-columns: 1fr; }
-  .shots { grid-template-columns: 1fr 1fr; }
-  .devices { gap: 30px; }
+  .hero, .feat-two { grid-template-columns: 1fr; }
+  .grid3, .trails { grid-template-columns: 1fr; }
   .hero-art { order: -1; }
 }
 
-/* phones / small tablets: the section-jump links crowd and overflow the bar, so hide them
-   (the page scrolls, Privacy lives in the footer, and Join the beta is the hero button).
-   Keeps a clean brand + theme-toggle header that never overflows. */
-@media (max-width: 720px) {
-  .nav { height: 60px; }
-  .nav .spacer { display: none; }
-  .nav a.navlink { display: none; }
-  .brand { flex: 1 1 auto; }
-}
-
-/* phones: tighten gutters, scale the hero watch + glow to fit, stack the signup form */
+/* phones: tighten gutters */
 @media (max-width: 480px) {
   .wrap { padding: 0 16px; }
   .hero { padding: 48px 0 40px; }
   section { padding: 56px 0; }
   .legal { padding: 40px 0; }
-  .hero-art .watch { width: min(72vw, 290px); height: min(72vw, 290px); }
-  .hero-art::before { width: min(80vw, 320px); height: min(80vw, 320px); }
-  .eo-embed { max-width: 100%; }
-  .eo-embed input[type="email"], .eo-embed input[type="text"],
-  .eo-embed button, .eo-embed input[type="submit"] { width: 100% !important; }
 }
-
-/* Apple-compat additions: 3-up choice columns, screenshot row, 4-up compatibility grid */
-.cols.cols-3 { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 820px) { .cols.cols-3 { grid-template-columns: 1fr; } }
-.demo-shots { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
-.demo-shots img { width: 210px; max-width: 44%; height: auto; border-radius: 26px; box-shadow: 0 22px 46px rgba(45,35,24,.16); }
-.grid3.grid-compat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (min-width: 940px) { .grid3.grid-compat { grid-template-columns: repeat(4, 1fr); } }
-
-/* Single centered device image (was a 3-watch row; JD: one screenshot + availability). */
-.devices-one{justify-content:center}
-.devices-one .watch{margin:0 auto}
 
 /* ============================================================
    WS2 overhaul — frameless shots, feature rows, repeated CTAs,
@@ -449,7 +371,7 @@ footer .spacer { flex: 1; }
 
 /* contact details card */
 .contact-card { max-width: 560px; }
-.contact-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin-bottom: 6px; }
+.contact-card h2 { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin-bottom: 6px; }
 .contact-email { font-size: clamp(20px, 3vw, 26px); font-weight: 700; margin: 2px 0 14px; word-break: break-word; }
 .contact-email a { color: var(--accent); }
 
@@ -616,7 +538,7 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 
 /* ---- footer: three titled columns, not eleven links in a soup ---- */
 .foot-cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; align-items: start; }
-.foot-cols h4 {
+.foot-cols h2 {   /* was h4: skipped a level under the page h2s */
   font-family: var(--font-display); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
   color: var(--text); margin-bottom: 10px; font-weight: 700;
 }
@@ -627,7 +549,7 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 
 /* ---- warm shadows everywhere (several were half-black on cream, which renders as blue-grey mud) ---- */
 .card, .hc-band { box-shadow: var(--sh-raised); }
-.banner, .shot-frameless, .demo-shots img, .tcard { box-shadow: var(--sh-card); }
+.banner, .shot-frameless, .tcard { box-shadow: var(--sh-card); }
 .postcard { box-shadow: var(--sh-card); }
 
 /* ---- trails page: continent jump-chips, so 36 cards are navigable ---- */
@@ -640,8 +562,11 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 }
 .tnav a {
   font-size: 13px; font-weight: 700; color: var(--subtle);
-  border: 1px solid var(--line); background: var(--bg2);
-  padding: 7px 13px; border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);   /* the chip's only boundary: it owes 3:1 (WCAG 1.4.11) */
+  background: var(--bg2);
+  padding: 9px 14px;                      /* was 7px 13px: 31px tall, under the 24px floor is fine but
+                                             this lifts the chip to 35px, closer to a real tap target */
+  border-radius: var(--r-pill);
 }
 .tnav a:hover { color: var(--text); border-color: var(--accent); }
 @media (max-width: 720px) { .tnav { top: 60px; overflow-x: auto; flex-wrap: nowrap; } }
@@ -653,3 +578,147 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+
+/* ============================================================
+   STRUCTURE PASS 2026-07-12
+   ============================================================ */
+
+/* ---- Skip link (WCAG 2.4.1) ----
+   No page had one. A keyboard or screen-reader visitor had to tab the whole header on every page. */
+.skip {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  background: var(--accent); color: var(--btn-text); font-weight: 700; font-size: 14px;
+  padding: 11px 18px; border-radius: var(--r-pill);
+  transition: top .15s ease;
+}
+.skip:focus { top: 12px; }
+@media (prefers-reduced-motion: reduce) { .skip { transition: none; } }
+
+/* ---- Prose rhythm ----
+   `* { margin: 0 }` at the top of this file zeroed every margin and NOTHING put them back for bare
+   <p>/<h2>/<h3>. terms, setup-apple and attribution rendered as a single wall of text with no heading
+   sizes; inside .legal, every FAQ question sat flush against its answer. Spacing is on BRAND §3's
+   8/14/22/36 step scale. */
+.legal h2 { font-size: 21px; margin: 36px 0 8px; }
+.legal h3 { font-family: var(--font-display); font-weight: 600; font-size: 19px;
+  letter-spacing: -0.01em; color: var(--text); margin: 22px 0 6px; }
+.legal p { margin-bottom: 14px; }
+.legal ul { margin: 8px 0 22px 22px; }
+.legal li { margin-bottom: 8px; }
+.legal .sub { margin-bottom: 22px; }
+.legal section { padding: 36px 0 8px; }
+.legal section:first-of-type { border-top: none; }
+.legal .feat { margin-left: 0; }
+.legal .feat li { margin-bottom: 0; }
+
+/* ---- Mobile navigation ----
+   Every .navlink was display:none under 720px with no hamburger and no replacement, so on faq/privacy/
+   setup a phone visitor saw a logo and nothing else. A <details> disclosure needs no JS. */
+.mnav { display: none; position: relative; }
+.mnav > summary {
+  list-style: none; cursor: pointer;
+  width: 46px; height: 46px; display: grid; place-items: center;   /* ≥44px tap target, BRAND §7 */
+  border: 1px solid var(--line-strong); border-radius: var(--r-card); background: var(--bg2); color: var(--text);
+}
+.mnav > summary::-webkit-details-marker { display: none; }
+.mnav > summary svg { width: 20px; height: 20px; }
+.mnav[open] > summary { border-color: var(--accent); }
+.mnav-panel {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 30;
+  min-width: 208px; padding: 8px;
+  background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r-panel);
+  box-shadow: var(--sh-lifted);
+}
+.mnav-panel a {
+  display: block; padding: 11px 14px; border-radius: var(--r-card);
+  color: var(--text); font-weight: 600; font-size: 16px;
+}
+.mnav-panel a:hover { background: var(--bg3); }
+@media (max-width: 720px) {
+  .nav { height: 60px; gap: 10px; }
+  .nav .spacer { display: none; }
+  .nav a.navlink { display: none; }
+  .brand { flex: 1 1 auto; }
+  .mnav { display: block; flex: none; }
+  .nav .btn-nav { margin-left: 0; }   /* the "Get it free" pill stays visible next to the menu */
+}
+
+/* ---- Q&A: a typographic list, not six identical cards ----
+   BRAND §3: "editorial — asymmetry, size variety. NOT a symmetric card grid." The FAQ was the most
+   default of the six card grids: same box, same size, six times. */
+.qa { columns: 2; column-gap: 56px; margin-top: 36px; }
+.qa > div { break-inside: avoid; padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
+.qa dt {
+  font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em;
+  line-height: 1.25; margin-bottom: 8px;
+}
+.qa dd { color: var(--subtle); font-size: 16px; }
+@media (max-width: 820px) { .qa { columns: 1; } }
+
+/* ---- Spec list: label left, plain prose right. Replaces the compatibility card grid. ---- */
+.spec { border-top: 1px solid var(--line); margin-top: 36px; }
+.spec > div {
+  display: grid; grid-template-columns: 220px 1fr; gap: 36px;
+  padding: 22px 0; border-bottom: 1px solid var(--line);
+}
+.spec dt {
+  font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.spec dd { color: var(--subtle); font-size: 17px; max-width: 40em; }
+.spec dd a { font-weight: 600; white-space: nowrap; }
+@media (max-width: 720px) {
+  .spec > div { grid-template-columns: 1fr; gap: 6px; }
+  .spec dt { font-size: 19px; }
+  .spec dd { font-size: 16px; }
+}
+
+/* ---- The three steps: same order, different sizes ----
+   A numbered sequence cannot be reordered for looks (the first attempt read 2, 1, 3). So the middle
+   column is simply wider and the middle card bigger: step 2 is the whole product, and it is the step
+   you never have to do. */
+.grid-steps { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 18px; align-items: center; }
+.grid-steps > .card.hero-card {
+  padding: 34px; box-shadow: var(--sh-card);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+}
+.grid-steps > .card.hero-card h3 { font-size: clamp(23px, 2.4vw, 29px); line-height: 1.15; margin-bottom: 12px; }
+.grid-steps > .card.hero-card p { font-size: 17px; }
+.grid-steps > .card.hero-card .n { width: 46px; height: 46px; border-radius: var(--r-card); font-size: 20px; }
+@media (max-width: 860px) {
+  .grid-steps { grid-template-columns: 1fr; }
+  .grid-steps > .card.hero-card { padding: 26px; }
+}
+
+/* ---- One card in a grid is the hero ----
+   Where a card grid stays (steps, privacy, get-it) it is no longer three equal boxes: the first item
+   spans the full left column and both rows, so the block has a size hierarchy and an off-grid edge. */
+.grid-hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 18px; align-items: stretch; }
+.grid-hero > .card.hero-card { grid-row: span 2; padding: 34px; display: flex; flex-direction: column; }
+.grid-hero > .card.hero-card h3 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; margin-bottom: 12px; }
+.grid-hero > .card.hero-card p { font-size: 17px; }
+.grid-hero > .card.hero-card .n { width: 46px; height: 46px; border-radius: var(--r-card); font-size: 20px; }
+.grid-hero > .card.hero-card .ic { width: 54px; height: 54px; }
+@media (max-width: 820px) {
+  .grid-hero { grid-template-columns: 1fr; }
+  .grid-hero > .card.hero-card { grid-row: auto; padding: 26px; }
+}
+/* Wear-OS green (#2ED573) is a WATCH token; BRAND §6 keeps the paper palette for phone/web. */
+.card .n { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.privacy-band { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 6%, transparent), transparent); }
+
+/* ---- thanks.html: an object hung left, the words beside it ----
+   It was the archetypal generated page: a centred green circle, a tick, an h1, a line of body copy and a
+   button. Now it is a postcard, franked and dated, with the reply beside it. */
+.thanks { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start;
+  padding: 84px 0 96px; max-width: 900px;
+  min-height: calc(100vh - 66px - 130px); }   /* short page: keep the footer off the middle of the screen */
+.thanks .postcard { width: 300px; transform: rotate(-2.5deg); }
+.thanks-text h1 { font-size: clamp(34px, 4.6vw, 50px); line-height: 1.02; letter-spacing: -0.02em; }
+.thanks-text p { color: var(--subtle); font-size: 18px; margin-top: 18px; max-width: 30em; }
+.thanks-text .btn { margin-top: 36px; }
+@media (max-width: 820px) {
+  .thanks { grid-template-columns: 1fr; gap: 36px; padding: 48px 0 64px; }
+  .thanks .postcard { width: min(300px, 100%); }
+}

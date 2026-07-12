@@ -10,27 +10,52 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
     <a class="brand" href="index.html" style="color:inherit">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="0" y="7.5" width="4.5" height="9" fill="#2ed573"/><rect x="19.5" y="7.5" width="4.5" height="9" fill="#2ed573"/><circle cx="12" cy="12" r="8.5" fill="none" stroke="#2ed573" stroke-width="2"/><path d="M6.5 16 L10 10.5 L12.5 13.5 L15 9.5 L17.5 16 Z" fill="#2ed573"/></svg>
+      <!-- This page drew its own neon-green wordmark inline while every other page used favicon.svg:
+           two different logos on one site, in a colour BRAND §6 reserves for the watch. -->
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
     <a class="navlink" href="index.html">Home</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="index.html">Home</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap" style="text-align:center;max-width:640px;padding:84px 24px 96px">
-  <div style="width:104px;height:104px;border-radius:50%;background:var(--accent);display:inline-grid;place-items:center;box-shadow:0 18px 46px rgba(46,213,115,.4)">
-    <svg width="54" height="54" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13 L9 17 L19 6" stroke="var(--btn-text)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- This page was a centred stack: green circle, tick icon, headline, body, button. That shape is the
+     house style of every generated confirmation page on the internet. It is now the postcard the product
+     is actually about, hung off to the left, franked, with the reply beside it. -->
+<main id="main" tabindex="-1" class="wrap thanks">
+  <div class="postcards" aria-hidden="true">
+    <div class="postcard">
+      <div class="pc-photo">
+        <div class="pc-contour"></div>
+        <div class="pc-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 L9 7 L13 13 L16 9 L21 18"/></svg></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name">Message received</div>
+        <div class="pc-loc">Franked &middot; on its way to us</div>
+        <div class="pc-story">Somewhere between the permit gate and the Sun Gate, a reply is being written. It will not take forty-three kilometres.</div>
+      </div>
+    </div>
   </div>
-  <h1 style="font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-0.02em;margin-top:26px">Thanks for getting in touch.</h1>
-  <p class="sub" style="margin:14px auto 0;max-width:30em">We can't wait to see you on the trails.</p>
-  <p style="color:var(--subtle);margin-top:16px;max-width:32em;margin-left:auto;margin-right:auto">A real person will reply as soon as they can, and nothing else will land in your inbox. Watch Walks is on Garmin, Wear OS and iPhone &amp; Apple Watch &mdash; the Inca Trail is free everywhere.</p>
-  <div style="margin-top:34px">
-    <a href="index.html" style="display:inline-block;background:var(--accent);color:var(--btn-text);padding:14px 28px;border-radius:999px;font-weight:800;text-decoration:none">Back to home</a>
+  <div class="thanks-text">
+    <span class="eyebrow">Contact</span>
+    <h1>Thanks for getting in touch.</h1>
+    <p>We read every message. Usually a reply within a day.</p>
+    <p>Nothing else will land in your inbox: no list, no newsletter, no follow-up. If it's about a device, tell us which watch or phone you have and we'll point you the right way.</p>
+    <a class="btn" href="index.html">Back to Watch Walks</a>
   </div>
 </main>
 

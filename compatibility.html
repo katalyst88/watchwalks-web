@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -25,10 +26,22 @@
     <a class="navlink" href="index.html#get">Get it</a>
     <a class="navlink" href="faq.html">Questions</a>
     <a class="navlink" href="contact.html">Contact</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="index.html#why">Why you'll love it</a>
+        <a href="trails.html">Trails</a>
+        <a href="index.html#get">Get it</a>
+        <a href="faq.html">Questions</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
 
   <section class="hero" style="border-top:none;display:block;padding:64px 0 20px">
     <span class="eyebrow">Compatibility</span>
@@ -40,33 +53,62 @@
   <section class="compat-group" style="border-top:none;padding-top:24px">
     <h2>Garmin</h2>
     <p class="sub">Garmin is the primary supported watch path. Watch Walks installs from the Connect IQ store and runs the trail right on the watch, no phone needed.</p>
-    <div class="grid3">
-      <div class="card"><h3>Supported watches</h3><p>Most modern Connect IQ watches work, including Forerunner, Fenix, Epix, Venu, Vivoactive, Instinct, Enduro and Marq families. If your watch can install apps from the Connect IQ store, it can run Watch Walks.</p></div>
-      <div class="card"><h3>How steps count</h3><p>The watch counts your everyday steps on its own. Open the app now and then so it can move your journey forward. No GPS and no workout to start.</p></div>
-      <div class="card"><h3>Get set up</h3><p>Install the free Watch Walks app from the Connect IQ store, with the Inca Trail included, then add more trails in the free phone companion. <a href="setup-garmin.html">Garmin setup guide &rarr;</a></p></div>
-    </div>
+    <!-- Compatibility is a specification. It was twelve identical cards across four grids, which BRAND §3
+         rules out ("NOT a symmetric card grid"). Label left, prose right, hairline between. -->
+    <dl class="spec">
+      <div>
+        <dt>Supported watches</dt>
+        <dd>Most modern Connect IQ watches work, including the Forerunner, Fenix, Epix, Venu, Vivoactive, Instinct, Enduro and Marq families. If your watch can install apps from the Connect IQ store, it can run Watch Walks.</dd>
+      </div>
+      <div>
+        <dt>How steps count</dt>
+        <dd>The watch counts your everyday steps on its own. Open the app now and then so it can move your journey forward. No GPS, and no workout to start.</dd>
+      </div>
+      <div>
+        <dt>Get set up</dt>
+        <dd>Install the free Watch Walks app from the Connect IQ store, with the Inca Trail included, then add more trails in the free phone companion. <a href="setup-garmin.html">Garmin setup guide &rarr;</a></dd>
+      </div>
+    </dl>
   </section>
 
   <!-- Apple -->
   <section class="compat-group">
     <h2>Apple</h2>
     <p class="sub">On Apple, Watch Walks pairs an iPhone app with an Apple Watch app and reads your steps from Apple Health.</p>
-    <div class="grid3">
-      <div class="card"><h3>Supported devices</h3><p>iPhone on iOS 16 or later, with Apple Watch Series 4 or later on watchOS 10 or later. The Apple Watch is optional but lovely on the wrist, with a progress complication for your watch face.</p></div>
-      <div class="card"><h3>How steps count</h3><p>Watch Walks reads the steps Apple Health already records from your iPhone and Apple Watch together, including the steps inside a tracked walk or run.</p></div>
-      <div class="card"><h3>Get set up</h3><p>Install from the App Store, allow Apple Health to share your step count, and start walking. <a href="setup-apple.html">Apple setup guide &rarr;</a></p></div>
-    </div>
+    <dl class="spec">
+      <div>
+        <dt>Supported devices</dt>
+        <dd>iPhone on iOS 16 or later, with Apple Watch Series 4 or later on watchOS 10 or later. The Apple Watch is optional but lovely on the wrist, with a progress complication for your watch face.</dd>
+      </div>
+      <div>
+        <dt>How steps count</dt>
+        <dd>Watch Walks reads the steps Apple Health already records from your iPhone and Apple Watch together, including the steps inside a tracked walk or run.</dd>
+      </div>
+      <div>
+        <dt>Get set up</dt>
+        <dd>Install from the App Store, allow Apple Health to share your step count, and start walking. <a href="setup-apple.html">Apple setup guide &rarr;</a></dd>
+      </div>
+    </dl>
   </section>
 
   <!-- Wear OS / Android -->
   <section class="compat-group">
     <h2>Android and Wear OS</h2>
     <p class="sub">On Android, the free phone app carries your journey, and a Wear OS watch app puts it on your wrist.</p>
-    <div class="grid3">
-      <div class="card"><h3>Supported watches</h3><p>Wear OS 3 or newer, including Samsung Galaxy Watch 4 and later, Google Pixel Watch, recent Mobvoi TicWatch and OnePlus Watch models. A tile shows your distance and next landmark at a glance.</p></div>
-      <div class="card"><h3>Phone on its own</h3><p>No watch? The free Android phone app works on its own using your phone's step counter, or steps pulled in through Health Connect (below).</p></div>
-      <div class="card"><h3>Get set up</h3><p>Install from Google Play on the watch, or the phone app from Google Play on your phone. <a href="setup-wearos.html">Wear OS setup guide &rarr;</a></p></div>
-    </div>
+    <dl class="spec">
+      <div>
+        <dt>Supported watches</dt>
+        <dd>Wear OS 3 or newer, including Samsung Galaxy Watch 4 and later, Google Pixel Watch, recent Mobvoi TicWatch and OnePlus Watch models. A tile shows your distance and next landmark at a glance.</dd>
+      </div>
+      <div>
+        <dt>Phone on its own</dt>
+        <dd>No watch? The free Android phone app works on its own using your phone's step counter, or steps pulled in through Health Connect (below).</dd>
+      </div>
+      <div>
+        <dt>Get set up</dt>
+        <dd>Install from Google Play on the watch, or the phone app from Google Play on your phone. <a href="setup-wearos.html">Wear OS setup guide &rarr;</a></dd>
+      </div>
+    </dl>
   </section>
 
   <!-- Health Connect -->

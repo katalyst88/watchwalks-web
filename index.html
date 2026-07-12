@@ -14,13 +14,14 @@
 <meta property="og:url" content="https://watchwalks.com/">
 <meta property="og:title" content="Watch Walks — walk the world's greatest trails, one real step at a time">
 <meta property="og:description" content="Your everyday steps carry you down famous real-world trails on Garmin, Wear OS and Apple Watch. Free to start on the Inca Trail.">
-<meta property="og:image" content="https://watchwalks.com/img/beta-banner.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="500">
+<!-- Was img/beta-banner.png: the beta is over, and the filename shipped in every shared link. -->
+<meta property="og:image" content="https://watchwalks.com/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Watch Walks">
 <meta name="twitter:description" content="Walk the world's greatest trails, one real step at a time, on Garmin, Wear OS and Apple Watch.">
-<meta name="twitter:image" content="https://watchwalks.com/img/beta-banner.png">
+<meta name="twitter:image" content="https://watchwalks.com/img/og-cover.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Watch Walks",
  "operatingSystem":"Garmin Connect IQ, Wear OS, watchOS, Android, iOS",
@@ -31,6 +32,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap nav">
@@ -44,10 +46,21 @@
     <a class="navlink" href="#compatibility">Watches</a>
     <a class="navlink" href="faq.html">Questions</a>
     <a class="btn-nav" href="#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
+         logo and no way out of the page. <details> needs no JS. -->
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="#compatibility">Watches</a>
+        <a href="faq.html">Questions</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main" tabindex="-1" class="wrap">
 
   <!-- HERO — a place, not a stack of buttons.
        The old hero had no terrain, no route and no place above the fold: it sold an app. The Inca route
@@ -181,24 +194,26 @@
     <span class="eyebrow">Compatibility</span>
     <h2>It works with the watch and phone you already wear.</h2>
     <p class="sub">Watch Walks runs on Garmin, Wear OS and Apple Watch, and it can read your steps from Apple Health or Health Connect, so most popular devices are already covered.</p>
-    <div class="grid3 grid-compat">
-      <div class="card">
-        <h3>Apple</h3>
-        <p>iPhone with Apple Watch (watchOS 10 and later). Steps come from Apple Health. <a href="setup-apple.html">Apple setup guide &rarr;</a></p>
+    <!-- A specification is a list, not four identical boxes. This section was one of six card grids on
+         the page; BRAND §3 rules out the symmetric card grid outright. -->
+    <dl class="spec">
+      <div>
+        <dt>Garmin</dt>
+        <dd>Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and more, through the Connect IQ store. The trail runs on the watch itself. <a href="setup-garmin.html">Garmin setup guide &rarr;</a></dd>
       </div>
-      <div class="card">
-        <h3>Android and Wear OS</h3>
-        <p>Any Android phone, plus Wear OS watches like Samsung Galaxy Watch, Google Pixel Watch, TicWatch and OnePlus Watch. <a href="setup-wearos.html">Wear OS setup guide &rarr;</a></p>
+      <div>
+        <dt>Apple</dt>
+        <dd>iPhone with Apple Watch (watchOS 10 and later). Steps come from Apple Health. <a href="setup-apple.html">Apple setup guide &rarr;</a></dd>
       </div>
-      <div class="card">
-        <h3>Garmin</h3>
-        <p>Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and more, through the Connect IQ store. <a href="setup-garmin.html">Garmin setup guide &rarr;</a></p>
+      <div>
+        <dt>Android and Wear OS</dt>
+        <dd>Any Android phone, plus Wear OS watches like Samsung Galaxy Watch, Google Pixel Watch, TicWatch and OnePlus Watch. <a href="setup-wearos.html">Wear OS setup guide &rarr;</a></dd>
       </div>
-      <div class="card">
-        <h3>Health Connect</h3>
-        <p>On Android, pull your steps in from Fitbit, Samsung Health, Google Fit, Garmin Connect and more through Health Connect. <a href="compatibility.html#health-connect">See the sources &rarr;</a></p>
+      <div>
+        <dt>Health Connect</dt>
+        <dd>On Android, pull your steps in from Fitbit, Samsung Health, Google Fit, Garmin Connect and more. <a href="compatibility.html#health-connect">See the sources &rarr;</a></dd>
       </div>
-    </div>
+    </dl>
 
     <!-- Health Connect step sources -->
     <div class="hc-band">
@@ -225,9 +240,12 @@
     <span class="eyebrow">How it works</span>
     <h2>Set it once. Then just live your life.</h2>
     <p class="sub">Walk your everyday life, and wake up somewhere legendary.</p>
-    <div class="grid3">
+    <!-- Step 2 is the whole product, so it is the big card. Three equal boxes said all three steps
+         mattered equally; the middle one is the one you never have to do. The order stays 1, 2, 3:
+         the first attempt hoisted step 2 to the front and the page read "2, 1, 3". -->
+    <div class="grid-steps">
       <div class="card"><div class="n">1</div><h3>Get it on your watch or phone</h3><p>Install Watch Walks on Garmin, Wear OS, Apple Watch, or as a free iPhone or Android app. The Inca Trail is free everywhere.</p></div>
-      <div class="card"><div class="n">2</div><h3>Walk as normal</h3><p>Your daily routine becomes your journey. Check in whenever you like to see how far you have come and what is waiting ahead.</p></div>
+      <div class="card hero-card"><div class="n">2</div><h3>Walk as normal. That is the whole method.</h3><p>Nothing to start, nothing to record, nothing to carry. Your commute, the shops, the dog, a proper hike: it all counts. Check in whenever you like to see how far you have come and what is waiting ahead. About 5,000 steps a day is roughly three kilometres of Inca stone.</p></div>
       <div class="card"><div class="n">3</div><h3>Collect the landmarks</h3><p>Pass each milestone and a short story of the place opens, with a real photo, all the way to the finish.</p></div>
     </div>
   </section>
@@ -277,18 +295,18 @@
     <span class="eyebrow">Built for privacy</span>
     <h2>Private by default.</h2>
     <p class="sub">No ads, no analytics, no profiling. Walk with no account at all, or turn on optional cloud backup if you want your trails synced across devices. You're always in control.</p>
-    <div class="grid3">
-      <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>No account needed</h3><p>Install and walk, we never ask who you are. Signing in is optional, only if you want cloud backup.</p>
+    <div class="grid-hero">
+      <div class="card hero-card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>No account needed.</h3><p>Install and walk. We never ask who you are, and there is no sign-up screen between you and the trail. Signing in is optional, and only if you want your trails backed up to your own Google or iCloud account.</p>
       </div>
       <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M4 12h16M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M4 12h16M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg>
         <h3>No tracking, ever</h3><p>No analytics, no ads, no profiling, no selling your data. Just you and the trail.</p>
       </div>
       <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01" stroke-linecap="round"/></svg>
-        <h3>Yours to keep</h3><p>Your progress lives on your devices. Optional backup syncs only your trails and medals to your own account, nothing more.</p>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01" stroke-linecap="round"/></svg>
+        <h3>Yours to keep</h3><p>Your progress lives on your devices. Optional backup syncs only your trails and medals, nothing more.</p>
       </div>
     </div>
   </section>
@@ -298,32 +316,34 @@
     <span class="eyebrow">Questions</span>
     <h2>The things people ask before they start.</h2>
     <p class="sub">Short, honest answers. If yours isn't here, <a href="contact.html">send us a message</a> and a real person will reply. There are more in the <a href="faq.html">full questions page</a>.</p>
-    <div class="grid3">
-      <div class="card">
-        <h3>Is it a subscription?</h3>
-        <p>No. The Inca Trail is free, and every other trail is a one-time purchase. Buy a trail once and it's yours to keep, with no recurring charge.</p>
+    <!-- Six questions in six identical boxes was the most default block on the page. A question and its
+         answer are prose: set them as prose, in two columns, separated by a hairline. -->
+    <dl class="qa">
+      <div>
+        <dt>Is it a subscription?</dt>
+        <dd>No. The Inca Trail is free, and every other trail is a one-time purchase. Buy a trail once and it's yours to keep, with no recurring charge.</dd>
       </div>
-      <div class="card">
-        <h3>Do I need to carry my phone or keep the app open?</h3>
-        <p>No. On Garmin and Wear OS the watch app counts on its own, just open it now and then. On Apple Watch the app reads your steps from Apple Health automatically.</p>
+      <div>
+        <dt>Do I need to carry my phone, or keep the app open?</dt>
+        <dd>No. On Garmin and Wear OS the watch app counts on its own, so just open it now and then. On Apple Watch it reads your steps from Apple Health automatically.</dd>
       </div>
-      <div class="card">
-        <h3>Does it work offline on the trail?</h3>
-        <p>Yes. Each trail's map downloads once, then needs no signal. Your steps keep counting whether you're online or not.</p>
+      <div>
+        <dt>Does it work offline on the trail?</dt>
+        <dd>Yes. Each trail's map downloads once, then needs no signal. Your steps keep counting whether you're online or not.</dd>
       </div>
-      <div class="card">
-        <h3>Which watches work?</h3>
-        <p>Garmin (Connect IQ), Wear OS watches like Samsung Galaxy Watch and Google Pixel Watch, and Apple Watch (Series 4 and later on watchOS 10+). See the <a href="compatibility.html">compatible devices</a>.</p>
+      <div>
+        <dt>Which watches work?</dt>
+        <dd>Garmin (Connect IQ), Wear OS watches like Samsung Galaxy Watch and Google Pixel Watch, and Apple Watch (Series 4 and later on watchOS 10+). See the <a href="compatibility.html">compatible devices</a>.</dd>
       </div>
-      <div class="card">
-        <h3>Where do my steps come from?</h3>
-        <p>From your watch, from Apple Health on Apple devices, or from Health Connect on Android (Fitbit, Samsung Health, Google Fit and more).</p>
+      <div>
+        <dt>Where do my steps come from?</dt>
+        <dd>From your watch, from Apple Health on Apple devices, or from Health Connect on Android: Fitbit, Samsung Health, Google Fit and more.</dd>
       </div>
-      <div class="card">
-        <h3>Is my data private?</h3>
-        <p>Yes. No account, no ads, no tracking. Your step data is read on your own device and stays there. Read the full <a href="privacy.html">privacy policy</a>.</p>
+      <div>
+        <dt>Is my data private?</dt>
+        <dd>Yes. No account, no ads, no tracking. Your step data is read on your own device and stays there. Read the full <a href="privacy.html">privacy policy</a>.</dd>
       </div>
-    </div>
+    </dl>
   </section>
 
   <!-- GET THE APP -->
@@ -331,21 +351,23 @@
     <span class="eyebrow">Get the app</span>
     <h2>Pick your watch and start walking.</h2>
     <p class="sub">Watch Walks runs on Garmin, Wear OS and Apple Watch. Choose yours below for the quick setup. You'll be walking the free Inca Trail in a few minutes, and can add any other trail in the app.</p>
-    <div class="cols cols-3">
+    <!-- Garmin is the primary watch path (the trail runs on the watch itself), so it gets the weight
+         instead of three interchangeable columns. -->
+    <div class="grid-hero">
+      <div class="card choice hero-card">
+        <h3>Garmin</h3>
+        <p>Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and more, from the Connect IQ store. The trail runs on the watch itself, with no phone needed to walk it, and the Inca Trail comes free with the app.</p>
+        <a class="btn" href="join-garmin.html">Get it on Garmin &rarr;</a>
+      </div>
       <div class="card choice">
-        <h3>iPhone &amp; Apple Watch</h3>
+        <h3>iPhone and Apple Watch</h3>
         <p>iPhone with Apple Watch (watchOS 10+). Steps from Apple Health.</p>
         <a class="btn" href="join-apple.html">Get it on Apple &rarr;</a>
       </div>
       <div class="card choice">
-        <h3>Android &amp; Wear OS</h3>
+        <h3>Android and Wear OS</h3>
         <p>Any Android phone, plus Samsung Galaxy Watch, Google Pixel Watch and other Wear OS watches.</p>
         <a class="btn" href="join-wearos.html">Get it on Google Play &rarr;</a>
-      </div>
-      <div class="card choice">
-        <h3>Garmin</h3>
-        <p>Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and more, from the Connect IQ store.</p>
-        <a class="btn" href="join-garmin.html">Get it on Garmin &rarr;</a>
       </div>
     </div>
   </section>
@@ -374,20 +396,20 @@
         <p style="color:var(--subtle);font-size:14px;margin-top:10px;max-width:26em">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2>Explore</h2>
         <a href="trails.html">All 36 trails</a>
         <a href="#how">How it works</a>
         <a href="faq.html">Questions</a>
       </div>
       <div>
-        <h4>Set up</h4>
+        <h2>Set up</h2>
         <a href="compatibility.html">Compatible devices</a>
         <a href="setup-garmin.html">Garmin</a>
         <a href="setup-wearos.html">Wear OS</a>
         <a href="setup-apple.html">Apple</a>
       </div>
       <div>
-        <h4>Company</h4>
+        <h2>Company</h2>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
