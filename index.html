@@ -39,46 +39,62 @@
       Watch Walks
     </span>
     <span class="spacer"></span>
-    <a class="navlink" href="#why">Why you'll love it</a>
-    <a class="navlink" href="#compatibility">Compatibility</a>
+    <a class="navlink" href="#how">How it works</a>
     <a class="navlink" href="trails.html">Trails</a>
-    <a class="navlink" href="#get">Get it</a>
+    <a class="navlink" href="#compatibility">Watches</a>
     <a class="navlink" href="faq.html">Questions</a>
-    <a class="navlink" href="contact.html">Contact</a>
+    <a class="btn-nav" href="#get">Get it free</a>
   </div>
 </header>
 
 <main class="wrap">
 
-  <!-- HERO — the emotional hook first -->
+  <!-- HERO — a place, not a stack of buttons.
+       The old hero had no terrain, no route and no place above the fold: it sold an app. The Inca route
+       map now lies under it, warm-graded, with the 43 km route drawing itself across. -->
   <section class="hero" style="border-top:none">
+    <div class="hero-terrain" aria-hidden="true">
+      <img src="img/trailmaps/inca-trail.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
+      <svg class="hero-route" viewBox="0 0 1100 460" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M40 392 C 150 372, 205 300, 300 296 S 470 336, 560 268 C 650 200, 700 236, 800 176 S 980 128, 1060 84"/>
+        <circle cx="1060" cy="84" r="7"/>
+      </svg>
+    </div>
     <div>
       <p class="kicker">Steps you already take. Trails you always meant to walk.</p>
-      <h1>Turn your everyday steps into a walk of the world's <span class="grn">greatest trails</span>.</h1>
-      <p class="lead">Watch Walks quietly carries the steps you already take along a real, famous trail. Reach a landmark and its story opens, with a real photo of the place. Earn medals as you go, and keep a pace toward the finish. Start free on the Inca Trail. No account, nothing to set up.</p>
+      <h1>Walk the world's <span class="grn">greatest trails</span> with the steps you already take.</h1>
+      <!-- The one genuinely brilliant sentence on this site used to live ONLY inside the FAQ's JSON-LD,
+           where no human being would ever read it. It answers the only question a visitor actually has. -->
+      <p class="lead">About 5,000 steps a day carries you roughly three kilometres down the Inca Trail. Forty-three kilometres to Machu&nbsp;Picchu, so about a month of ordinary walking. Reach a landmark and its story opens. Nothing to start, no account, no GPS.</p>
       <div class="cta cta-row" data-cta>
-        <a class="btn" href="join-apple.html" data-p="ios">Get it on the App&nbsp;Store</a>
-        <a class="btn" href="join-wearos.html" data-p="android">Get it on Google&nbsp;Play</a>
-        <a class="btn" href="join-garmin.html" data-p="garmin">Get it on Garmin</a>
+        <a class="btn" href="#get">Start the Inca Trail, free</a>
       </div>
-      <p class="hero-note">On Garmin, Wear OS and Apple Watch, with a free iPhone or Android companion. Free to start on the Inca Trail. <a href="trails.html">See all the trails &rarr;</a></p>
+      <p class="hero-note">On Garmin, Wear OS and Apple Watch, with a free iPhone or Android companion. <a href="trails.html">See all 36 trails &rarr;</a></p>
     </div>
     <div class="hero-art">
-      <img class="shot-frameless hero-shot" src="img/shot-journey.webp" width="1080" height="2172" alt="The Watch Walks app: the Inca Trail at 97.7 percent, with a live progress reading, a walking streak, pace targets and a satellite route map" loading="eager" fetchpriority="high">
+      <img class="shot-frameless hero-shot" src="img/shot-journey.webp" width="1080" height="2172" alt="The Watch Walks app showing the Inca Trail: kilometres walked, the route drawn across a satellite map, and the landmarks still ahead" loading="eager" fetchpriority="high">
     </div>
+  </section>
+
+  <!-- The catalogue is the proof. These are counted, not estimated. -->
+  <section class="stats reveal" style="border-top:none;padding:0" aria-label="What is in Watch Walks">
+    <div class="stat"><span class="stat-n">36</span><span class="stat-l">real trails, seven continents</span></div>
+    <div class="stat"><span class="stat-n">28,131</span><span class="stat-l">kilometres of route</span></div>
+    <div class="stat"><span class="stat-n">1,073</span><span class="stat-l">landmarks with a story</span></div>
+    <div class="stat"><span class="stat-n">One</span><span class="stat-l">free trail to start, no account</span></div>
   </section>
 
   <!-- 1. WHY IT'S MOTIVATING — story cards, milestone photos, medals, targets -->
   <section id="why">
     <span class="eyebrow">Why you'll keep coming back</span>
-    <h2>A walk that feels like a journey.</h2>
+    <h2>43 km of Inca stone. 12 landmarks. About a month of ordinary walking.</h2>
     <p class="sub">The step counter you already have only ever shows a number. Watch Walks turns that number into somewhere real, and gives you a reason to keep walking.</p>
 
     <!-- story cards + milestone photos -->
     <div class="feature-row">
       <div class="feature-text">
         <span class="feat-eyebrow">Story cards and real photos</span>
-        <h3>Reach a landmark, unlock its story.</h3>
+        <h3>Reach a landmark, and its story opens.</h3>
         <p>Every famous place along the route has a card waiting for you. Walk far enough to reach it and the card opens, with a few warm words about where you are standing and a real photo of the spot. From the start gate on the Urubamba River to the Sun Gate above Machu Picchu, you collect the whole trail one place at a time, and the cards are yours to keep.</p>
       </div>
       <div class="feature-art">
@@ -100,10 +116,43 @@
 
     <!-- story cards as keepsakes -->
     <p class="postcards-intro">Every landmark you reach leaves you a postcard, a few words about the place you just walked past.</p>
+    <!-- A real postcard: a photo well, a perforated stamp and a franked postmark rule. It used to be three
+         text divs with a 1px DASHED SQUARE where the stamp should be. The landmark photographs drop into
+         .pc-photo when they land; nothing else about this markup changes. -->
     <div class="postcards">
-      <div class="postcard"><div class="pc-name">KM82 Piscacucho</div><div class="pc-loc">The start &middot; 0 km</div><div class="pc-story">You shoulder your pack as the permit gate swings open. Forty-three kilometres of Inca stone lie ahead, and the road to Machu Picchu begins.</div></div>
-      <div class="postcard"><div class="pc-name">Runkurakay</div><div class="pc-loc">26 km in</div><div class="pc-story">A round stone watchtower once guarded this pass. Just beyond it clings Sayacmarca, the &lsquo;inaccessible town&rsquo;, on a sheer cliff edge.</div></div>
-      <div class="postcard"><div class="pc-name">Sun Gate</div><div class="pc-loc">41 km in</div><div class="pc-story">Step through Inti Punku and there it is, Machu Picchu spread in stone far below, exactly as the Inca framed it.</div></div>
+      <div class="postcard reveal">
+        <div class="pc-photo">
+          <div class="pc-contour"></div>
+          <div class="pc-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 L9 7 L13 13 L16 9 L21 18"/></svg></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-name">KM82 Piscacucho</div>
+          <div class="pc-loc">The start &middot; 0 km</div>
+          <div class="pc-story">You shoulder your pack as the permit gate swings open. Forty-three kilometres of Inca stone lie ahead, and the road to Machu Picchu begins.</div>
+        </div>
+      </div>
+      <div class="postcard reveal">
+        <div class="pc-photo">
+          <div class="pc-contour"></div>
+          <div class="pc-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 V9"/><path d="M6 13 h12"/><circle cx="12" cy="6" r="3"/></svg></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-name">Runkurakay</div>
+          <div class="pc-loc">26 km in</div>
+          <div class="pc-story">A round stone watchtower once guarded this pass. Just beyond it clings Sayacmarca, the &lsquo;inaccessible town&rsquo;, on a sheer cliff edge.</div>
+        </div>
+      </div>
+      <div class="postcard reveal">
+        <div class="pc-photo">
+          <div class="pc-contour"></div>
+          <div class="pc-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="4"/><path d="M12 3v2M12 17v2M4 11h2M18 11h2M6 5l1.5 1.5M16.5 16.5L18 18M18 5l-1.5 1.5M7.5 16.5L6 18"/></svg></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-name">Sun Gate</div>
+          <div class="pc-loc">41 km in</div>
+          <div class="pc-story">Step through Inti Punku and there it is, Machu Picchu spread in stone far below, exactly as the Inca framed it.</div>
+        </div>
+      </div>
     </div>
 
     <!-- targets -->
@@ -126,16 +175,6 @@
     </div>
   </section>
 
-  <!-- CTA #1 -->
-  <section class="cta-band">
-    <h2>Start your first trail today.</h2>
-    <p class="sub" style="margin:0 auto 22px">Free to start on the Inca Trail, on the watch and phone you already own.</p>
-    <div class="cta-row center" data-cta>
-      <a class="btn" href="join-apple.html" data-p="ios">Get it on the App&nbsp;Store</a>
-      <a class="btn" href="join-wearos.html" data-p="android">Get it on Google&nbsp;Play</a>
-      <a class="btn" href="join-garmin.html" data-p="garmin">Get it on Garmin</a>
-    </div>
-  </section>
 
   <!-- 2. COMPATIBILITY -->
   <section id="compatibility">
@@ -180,16 +219,6 @@
     <p class="sub" style="margin-top:22px"><a href="compatibility.html">See the full list of compatible devices &rarr;</a></p>
   </section>
 
-  <!-- CTA #2 -->
-  <section class="cta-band">
-    <h2>Ready when you are.</h2>
-    <p class="sub" style="margin:0 auto 22px">Pick your platform and you can be walking the free Inca Trail in a few minutes.</p>
-    <div class="cta-row center" data-cta>
-      <a class="btn" href="join-apple.html" data-p="ios">Get it on the App&nbsp;Store</a>
-      <a class="btn" href="join-wearos.html" data-p="android">Get it on Google&nbsp;Play</a>
-      <a class="btn" href="join-garmin.html" data-p="garmin">Get it on Garmin</a>
-    </div>
-  </section>
 
   <!-- HOW IT WORKS -->
   <section id="how">
@@ -207,7 +236,7 @@
   <section id="trails">
     <span class="eyebrow">The trails</span>
     <h2>From Peru to New Zealand, the world's greatest walks.</h2>
-    <p class="sub">Dozens of legendary trails, each a complete journey from start to finish with its own offline <b>satellite map</b>. Walk the whole Inca Trail free first. If you love it, unlock any other trail with a one-time purchase, yours to keep, no subscription. Reach the finish and the trail is still yours to walk again, or in reverse, climbing a rank on its medal each time.</p>
+    <p class="sub">Dozens of legendary trails, each a complete journey from start to finish with its own offline <b>satellite map</b>. Walk the whole Inca Trail free first. If you love it, buy any other trail once and it is yours to keep. No subscription. Reach the finish and the trail is still yours to walk again, or in reverse, climbing a rank on its medal each time.</p>
     <div class="trails">
       <div class="trail"><svg viewBox="0 0 24 24"><path d="M2 19 L9 7 L13 13 L16 9 L22 19 Z" fill="#1F5C3D"/></svg><div><div class="t-name">Inca Trail</div><div class="t-meta">Peru &middot; 43 km</div></div><span class="tag free">Free</span></div>
       <div class="trail"><svg viewBox="0 0 24 24"><path d="M2 19 L9 7 L13 13 L16 9 L22 19 Z" fill="#1F5C3D"/></svg><div><div class="t-name">Camino de Santiago</div><div class="t-meta">Spain &middot; 780 km</div></div><span class="tag price">Paid</span></div>
@@ -222,7 +251,7 @@
       <div class="trail"><svg viewBox="0 0 24 24"><path d="M2 19 L9 7 L13 13 L16 9 L22 19 Z" fill="#1F5C3D"/></svg><div><div class="t-name">Kungsleden</div><div class="t-meta">Sweden &middot; 440 km</div></div><span class="tag price">Paid</span></div>
       <div class="trail"><svg viewBox="0 0 24 24"><path d="M2 19 L9 7 L13 13 L16 9 L22 19 Z" fill="#1F5C3D"/></svg><div><div class="t-name">Nakasendo Way</div><div class="t-meta">Japan &middot; 534 km</div></div><span class="tag price">Paid</span></div>
     </div>
-    <p class="sub" style="margin-top:14px;font-size:15px">Around three dozen trails and growing. Unlock one once and it's yours forever, on the same store account.</p>
+    <p class="sub" style="margin-top:14px;font-size:15px">Thirty-six trails and growing. Buy one once and it is yours forever, on the same store account.</p>
     <div class="cta-row" style="margin-top:20px">
       <a class="btn" href="trails.html">See the trails</a>
     </div>
@@ -335,27 +364,56 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="brand" style="font-size:16px">
-      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
-      Watch Walks
-    </span>
-    <span class="spacer"></span>
-    <a href="trails.html">Trails</a>
-    <a href="compatibility.html">Compatible devices</a>
-    <a href="setup-garmin.html">Garmin setup</a>
-    <a href="setup-wearos.html">Wear OS setup</a>
-    <a href="setup-apple.html">Apple setup</a>
-    <a href="faq.html">Questions</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-    <a href="attribution.html">Attribution</a>
-    <a href="contact.html">Contact</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p style="color:var(--subtle);font-size:14px;margin-top:10px;max-width:26em">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="trails.html">All 36 trails</a>
+        <a href="#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h4>Set up</h4>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">© 2026 Watch Walks</div>
   </div>
 </footer>
 
 <script src="openin.js"></script>
+<!-- One scroll reveal, and it stands down entirely when the visitor asks for less motion. -->
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 <!-- Platform-aware CTA: surface the visitor's likely store first. All three stay one tap away. -->
 <script>
 (function(){

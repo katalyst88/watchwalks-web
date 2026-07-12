@@ -16,9 +16,44 @@
   --btn-text: #FBF6EC;
   --gold: #E0A52E;      /* achievement / accent */
   --clay: #B4623B;      /* warm secondary */
-  --radius: 16px;
+
+  /* BRAND §3 radius scale: 14 (controls/cards) / 22 (panels/postcards) / 999 (pills). The site had NINE
+     radii and used none of the three the spec names for cards. */
+  --r-card: 14px;
+  --r-panel: 22px;
+  --r-pill: 999px;
+  --radius: var(--r-card);   /* legacy alias — old rules keep working */
+
+  /* Warm shadows. Several were rgba(0,0,0,.5) — a half-black shadow on cream paper renders as blue-grey
+     mud, which is the exact opposite of warm paper. BRAND §3: "soft warm shadows + 1px line, sparingly." */
+  --sh-raised: 0 2px 6px rgba(62,44,26,.08);
+  --sh-card:   0 8px 22px rgba(62,44,26,.12);
+  --sh-lifted: 0 20px 48px rgba(62,44,26,.18);
+
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-text: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+/* "dusk" — BRAND §3 names this palette and the site never shipped it. The stylesheet has claimed since day
+   one that "the whole site recolours through these tokens"; it does now. Every colour is a token, so this
+   block is the entire dark theme. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14160F;
+    --bg2: #1C2016;
+    --bg3: #242A1D;
+    --text: #F3EFE2;
+    --subtle: #A79C86;
+    --line: #333A28;
+    --accent: #3FB477;
+    --accent-dark: #2C8A59;
+    --btn-text: #101408;
+    --gold: #E9B450;
+    --clay: #CC7A52;
+    --sh-raised: 0 2px 6px rgba(0,0,0,.35);
+    --sh-card:   0 8px 22px rgba(0,0,0,.45);
+    --sh-lifted: 0 20px 48px rgba(0,0,0,.6);
+  }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,12 +75,30 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 body > * { position: relative; z-index: 1; }
-/* Display face: Fraunces for headlines, the wordmark, eyebrows, trail names and big numerals. */
+/* Display face: Fraunces for headlines, the wordmark, eyebrows, trail names and big numerals.
+   ---
+   Fraunces is a VARIABLE font and its whole character lives in its optical-size, SOFT and WONK axes. The
+   site loaded the variable file and then never set a single axis, so every headline rendered at the font's
+   text-optimised default: a competent, forgettable serif. We were paying for Fraunces and displaying
+   Georgia. `opsz` is what makes a display cut look drawn rather than scaled. */
 h1, h2, h3, .brand, .eyebrow, .hero h1, section h2, .cta-band h2,
 .legal h1, .legal h2, .join-hero h1, .t-name, .pc-name {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 48, 'SOFT' 24, 'WONK' 0;
+}
+/* The big cuts get the display optical size, more softness, and the wonky (single-storey) alternates —
+   this is the difference between a serif and OUR serif. */
+.hero h1, .legal h1, .join-hero h1, .stat-n {
+  font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
+}
+/* Small numerals get a TEXT optical size. Setting opsz 144 on a 17px figure (which the first pass did)
+   thins the strokes to breaking point — the display cut is drawn for 84px, not for a stat row. */
+.tc-stats b { font-variation-settings: 'opsz' 24, 'SOFT' 20, 'WONK' 0; }
+/* Numerals line up in columns and stop shimmying when they tick. */
+.stat-n, .tc-stats b, .t-meta, .pc-loc {
+  font-variant-numeric: tabular-nums;
 }
 .eyebrow, .t-name { letter-spacing: 0; }
 a { color: var(--accent); text-decoration: none; }
@@ -100,9 +153,10 @@ header {
 
 /* hero */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding: 84px 0 70px; }
-.hero h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.025em; margin: 20px 0 0; }
+/* 36px at full width is a blog headline. A brand headline is display-scale. */
+.hero h1 { font-size: clamp(44px, 7vw, 84px); line-height: 0.98; font-weight: 800; letter-spacing: -0.03em; margin: 20px 0 0; text-wrap: balance; }
 .hero h1 .grn { color: var(--accent); }
-.hero p.lead { color: var(--subtle); font-size: 19px; margin: 20px 0 30px; max-width: 32em; }
+.hero p.lead { color: var(--subtle); font-size: 20px; margin: 20px 0 30px; max-width: 34em; }
 .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
 /* editorial kicker (replaces the generic "● Works with…" pill) */
 .kicker { color: var(--subtle); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
@@ -449,3 +503,153 @@ footer .spacer { flex: 1; }
 .tc-head .tag { flex: none; }
 @media (max-width: 640px) { .tgrid { grid-template-columns: 1fr; } }
 .sat-credit { color: var(--subtle); font-size: 12px; text-align: center; margin: 40px auto 0; opacity: .8; }
+
+
+/* ============================================================
+   POLISH PASS 2026-07-12 - measured against strava.com, komoot.com, alltrails.com
+   Photography is still owed: the landmark JPGs are not on the site yet. Everything here
+   is built so the photo drops straight into the well when it arrives.
+   ============================================================ */
+
+/* Section heads were 36px max inside an 1100px page. That is a blog, not a brand. */
+section h2 { font-size: clamp(32px, 4.4vw, 52px); line-height: 1.04; }
+section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past a readable measure */
+
+/* ---- The hero terrain ----
+   The homepage had no terrain, no route and no place above the fold: it sold an app, not Peru. We own 35
+   satellite route maps and used none of them. This lays the Inca route under the hero, graded warm so it
+   reads as our paper rather than a screenshot of a map app. */
+.hero-terrain {
+  position: absolute; inset: -8px -24px auto -24px; height: 470px; z-index: 0;
+  overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 58%, transparent 94%);
+          mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 58%, transparent 94%);
+}
+.hero-terrain img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: sepia(.55) saturate(.7) contrast(1.02) brightness(1.06);
+  opacity: .28;
+}
+@media (prefers-color-scheme: dark) {
+  .hero-terrain img { filter: sepia(.3) saturate(.55) brightness(.5); opacity: .42; }
+}
+
+/* The route, drawing itself across the terrain. One gesture, and it is the product. */
+.hero-route { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-route path {
+  fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1400; stroke-dashoffset: 1400;
+  animation: draw-route 2.8s cubic-bezier(.33,.9,.4,1) .4s forwards;
+}
+.hero-route circle { fill: var(--accent); opacity: 0; animation: node-in .5s ease-out 2.9s forwards; }
+@keyframes draw-route { to { stroke-dashoffset: 0; } }
+@keyframes node-in { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-route path { stroke-dashoffset: 0; animation: none; }
+  .hero-route circle { opacity: 1; animation: none; }
+}
+
+/* ---- The stats band ----
+   The site carried not one site-level figure, and said "around three dozen trails" when we can simply
+   count them. Komoot runs a hard stats block; Strava puts its number in the hero subhead. These are real. */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.stat { padding: 26px 20px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: none; padding-left: 0; }
+.stat-n {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(34px, 4.6vw, 58px); line-height: 1; letter-spacing: -0.03em;
+  color: var(--text); display: block;
+}
+.stat-l { color: var(--subtle); font-size: 14px; margin-top: 8px; display: block; }
+@media (max-width: 720px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { border-left: none; padding: 20px 0; }
+  .stat:nth-child(odd) { padding-right: 18px; }
+}
+
+/* ---- The postcard, as an actual postcard ----
+   BRAND names this component (milestone = postcard/stamp) and it shipped as three text divs with a 1px
+   DASHED SQUARE standing in for the stamp. A dashed square is not a stamp; it is a placeholder that
+   shipped. Real perforated stamp, real postmark rule. The photo well is cut and waiting. */
+.postcards .postcard { padding: 0; overflow: hidden; border-radius: var(--r-panel); box-shadow: var(--sh-card); }
+.postcards .postcard::after { content: none; }
+.pc-photo {
+  height: 104px; position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 18% 100%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 72%),
+    linear-gradient(160deg, color-mix(in srgb, var(--gold) 24%, var(--bg3)), var(--bg3));
+  border-bottom: 1px solid var(--line);
+}
+.pc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pc-photo .pc-contour {
+  position: absolute; inset: 0; opacity: .55;
+  background: url("img/contour.svg") center / 280px auto repeat-x;
+}
+.pc-stamp {
+  position: absolute; top: 10px; right: 10px; width: 34px; height: 40px;
+  background: var(--bg2); display: grid; place-items: center;
+  -webkit-mask: radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) -3px -3px / 6px 6px;
+          mask: radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) -3px -3px / 6px 6px;
+}
+.pc-stamp svg { width: 20px; height: 20px; color: var(--accent); }
+.pc-body { padding: 15px 16px 18px; }
+.postcard .pc-name { color: var(--text); font-weight: 700; font-size: 17px; }
+.postcard .pc-loc {
+  color: var(--subtle); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; margin-top: 3px;
+  padding-bottom: 9px; border-bottom: 1px solid var(--line);
+}
+.postcard .pc-story { color: var(--text); font-size: 13px; line-height: 1.55; margin-top: 10px; }
+
+/* ---- header: one persistent primary action ----
+   All three reference sites keep a primary CTA in the sticky bar. Ours had six flat grey links and
+   nothing to press. */
+.nav .btn-nav {
+  display: inline-block; font-weight: 700; font-size: 14px;
+  padding: 9px 18px; border-radius: var(--r-pill);
+  background: var(--accent); color: var(--btn-text); white-space: nowrap;
+}
+.nav .btn-nav:hover { filter: brightness(1.07); }
+@media (max-width: 720px) { .nav .btn-nav { margin-left: auto; } }
+
+/* ---- footer: three titled columns, not eleven links in a soup ---- */
+.foot-cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 28px; align-items: start; }
+.foot-cols h4 {
+  font-family: var(--font-display); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 10px; font-weight: 700;
+}
+.foot-cols a { display: block; color: var(--subtle); padding: 4px 0; font-size: 14px; }
+.foot-cols a:hover { color: var(--text); }
+.foot-note { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 18px; color: var(--subtle); font-size: 13px; }
+@media (max-width: 720px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
+
+/* ---- warm shadows everywhere (several were half-black on cream, which renders as blue-grey mud) ---- */
+.card, .hc-band { box-shadow: var(--sh-raised); }
+.banner, .shot-frameless, .demo-shots img, .tcard { box-shadow: var(--sh-card); }
+.postcard { box-shadow: var(--sh-card); }
+
+/* ---- trails page: continent jump-chips, so 36 cards are navigable ---- */
+.tnav {
+  position: sticky; top: 66px; z-index: 10;
+  display: flex; gap: 8px; flex-wrap: wrap; padding: 12px 0; margin-bottom: 6px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.tnav a {
+  font-size: 13px; font-weight: 700; color: var(--subtle);
+  border: 1px solid var(--line); background: var(--bg2);
+  padding: 7px 13px; border-radius: var(--r-pill);
+}
+.tnav a:hover { color: var(--text); border-color: var(--accent); }
+@media (max-width: 720px) { .tnav { top: 60px; overflow-x: auto; flex-wrap: nowrap; } }
+
+/* Nobody knows what 3,536 km means. Everybody knows what fourteen weeks means. */
+.tc-weeks { color: var(--accent); font-weight: 700; }
+
+/* One scroll reveal, honoured by reduced-motion. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
