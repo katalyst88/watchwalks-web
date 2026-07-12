@@ -16,22 +16,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="join-garmin.html">Garmin</a>
-    <a class="navlink" href="join-wearos.html">Wear OS</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="join-garmin.html">Garmin</a>
-        <a href="join-wearos.html">Wear OS</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -43,8 +47,10 @@
          An Apple page was showing a Garmin banner. There is no Apple banner artwork yet, and a wrong image
          is worse than none, so the page leads on its words until one is made. -->
     <span class="eyebrow">iPhone and Apple Watch</span>
-    <h1>Let's get you walking.</h1>
-    <p class="sub">Watch Walks for <b>iPhone</b> and <b>Apple Watch</b> is coming soon to the App&nbsp;Store. Your everyday steps will carry you down the Inca Trail, and it's <b>free</b> to begin. For iPhone (iOS&nbsp;16+) with Apple Watch Series&nbsp;4 or later (watchOS&nbsp;10+).</p>
+    <!-- All three join pages opened with "Let's get you walking." Each now leads with the thing that is
+         only true of its platform. On Apple that is: the steps are already being counted for you. -->
+    <h1>The steps Apple Health already counts, pointed at Machu Picchu.</h1>
+    <p class="sub">Watch Walks for <b>iPhone</b> and <b>Apple Watch</b> is coming soon to the App&nbsp;Store. There is no workout to start and no GPS to drain the battery: it reads the step count your phone and watch already keep, and walks you down the Inca Trail with it. <b>Free</b> to begin. For iPhone (iOS&nbsp;16+) with Apple Watch Series&nbsp;4 or later (watchOS&nbsp;10+).</p>
     <p style="margin-top:18px"><a class="btn" href="coming-soon.html">Coming soon to the App&nbsp;Store</a></p>
   </section>
 
@@ -86,13 +92,37 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="join-garmin.html">Garmin</a>
-    <a href="join-wearos.html">Wear OS</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 

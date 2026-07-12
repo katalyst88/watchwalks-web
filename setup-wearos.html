@@ -13,20 +13,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="setup-garmin.html">Garmin guide</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="setup-garmin.html">Garmin guide</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -36,7 +42,7 @@
   <h1>Setting up Watch Walks on Wear OS</h1>
   <p class="updated">For Samsung Galaxy Watch, Google Pixel Watch, Mobvoi TicWatch, OnePlus Watch and other Wear OS watches</p>
 
-  <p>On Wear OS, Watch Walks runs <strong>right on your watch</strong> &mdash; there's no pairing dance and nothing to leave running. The <strong>Inca Trail is free</strong>, and more trails are one-time in-app purchases. Setup takes a couple of minutes.</p>
+  <p>On Wear OS, Watch Walks runs <strong>right on your watch</strong>. There's no pairing dance and nothing to leave running. The <strong>Inca Trail is free</strong>, and every other trail is a one-time purchase. Setup takes a couple of minutes.</p>
 
   <h2>What you'll need</h2>
   <ul>
@@ -49,57 +55,87 @@
     <li>On the <strong>watch</strong>, press the crown/button to open the app list and tap the <strong>Play Store</strong>.</li>
     <li>If prompted, confirm it's signed in to the same Google account you use on your phone.</li>
   </ol>
-  <p>Tip: you can also open the Play Store on your phone, search Watch Walks, and use the device selector to send it to the watch &mdash; but installing from the watch's own Play Store is the simplest path.</p>
+  <p>Tip: you can also open the Play Store on your phone, search Watch Walks, and use the device selector to send it to the watch. Installing from the watch's own Play Store is the simplest path.</p>
 
   <h2>Step 2 &middot; Install Watch Walks</h2>
   <ol>
     <li>Search for <strong>Watch Walks</strong> on the watch's Play Store.</li>
     <li>Tap <strong>Install</strong>. It downloads straight to the watch.</li>
   </ol>
+  <!-- This guide told people to search a store the listing is not public in yet. -->
+  <p><strong>Not there yet?</strong> That is us, not you. The Play listing is still in closed testing while
+    Google reviews it for public release, so it will not turn up in a search. The
+    <a href="coming-soon.html">store page</a> says where it is up to, and the link goes live the day it opens.</p>
 
   <h2>Step 3 &middot; Open it and allow two permissions</h2>
   <ol>
     <li>Launch <strong>Watch Walks</strong> from the watch's app list.</li>
-    <li>Allow <strong>Physical activity</strong> &mdash; this lets the watch count your steps so they carry you down the trail.</li>
-    <li>Allow <strong>Notifications</strong> &mdash; so you get a little celebration on your wrist when you reach a landmark.</li>
+    <li>Allow <strong>Physical activity</strong>, which is what lets the watch count your steps and carry you down the trail.</li>
+    <li>Allow <strong>Notifications</strong>, so a small celebration lands on your wrist the moment you reach a landmark.</li>
     <li>That's it. It's standalone: no phone pairing, no account, nothing to set up.</li>
   </ol>
 
   <h2>Step 4 &middot; Add the Tile for a glance</h2>
   <ol>
     <li>From the watch face, swipe across to the <strong>Tiles</strong> carousel and tap to add a tile.</li>
-    <li>Choose the <strong>Watch Walks</strong> tile to see your distance, percent and next landmark at a glance &mdash; no need to open the app.</li>
+    <li>Choose the <strong>Watch Walks</strong> tile to see how far you have walked and what is next, without opening the app.</li>
   </ol>
 
   <h2>Step 5 &middot; (Optional) Add the phone companion</h2>
   <p>The free companion app gives you the big-screen view: your journey on a living map, the story of each landmark, and your wall of trail badges.</p>
 
   <h2>How walking works on Wear OS</h2>
-  <p>Just live your life. The watch counts your everyday steps &mdash; even while the app is closed &mdash; and they move you along the trail. Open the app whenever you like to see how far you've come, tap a landmark you've passed to read its story, and watch the celebration when you reach a new one. No GPS, no tracking a workout, no battery drain from a live activity.</p>
+  <p>Just live your life. The watch counts your everyday steps even while the app is closed, and they move you along the trail. Open the app whenever you like to see how far you've come, tap a landmark you've passed to read its story, and watch the celebration when you reach a new one. No GPS, no tracking a workout, no battery drain from a live activity.</p>
 
   <h2>Choosing and getting more trails</h2>
-  <p>Open <strong>Choose a trail</strong> in the app to see your trails. Only one trail is active at a time &mdash; the one your steps are counting toward. The Inca Trail is free; every other trail is a one-time in-app purchase, yours to keep. A trail you buy is tied to your Google account, so it's there on every device signed in with it.</p>
+  <p>Open <strong>Choose a trail</strong> in the app to see your trails. Only one trail is active at a time: the one your steps are counting toward. The Inca Trail is free; every other trail is a one-time in-app purchase, yours to keep. A trail you buy is tied to your Google account, so it's there on every device signed in with it.</p>
 
   <h2>Troubleshooting</h2>
   <ul>
     <li><strong>My steps aren't moving the trail.</strong> Open the app, go to system Settings &rarr; Apps &rarr; Watch Walks &rarr; Permissions, and make sure <strong>Physical activity</strong> is allowed.</li>
     <li><strong>I didn't get a milestone celebration.</strong> Check that <strong>Notifications</strong> are allowed for Watch Walks.</li>
     <li><strong>The watch Play Store can't find it.</strong> Confirm the watch is on Wear OS 3+ and signed in to your Google account; give it a minute after the watch comes online.</li>
-    <li><strong>"Not compatible" on my phone.</strong> That message means a build was offered to the wrong device &mdash; install the watch app from the <em>watch's</em> Play Store, and the phone companion from the <em>phone's</em> Play Store.</li>
+    <li><strong>"Not compatible" on my phone.</strong> That message means a build was offered to the wrong device. Install the watch app from the <em>watch's</em> Play Store, and the phone companion from the <em>phone's</em> Play Store.</li>
     <li><strong>Still stuck?</strong> Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</li>
   </ul>
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="setup-garmin.html">Garmin guide</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 
 
+<script src="openin.js"></script>
 </body>
 </html>

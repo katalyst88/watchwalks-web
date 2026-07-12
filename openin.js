@@ -1,7 +1,8 @@
 /* In-app browser guard: Messenger/Facebook/Instagram/etc. webviews usually aren't signed
-   into Google, so the closed-test opt-in + Play install silently fail. Detect those webviews
+   into Google, so a Play install started inside one silently fails. Detect those webviews
    and surface a prominent "Open in Chrome" banner (Android: force Chrome via an intent URL;
-   everyone: a copy-link fallback). No auto-redirect (avoids loops). */
+   everyone: a copy-link fallback). No auto-redirect (avoids loops).
+   The banner's copy used to say "to join", which was the closed beta talking. */
 (function () {
   var ua = navigator.userAgent || '';
   var apps = [
@@ -27,8 +28,8 @@
   var bar = el('div', 'position:sticky;top:0;z-index:99999;background:#1F5C3D;color:#F4EDDF;padding:14px 16px;text-align:center;font:600 15px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 2px 14px rgba(0,0,0,.28)');
   bar.setAttribute('role', 'alert');
   bar.appendChild(el('div', 'max-width:560px;margin:0 auto',
-    '<b>Open this page in Chrome to join.</b><br>' +
-    '<span style="font-weight:400;opacity:.92">Google sign-in won’t work inside the ' + label + ' browser — tap the <b>⋮</b> menu (top-right) and choose <b>Open in Chrome</b>.</span>'));
+    '<b>Open this page in your browser.</b><br>' +
+    '<span style="font-weight:400;opacity:.92">App installs and Google sign-in don’t work inside the ' + label + ' browser. Tap the <b>⋮</b> menu (top right) and choose <b>Open in Chrome</b>.</span>'));
   var btns = el('div', 'margin-top:11px');
   var openBtn = el('button', 'background:#F4B04A;color:#2B2218;border:0;border-radius:999px;padding:10px 18px;font:700 14px sans-serif;margin:0 6px 6px 0;cursor:pointer', 'Open in Chrome');
   var copyBtn = el('button', 'background:transparent;color:#F4EDDF;border:1px solid rgba(244,237,223,.5);border-radius:999px;padding:10px 18px;font:600 14px sans-serif;cursor:pointer', 'Copy link');

@@ -12,5 +12,6 @@
   <url><loc>https://watchwalks.com/setup-wearos.html</loc><priority>0.5</priority></url>
   <url><loc>https://watchwalks.com/setup-apple.html</loc><priority>0.5</priority></url>
   <url><loc>https://watchwalks.com/privacy.html</loc><priority>0.4</priority></url>
+  <url><loc>https://watchwalks.com/terms.html</loc><priority>0.3</priority></url>
   <url><loc>https://watchwalks.com/attribution.html</loc><priority>0.3</priority></url>
 </urlset>

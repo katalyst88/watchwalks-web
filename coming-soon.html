@@ -1,11 +1,24 @@
 <!doctype html>
 <html lang="en">
+<!-- STORE STATUS PAGE. Two of the three stores are not public yet, and a button that 404s is worse
+     than one that tells the truth, so every not-yet-live store button on the site lands here.
+
+     TO GO LIVE, one edit per store:
+       Google Play  https://play.google.com/store/apps/details?id=com.watchwalks.companion
+                    (verified 404 on 2026-07-13: the listing is in closed testing, so the public URL
+                     does not resolve). Restore it in join-wearos.html (3 buttons), join-garmin.html
+                     (companion button) and the row below.
+       App Store    https://apps.apple.com/app/id<APPID> once the iOS listing is approved. Restore it
+                    in join-apple.html (2 buttons) and the row below.
+     Garmin Connect IQ is LIVE (verified 200) and is linked directly everywhere. -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coming soon to the App Store | Watch Walks</title>
-<meta name="description" content="Watch Walks for iPhone and Apple Watch is coming soon to the App Store. Your everyday steps carry you down the world's greatest trails, with a story at every landmark.">
+<title>Where to get Watch Walks | Watch Walks</title>
+<meta name="description" content="Watch Walks is on the Garmin Connect IQ store today. The iPhone and Android apps are on their way. Here is exactly where each one stands.">
+<meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,57 +26,112 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="join-garmin.html">Garmin</a>
-    <a class="navlink" href="join-wearos.html">Wear OS</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="join-garmin.html">Garmin</a>
-        <a href="join-wearos.html">Wear OS</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
 </header>
 
 <main id="main" tabindex="-1" class="wrap">
-  <section class="join-hero">
-    <span class="eyebrow">iPhone and Apple Watch</span>
-    <h1>Coming soon to the App Store.</h1>
-    <p class="sub">Watch Walks for <b>iPhone</b> and <b>Apple Watch</b> is on its final approach to the App&nbsp;Store. Your everyday steps will carry you down the Inca Trail and dozens of the world's greatest routes, with a story unlocked at every landmark and medals to earn. There is nothing to start and no GPS to drain your battery. Just walk, and watch your journey unfold on your wrist.</p>
-    <p class="sub" style="margin-top:14px">We are putting the final touches on the App&nbsp;Store listing. Please check back here soon.</p>
-    <p style="margin-top:18px"><a class="btn" href="index.html">See how it works</a> <a class="btn ghost" href="trails.html">Browse the trails</a></p>
+  <section class="join-hero" style="text-align:left">
+    <span class="eyebrow">Where to get it</span>
+    <h1>On Garmin today. iPhone and Android are close.</h1>
+    <p class="sub" style="margin-left:0">Watch Walks is out on the Garmin Connect IQ store right now, with the Inca Trail free.
+      The iPhone and Android apps are finished and waiting on their stores. Rather than send you to a
+      page that does not exist yet, here is exactly where each one stands.</p>
+  </section>
+
+  <!-- A status list, not three hopeful cards. Each row says what is true today, and what you can do
+       about it today. -->
+  <section style="border-top:none;padding-top:8px">
+    <dl class="spec">
+      <div>
+        <dt>Garmin</dt>
+        <dd><b>Out now.</b> Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ
+          watches. The trail runs on the watch itself, and the Inca Trail is free.
+          <a class="btn" style="display:inline-block;margin-top:12px" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get it on Connect IQ</a></dd>
+      </div>
+      <div>
+        <dt>iPhone and Apple Watch</dt>
+        <dd><b>Not in the App Store yet.</b> The app is built and going through Apple's review. The
+          moment it is approved the link appears here and on the <a href="join-apple.html">Apple page</a>.
+          There is nothing to sign up for and no list to join. Just check back.</dd>
+      </div>
+      <div>
+        <dt>Android and Wear OS</dt>
+        <dd><b>Not on Google Play yet.</b> It is in closed testing while Google reviews it for public
+          release. Same promise: the link lands here and on the <a href="join-wearos.html">Wear OS page</a>
+          the day it opens.</dd>
+      </div>
+    </dl>
   </section>
 
   <section class="privacy-band">
-    <span class="eyebrow">What to expect</span>
-    <h2>Your journey, on your wrist.</h2>
-    <ul class="feat">
-      <li><b>Your steps become a trail</b>. Live your life as normal, and your everyday steps move you along the real route of each trail.</li>
-      <li><b>A story for every landmark</b>. Reach a milestone and unlock a short postcard from that place, so each trail becomes a journey you remember.</li>
-      <li><b>Medals and feats to collect</b>. Every trail has its own medal, with dozens more to earn for your streak, your biggest day, and your lifetime distance.</li>
-      <li><b>Private by design</b>. No ads, no tracking, no sign up. Your steps come from Apple Health and stay on your device.</li>
-      <li>Questions in the meantime? Email <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</li>
-    </ul>
+    <span class="eyebrow">In the meantime</span>
+    <h2>Pick the trail you will walk first.</h2>
+    <p class="sub">Thirty-six real routes, from the 43 km walk to Machu Picchu to the 4,265 km of the
+      Pacific Crest. Every one carries its measured elevation profile, its landmarks and its own medal,
+      and you can read the whole catalogue before you install a thing.</p>
+    <div class="cta-row">
+      <a class="btn" href="trails.html">See the 36 trails</a>
+      <a class="btn ghost" href="index.html#how">How it works</a>
+    </div>
+    <p class="sub" style="margin-top:26px;margin-bottom:0">A question in the meantime? Email
+      <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> and a real person will reply.</p>
   </section>
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="join-garmin.html">Garmin</a>
-    <a href="join-wearos.html">Wear OS</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 

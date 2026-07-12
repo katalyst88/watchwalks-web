@@ -13,20 +13,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="index.html">Home</a>
-    <a class="navlink" href="privacy.html">Privacy</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="index.html">Home</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -38,15 +44,20 @@
   <section style="border-top:none">
     <span class="eyebrow">Credits</span>
     <h1>Attribution</h1>
-    <p class="lead">Watch Walks is built with care, and we credit the makers whose work helps the site
-      look its best. The app, its trail content, the maps and the medals are our own; the device frames
-      our screenshots sit in are licensed from the creators below.</p>
+    <!-- "Built with care" is a sentence that could sit on any page on the internet. What this page is
+         actually for is naming the work we did not do ourselves. -->
+    <p class="lead">Some of what you see here is other people's work. The trails, the stories, the medals
+      and the elevation profiles are ours. The basemaps, the landmark photographs, the two typefaces and
+      the device frame our screenshots sit in are not, so here is who made them.</p>
 
     <h2>Device mockups</h2>
     <ul class="feat">
+      <!-- This credited the frame for something the site does not currently do: the screenshots on the
+           site are bare captures. The credit stays (the frame is used in the store listings, and the
+           website screenshots move into it with the next capture pass), but it no longer overstates. -->
       <li><b>Phone frame (Google Pixel 9 Pro).</b> Device frame from the open
         <a href="https://github.com/jamesjingyi/mockup-device-frames" target="_blank" rel="noopener">mockup-device-frames</a>
-        collection by James Jingyi (GitHub). Used to present screenshots of the Watch Walks companion app.</li>
+        collection by James Jingyi (GitHub). We present screenshots of the Watch Walks companion app in it.</li>
       <!-- WATCH-MOCKUP-CREDIT: replaced once the licensed round-watch mockup is added. -->
     </ul>
 
@@ -56,6 +67,11 @@
         contributors, tiles by <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>; terrain hillshade derived from public-domain elevation data.</li>
       <li><b>Landmark photos</b> in the companion app come from <a href="https://www.mapillary.com" target="_blank" rel="noopener">Mapillary</a>
         contributors, used under CC BY-SA with per-photo credit in the app.</li>
+      <!-- The site prints a high point for all 36 trails and never said where the number came from. -->
+      <li><b>Elevation.</b> Every profile on this site is sampled from a public 30&nbsp;m digital elevation
+        model (SRTM, ASTER and Mapzen terrain tiles) along each trail's real route. The figures are ours to
+        get wrong, not a guidebook's: where a trail's high point carries a "~", it is our reading of the
+        ground rather than a surveyed number.</li>
     </ul>
 
     <h2>Type</h2>
@@ -68,18 +84,40 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="brand" style="font-size:16px">
-      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
-      Watch Walks
-    </span>
-    <span class="spacer"></span>
-    <a href="privacy.html">Privacy</a>
-    <a href="attribution.html">Attribution</a>
-    <a href="mailto:watchwalksupport@gmail.com">Contact</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 
+<script src="openin.js"></script>
 </body>
 </html>

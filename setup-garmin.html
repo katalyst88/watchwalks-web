@@ -13,20 +13,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="setup-wearos.html">Wear OS guide</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="setup-wearos.html">Wear OS guide</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -36,7 +42,7 @@
   <h1>Setting up Watch Walks on Garmin</h1>
   <p class="updated">For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches</p>
 
-  <p>On Garmin, you install one free <strong>Watch Walks</strong> app from the Connect IQ store, and it comes with the <strong>Inca Trail free</strong>. Any other trails you unlock in the free phone companion, and they sync straight to your watch. The whole setup takes about five minutes.</p>
+  <p>On Garmin, you install one free <strong>Watch Walks</strong> app from the Connect IQ store, and it comes with the <strong>Inca Trail free</strong>. You buy any other trails in the free phone companion, and they sync straight to your watch. The whole setup takes about five minutes.</p>
 
   <h2>What you'll need</h2>
   <ul>
@@ -73,18 +79,18 @@
   </ol>
 
   <h2>Step 5 &middot; Add the phone companion (this is where you get more trails)</h2>
-  <p>The free Watch Walks companion app shows your journey on a living map, the story of each landmark, and the medal for every trail you finish. It is also where you browse and unlock other trails, which then sync to your watch.</p>
+  <p>The free Watch Walks companion app shows your journey on a living map, the story of each landmark, and the medal for every trail you finish. It is also where you browse and buy other trails, which then sync to your watch.</p>
   <ol>
     <li>Install the free companion app on your phone (iPhone or Android).</li>
     <li>Open it. It reads your progress straight from your watch over Bluetooth (through Connect IQ). Tap <strong>Sync</strong> any time to refresh.</li>
-    <li>To walk a different trail, choose or unlock it in the companion and it becomes your active trail on the watch.</li>
+    <li>To walk a different trail, choose it (or buy it) in the companion and it becomes your active trail on the watch.</li>
   </ol>
 
   <h2>How walking works on Garmin</h2>
   <p>Your everyday steps move you along the trail, with no GPS and no walk to track. One Garmin detail to know: the watch only <strong>sends</strong> your steps to the trail while the Watch Walks app is open. So open it on your watch now and then (and before you sync to the companion) to bring your progress up to date. Reach a landmark and its short story opens, and reach the end and you've conquered the trail.</p>
 
   <h2>Getting more trails</h2>
-  <p>You unlock other trails in the free phone companion, not the Connect IQ store. Open the companion, browse the trails, and unlock the one you want with a one-time purchase. It becomes your active trail and syncs to your watch over Bluetooth. Only one trail is active on the watch at a time, the one your steps are counting toward.</p>
+  <p>You buy other trails in the free phone companion, not the Connect IQ store. Open the companion, browse the trails, and buy the one you want. One payment, yours to keep. It becomes your active trail and syncs to your watch over Bluetooth. Only one trail is active on the watch at a time, the one your steps are counting toward.</p>
 
   <h2>Troubleshooting</h2>
   <ul>
@@ -98,15 +104,41 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="setup-wearos.html">Wear OS guide</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 
 
+<script src="openin.js"></script>
 </body>
 </html>

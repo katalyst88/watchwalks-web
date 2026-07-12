@@ -205,10 +205,21 @@ section .sub { color: var(--subtle); margin-top: 12px; margin-bottom: 40px; font
 /* privacy */
 .privacy-band { background: linear-gradient(180deg, rgba(46,213,115,.06), transparent); }
 
-/* trails */
+/* trails — the homepage teaser rows.
+   Each row carries the trail's real satellite route map and its identity colour (the same --tc the
+   trails page uses), so twelve trails no longer read as twelve copies of one green mountain. */
 .trails { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.trail { display: flex; align-items: center; gap: 12px; background: var(--bg2); border: 1px solid var(--line); border-radius: 12px; padding: 15px; }
-.trail svg { width: 30px; height: 30px; flex: none; }
+.trail {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 12px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tc, var(--accent)) 10%, var(--bg2)), var(--bg2) 60%);
+  border: 1px solid color-mix(in srgb, var(--tc, var(--accent)) 30%, var(--line));
+  border-left: 4px solid var(--tc, var(--accent));   /* the trail's own spine, as in the app */
+  border-radius: var(--r-card);
+}
+.trail .t-map {
+  width: 58px; height: 44px; flex: none; object-fit: cover; display: block;
+  border-radius: 8px; border: 1px solid color-mix(in srgb, var(--tc, var(--accent)) 45%, transparent);
+}
 .trail .t-name { font-weight: 700; font-size: 15px; }
 .trail .t-meta { color: var(--subtle); font-size: 13px; }
 .tag { margin-left: auto; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; }
@@ -236,11 +247,20 @@ footer .row a { display: inline-block; padding: 5px 0; }
 .banner { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto 22px;
   border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 18px 44px rgba(0,0,0,.28); }
 
-/* "pick your watch" choice cards on the beta section */
+/* "pick your watch" choice cards */
 .choice { display: flex; flex-direction: column; gap: 10px; }
 .choice h3 { font-size: 19px; }
 .choice p { color: var(--subtle); font-size: 15px; flex: 1; }
 .choice .btn { align-self: flex-start; margin-top: 4px; }
+/* The Garmin card spans two rows, so a short paragraph left a hole. These are the facts that fill it. */
+.choice-facts { list-style: none; display: grid; gap: 9px; margin: 2px 0 6px; }
+.choice-facts li { position: relative; padding-left: 26px; color: var(--text); font-size: 15px; font-weight: 600; }
+.choice-facts li::before {
+  content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 12px;
+  background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 14 L8 3 L12 9 L15 5 L22 14'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 14 L8 3 L12 9 L15 5 L22 14'/%3E%3C/svg%3E") no-repeat center / contain;
+}
 
 /* dedicated beta / join pages (join-garmin, join-wearos) — richer than the legal layout */
 .join-hero { border-top: none; padding: 30px 0 6px; text-align: center; }
@@ -265,10 +285,23 @@ footer .row a { display: inline-block; padding: 5px 0; }
 .legal p, .legal li { color: var(--subtle); font-size: 16px; }
 .legal ul { margin: 8px 0 8px 22px; }
 
-/* feature list */
-.feat { list-style: none; display: grid; gap: 13px; }
+/* feature list.
+   The bullet was content:"\2713" — the font's own checkmark, i.e. the framework default, on every
+   feature list on the site. It is now the ridge mark: the same single-stroke peak that franks the
+   postcard stamp, and the same shape as the elevation profiles. A mask, so it inherits the accent
+   and flips with the theme for free. */
+/* `* { margin: 0 }` left this list with no gap above it, so on the three join pages (where a two-line h2
+   is followed straight by the list, with no .sub between) the first bullet was printed ON TOP of the
+   headline. Seen on screen, invisible in the CSS. */
+.feat { list-style: none; display: grid; gap: 13px; margin-top: 22px; }
+section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
 .feat li { position: relative; padding-left: 30px; color: var(--subtle); font-size: 16px; }
-.feat li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+.feat li::before {
+  content: ""; position: absolute; left: 0; top: 6px; width: 17px; height: 13px;
+  background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 14 L8 3 L12 9 L15 5 L22 14'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 14 L8 3 L12 9 L15 5 L22 14'/%3E%3C/svg%3E") no-repeat center / contain;
+}
 .feat b { color: var(--text); }
 .feat-two { grid-template-columns: 1fr 1fr; gap: 13px 28px; }
 
@@ -303,7 +336,9 @@ footer .row a { display: inline-block; padding: 5px 0; }
 @media (max-width: 860px) {
   .hero, .feat-two { grid-template-columns: 1fr; }
   .grid3, .trails { grid-template-columns: 1fr; }
-  .hero-art { order: -1; }
+  /* .hero-art was order:-1, so a phone visitor's whole first screen was the app screenshot and not one
+     word of what the app is. The headline leads; the shot follows it. */
+  .hero-art { margin-top: 8px; }
 }
 
 /* phones: tighten gutters */
@@ -319,12 +354,17 @@ footer .row a { display: inline-block; padding: 5px 0; }
    Health Connect list, compatibility + contact pages
    ============================================================ */
 
-/* Frameless app screenshots: clean UI captures, no device chrome.
-   Just soft rounded corners + a gentle float, never a phone/watch frame. */
+/* App screenshots.
+   TEMPORARY: BRAND §3 requires these to sit in a real device mockup (img/mockups/pixel.png). Fresh
+   captures + the mockup composite are a separate job, so until then the shot needs a boundary of its own:
+   the app's own UI is warm cream, the page is warm cream, and on screen shot-medals.webp dissolved into
+   the background entirely — it read as an empty box, not a screenshot. A hairline and a real shadow is
+   what makes a paper-coloured capture on paper-coloured paper read as an object. */
 .shot-frameless {
   display: block; height: auto; width: 100%; max-width: 260px;
   border-radius: 26px; margin: 0 auto;
-  box-shadow: 0 30px 66px rgba(45,35,24,.30);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--sh-lifted);
 }
 .hero-shot { max-width: 300px; }
 @media (max-width: 480px) { .shot-frameless { max-width: 220px; } .hero-shot { max-width: 240px; } }
@@ -544,6 +584,9 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 }
 .foot-cols a { display: block; color: var(--subtle); padding: 4px 0; font-size: 14px; }
 .foot-cols a:hover { color: var(--text); }
+/* Was an inline style on index only. The footer is one block on all 16 pages now, so its one
+   paragraph is a class. */
+.foot-blurb { color: var(--subtle); font-size: 14px; margin-top: 10px; max-width: 26em; }
 .foot-note { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 18px; color: var(--subtle); font-size: 13px; }
 @media (max-width: 720px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
 
@@ -841,4 +884,12 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
   .prof-peak b { font-size: 14px; }
   .why-prof { padding: 16px 14px 14px; margin: 26px 0 34px; }
   .tc-stats { gap: 3px 14px; }
+  /* The hero terrain and the contour band bleed to -24px, which is the DESKTOP gutter. On a phone the
+     gutter is 16px, so they hung 8px past the viewport: body{overflow-x:hidden} killed the sideways
+     scroll, but the document was still 438px wide at a 430px viewport and every mobile screenshot came
+     out 8px too wide. The bleed has to match the gutter it bleeds out of. (This has to live down here:
+     .hero-terrain is declared in the polish block below the earlier phone media query, so an override
+     up there loses on source order.) */
+  .hero-terrain { inset: -8px -16px auto -16px; }
+  .hero::before { left: -16px; right: -16px; }
 }

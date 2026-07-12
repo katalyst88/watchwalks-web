@@ -13,20 +13,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="join-wearos.html">Wear OS</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="join-wearos.html">Wear OS</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -38,8 +44,10 @@
          named for what it actually is and only used here. -->
     <img class="banner" src="img/garmin-banner.png" width="1024" height="500" alt="Watch Walks: walk the world's greatest trails, the free companion for your Garmin watch">
     <span class="eyebrow">Garmin</span>
-    <h1>Let's get you walking.</h1>
-    <p class="sub">Two quick steps and your everyday steps start carrying you down the Inca Trail. It's <b>free</b>. For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches. Most people are walking in about five minutes.</p>
+    <!-- All three join pages opened with "Let's get you walking." Each now leads with the thing that is
+         only true of its platform. On Garmin that is: it is out, today, and it is quick. -->
+    <h1>Out now. About five minutes to your first kilometre.</h1>
+    <p class="sub">Two quick steps and your everyday steps start carrying you down the Inca Trail. It's <b>free</b>. For Forerunner, Fenix, Venu, Vivoactive, Epix, Instinct and other Connect IQ watches.</p>
     <p style="margin-top:18px"><a class="btn" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950" target="_blank" rel="noopener">Get it on Connect IQ</a></p>
   </section>
 
@@ -61,8 +69,9 @@
       <div class="card">
         <div class="n">3</div>
         <h3>Get the companion <span style="white-space:nowrap">(optional)</span></h3>
-        <p>The free phone app turns your steps into a living map, opens a story at every landmark, and gives you a badge for each trail, reading straight from your watch over Bluetooth.</p>
-        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Companion on Google Play</a>
+        <p>The free phone app turns your steps into a living map, opens a story at every landmark, and gives you a badge for each trail, reading straight from your watch over Bluetooth. The watch works on its own until it arrives.</p>
+        <!-- STORE LINK: the public Play URL 404s while the listing is in closed testing. See coming-soon.html. -->
+        <a class="btn ghost" href="coming-soon.html">Companion: coming soon</a>
       </div>
     </div>
     <p class="sub" style="margin-top:22px">Want every detail? See the full <a href="setup-garmin.html">Garmin setup guide</a>, or browse the <a href="faq.html#garmin">Garmin questions</a>.</p>
@@ -80,12 +89,37 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="join-wearos.html">Wear OS</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 

@@ -13,20 +13,26 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" style="color:inherit">
+    <a class="brand" href="index.html">
       <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
       Watch Walks
     </a>
     <span class="spacer"></span>
-    <a class="navlink" href="join-garmin.html">Garmin</a>
-    <a class="navlink" href="index.html">Home</a>
-    <!-- Under 720px every .navlink is hidden and nothing replaced it: a phone visitor got a
-         logo and no way out of the page. <details> needs no JS. -->
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get it free</a>
+    <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
+         A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
       <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
       <nav class="mnav-panel">
-        <a href="join-garmin.html">Garmin</a>
-        <a href="index.html">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get it free</a>
       </nav>
     </details>
   </div>
@@ -36,9 +42,14 @@
   <section class="join-hero">
     <img class="banner" src="img/wearos-banner.png" width="1024" height="500" alt="Watch Walks: walk the world's greatest trails, the free companion for your Wear OS watch">
     <span class="eyebrow">Wear OS and Samsung</span>
-    <h1>Let's get you walking.</h1>
-    <p class="sub">Watch Walks runs right on your wrist, turning your everyday steps into a journey down the Inca Trail. It's <b>free</b>. For Samsung Galaxy Watch, Google Pixel Watch, TicWatch, OnePlus Watch and other Wear OS 3+ watches.</p>
-    <p style="margin-top:18px"><a class="btn" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Get it on Google Play</a></p>
+    <!-- All three join pages opened with the same sentence ("Let's get you walking."), which is the
+         one thing three pages about three different watches should not share. Each now leads with the
+         thing that is only true of its platform. On Wear OS that is standalone: no phone in the loop. -->
+    <h1>Straight to your wrist. No phone needed.</h1>
+    <p class="sub">Watch Walks runs on the watch itself, turning your everyday steps into a journey down the Inca Trail. It's <b>free</b>. For Samsung Galaxy Watch, Google Pixel Watch, TicWatch, OnePlus Watch and other Wear OS 3+ watches.</p>
+    <!-- STORE LINK: the public Play URL 404s while the listing is in closed testing, so it points at the
+         status page. See the header comment in coming-soon.html to restore it. -->
+    <p style="margin-top:18px"><a class="btn" href="coming-soon.html">Coming soon to Google&nbsp;Play</a></p>
   </section>
 
   <section class="join-steps">
@@ -48,7 +59,7 @@
         <div class="n">1</div>
         <h3>Install on your watch</h3>
         <p>Open the <b>Play Store</b> on your <b>watch</b>, search for <b>Watch Walks</b>, and tap <b>Install</b>. It downloads straight to your wrist. Start with the free Inca Trail.</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Get it on Google Play</a>
+        <a class="btn" href="coming-soon.html">Coming soon to Google&nbsp;Play</a>
       </div>
       <div class="card">
         <div class="n">2</div>
@@ -60,7 +71,7 @@
         <div class="n">3</div>
         <h3>Get the companion <span style="white-space:nowrap">(optional)</span></h3>
         <p>The free phone app turns your steps into a living map, opens a story at every landmark, and gives you a badge for each trail you finish. Install it from Google Play on your phone.</p>
-        <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Companion on Google Play</a>
+        <a class="btn ghost" href="coming-soon.html">Companion: coming soon</a>
       </div>
     </div>
     <p class="sub" style="margin-top:22px">Want every detail? See the full <a href="setup-wearos.html">Wear OS &amp; Samsung setup guide</a>, or browse the <a href="faq.html#wearos">Wear OS questions</a>.</p>
@@ -79,12 +90,37 @@
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span class="spacer"></span>
-    <a href="join-garmin.html">Garmin</a>
-    <a href="faq.html">Questions</a>
-    <a href="index.html">Home</a>
-    <span>© 2026 Watch Walks</span>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 36 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
   </div>
 </footer>
 
