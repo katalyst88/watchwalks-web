@@ -333,11 +333,21 @@
   <section id="privacy" class="privacy-band">
     <span class="eyebrow">Built for privacy</span>
     <h2>Private by default.</h2>
-    <p class="sub">No ads, no analytics, no profiling. Walk with no account at all, or turn on optional cloud backup if you want your trails synced across devices. You're always in control.</p>
+    <!-- "turn on optional cloud backup" described a switch the app does not have. Backup rides on the
+         user's own iCloud/Google account; there is no in-app toggle, and privacy.html + faq.html were
+         corrected to say so. A store listing that disagrees with the binary is how an app gets pulled. -->
+    <p class="sub">No ads, no analytics, no profiling. There is no Watch Walks account to create. Your trails and badges are backed up through the iCloud or Google account you already have, so a new phone picks up where the old one left off, and <em>Settings &rarr; Start over</em> erases the lot.</p>
     <div class="grid-hero">
       <div class="card hero-card">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21V5"/><path d="M6 7.5 L16 4.5"/><path d="M6 12 L16 9"/><path d="M9.5 21 C 12 17.5, 14.5 15.5, 20 13"/></svg>
-        <h3>No account needed.</h3><p>Install and walk. We never ask who you are, and there is no sign-up screen between you and the trail. Signing in is optional, and only if you want your trails backed up to your own Google or iCloud account.</p>
+        <h3>No account needed.</h3><p>Install and walk. There is no sign-up screen between you and the trail, and we never ask who you are. The only account in the picture is the Google or Apple one already on your phone, which is where your trails and badges are backed up so a new phone finds them.</p>
+        <!-- The card spans both rows, so its short paragraph left ~280px of dead space under it — the same
+             hole the Garmin card had. Three facts the privacy policy actually stands behind. -->
+        <ul class="choice-facts">
+          <li>No ads, no analytics, no trackers</li>
+          <li>Your steps are read on your device and stay there</li>
+          <li>Settings &rarr; Start over erases everything, backup included</li>
+        </ul>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21"/><path d="M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/><circle cx="12" cy="12" r="1.4"/></svg>
@@ -345,7 +355,7 @@
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><circle cx="12" cy="15" r="3.4"/><path d="M10 16.2 L11.6 13.6 L12.7 15.2 L13.5 14 L14.6 16.2"/></svg>
-        <h3>Yours to keep</h3><p>Your progress lives on your devices. Optional backup syncs only your trails and medals, nothing more.</p>
+        <h3>Yours to keep</h3><p>Your progress lives on your devices. The backup carries your trails, medals and streak, and nothing else. Your raw step data is never backed up.</p>
       </div>
     </div>
   </section>

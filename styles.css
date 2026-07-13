@@ -550,11 +550,20 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
   position: absolute; inset: 0; opacity: .55;
   background: url("img/contour.svg") center / 280px auto repeat-x;
 }
+/* A perforated stamp is solid paper with bitten EDGES. The single dot-grid mask below bit the whole
+   stamp: on screen it read as a 34x40 patch of white mesh with the glyph shredded inside it, not as a
+   stamp. (Invisible in the CSS, obvious in the picture.) Two mask layers, unioned: a solid core inset
+   by one perforation, and the dot grid — so only the 3px rim gets punched. */
 .pc-stamp {
   position: absolute; top: 10px; right: 10px; width: 34px; height: 40px;
   background: var(--bg2); display: grid; place-items: center;
-  -webkit-mask: radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) -3px -3px / 6px 6px;
-          mask: radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) -3px -3px / 6px 6px;
+  -webkit-mask:
+    linear-gradient(#000, #000) center / calc(100% - 6px) calc(100% - 6px) no-repeat,
+    radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) 0 0 / 6px 6px;
+          mask:
+    linear-gradient(#000, #000) center / calc(100% - 6px) calc(100% - 6px) no-repeat,
+    radial-gradient(circle at 3px 3px, transparent 2.4px, #000 2.5px) 0 0 / 6px 6px;
+  filter: drop-shadow(0 1px 2px rgba(62,44,26,.18));
 }
 .pc-stamp svg { width: 20px; height: 20px; color: var(--accent); }
 .pc-body { padding: 15px 16px 18px; }
