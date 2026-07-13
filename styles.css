@@ -295,7 +295,10 @@ footer .row a { display: inline-block; padding: 5px 0; }
    headline. Seen on screen, invisible in the CSS. */
 .feat { list-style: none; display: grid; gap: 13px; margin-top: 22px; }
 section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
-.feat li { position: relative; padding-left: 30px; color: var(--subtle); font-size: 16px; }
+/* A single-column .feat ran the full 1100px: ~110 characters a line, well past a readable measure
+   (the rest of the page is held to 34em). .feat-two already halves it, so it opts out. */
+.feat li { position: relative; padding-left: 30px; color: var(--subtle); font-size: 16px; max-width: 46em; }
+.feat-two li { max-width: none; }
 .feat li::before {
   content: ""; position: absolute; left: 0; top: 6px; width: 17px; height: 13px;
   background: var(--accent);
