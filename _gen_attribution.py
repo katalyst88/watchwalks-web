@@ -79,12 +79,20 @@ def main():
     trails = defaultdict(list)
     total = 0
 
+    # ⚠️ DEDUPE BY PACK KEY. A trail can have a manifest in BOTH its own pack module AND the app's
+    # bundled assets (the South Pole has exactly that). Globbing both double-counted the trail and put
+    # "882 photographs" on a page whose entire purpose is being accurate about the photographs. The true
+    # figure, from `photo_rekey.py audit`, is 873. Count each pack ONCE.
+    seen_keys = set()
     for man in glob.glob(os.path.join(REPO, "watchwalks-android", "*", "src", "main", "assets",
                                       "milestones", "*", "manifest.json")) + \
                glob.glob(os.path.join(REPO, "watchwalks-android", "app", "src", "main", "assets",
                                       "milestones", "*", "manifest.json")):
         data = json.load(open(man, encoding="utf-8"))
         key = data.get("key") or os.path.basename(os.path.dirname(man))
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
         for m in data.get("milestones", []):
             if not m.get("image"):
                 continue
