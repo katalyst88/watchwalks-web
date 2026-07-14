@@ -45,7 +45,7 @@
     <a class="navlink" href="trails.html">Trails</a>
     <a class="navlink" href="compatibility.html">Watches</a>
     <a class="navlink" href="faq.html">Questions</a>
-    <a class="btn-nav" href="#get">Get it free</a>
+    <a class="btn-nav" href="#get">Get Watch&nbsp;Walks</a>
     <!-- Under 720px every .navlink is hidden, so this is the only way out of the page on a phone.
          A <details> disclosure needs no JS and closes on Escape for free. -->
     <details class="mnav">
@@ -55,7 +55,7 @@
         <a href="trails.html">Trails</a>
         <a href="compatibility.html">Watches</a>
         <a href="faq.html">Questions</a>
-        <a href="#get">Get it free</a>
+        <a href="#get">Get Watch&nbsp;Walks</a>
       </nav>
     </details>
   </div>
@@ -83,7 +83,12 @@
       <h1>Walk the world's <span class="grn">greatest trails</span> with the steps you already take.</h1>
       <!-- The one genuinely brilliant sentence on this site used to live ONLY inside the FAQ's JSON-LD,
            where no human being would ever read it. It answers the only question a visitor actually has. -->
-      <p class="lead">About 5,000 steps a day carries you roughly three kilometres down a real trail. On the Camino de Santiago that is 780 kilometres of Spain, reached one village at a time. Walk far enough and a landmark's story opens. Nothing to start, no account, no GPS.</p>
+      <!-- ONE PACE, SAID OUT LOUD (2026-07-14). 5,000 steps x the app's 0.72 m stride = 3.6 km a day, and
+           every duration on this site is computed from that one number — see KM_PER_DAY in _gen_profiles.py.
+           The cards used to run at ~5.6 km/day, a rate stated nowhere, so a reader doing exactly the 5,000
+           steps this sentence promises finished the Camino eleven weeks late. Do not reintroduce a second
+           pace to make a number look smaller. -->
+      <p class="lead">About 5,000 steps a day carries you 3.6 kilometres down a real trail. On the Camino de Santiago that is 780 kilometres of Spain, reached one village at a time &mdash; roughly seven months of ordinary days. Walk far enough and a landmark's story opens. Nothing to start, no account, no GPS.</p>
       <div class="cta cta-row">
         <a class="btn" href="#get">Start the Inca Trail, free</a>
       </div>
@@ -112,18 +117,23 @@
     <div class="stat"><span class="stat-n">36</span><span class="stat-l">real trails, seven continents</span></div>
     <div class="stat"><span class="stat-n">28,324</span><span class="stat-l">kilometres of route</span></div>
     <div class="stat"><span class="stat-n">1,073</span><span class="stat-l">landmarks with a story</span></div>
-    <div class="stat"><span class="stat-n">One</span><span class="stat-l">free trail to start, no account</span></div>
+    <!-- This tile used to read "One — free trail to start". Three tiles about the world and a fourth about
+         the price tag: that is selling on price, and JD pulled the same line out of the App Store listing.
+         The Pacific Crest is the longest trail in the catalogue (SampleData.kt: 4,265 km) and it is the one
+         a person actually wants to hear about. The free trail is still stated as a FACT further down the
+         page and on every trail card — it just does not lead. -->
+    <div class="stat"><span class="stat-n">4,265</span><span class="stat-l">kilometres on the Pacific Crest, the longest</span></div>
   </section>
 
   <!-- 1. WHY IT'S MOTIVATING — story cards, milestone photos, medals, targets -->
   <section id="why">
     <span class="eyebrow">Why you'll keep coming back</span>
-    <!-- "About two weeks", not "about a month". The lead directly above says 5,000 steps carries you
-         roughly three kilometres (the app's stride is 0.72 m, so that is if anything conservative). At
-         three kilometres a day, 43 km is a fortnight — "a month" needed a walker doing 2,000 steps a day
-         and contradicted our own headline number. -->
-    <h2>43 km of Inca stone. 12 landmarks. About two weeks of ordinary walking.</h2>
+    <!-- "About two weeks": 43 km at the site's ONE pace — 5,000 steps x 0.72 m = 3.6 km a day — is 12 days.
+         Same number as the lead above and as every card on trails.html. -->
+    <h2>43 km of Inca stone. 12 landmarks. About two weeks, at 5,000 steps a day.</h2>
     <p class="sub">The step counter you already have only ever shows a number. Watch Walks turns that number into somewhere real, and gives you a reason to keep walking.</p>
+
+
 
 
 
@@ -307,7 +317,7 @@
          the first attempt hoisted step 2 to the front and the page read "2, 1, 3". -->
     <div class="grid-steps">
       <div class="card"><div class="n">1</div><h3>Get it on your watch or phone</h3><p>Install Watch Walks on Garmin, Wear OS, Apple Watch, or as a free iPhone or Android app. The Inca Trail is free everywhere.</p></div>
-      <div class="card hero-card"><div class="n">2</div><h3>Walk as normal. That is the whole method.</h3><p>Nothing to start, nothing to record, nothing to carry. Your commute, the shops, the dog, a proper hike: it all counts. Check in whenever you like to see how far you have come and what is waiting ahead. About 5,000 steps a day is roughly three kilometres of Inca stone.</p></div>
+      <div class="card hero-card"><div class="n">2</div><h3>Walk as normal. That is the whole method.</h3><p>Nothing to start, nothing to record, nothing to carry. Your commute, the shops, the dog, a proper hike: it all counts. Check in whenever you like to see how far you have come and what is waiting ahead. About 5,000 steps a day is 3.6 kilometres of Inca stone.</p></div>
       <div class="card"><div class="n">3</div><h3>Collect the landmarks</h3><p>Pass each milestone and a short story of the place opens, with a real photo, all the way to the finish.</p></div>
     </div>
   </section>
@@ -316,7 +326,11 @@
   <section id="trails">
     <span class="eyebrow">The trails</span>
     <h2>From Peru to New Zealand, the world's greatest walks.</h2>
-    <p class="sub">Dozens of legendary trails, each a complete journey from start to finish with its own offline <b>satellite map</b>. Walk the whole Inca Trail free first. If you love it, buy any other trail once and it is yours to keep. No subscription. Reach the finish and the trail is still yours to walk again, or in reverse, climbing a rank on its medal each time.</p>
+    <!-- The old copy led with the price: "Walk the whole Inca Trail free first. If you love it, buy any
+         other trail once…", and closed with "Buy one once and it is yours forever." The pricing FACTS are
+         still here, in one plain sentence, because a person deciding what to walk needs them — they just no
+         longer do the selling. Lead with the place. (JD, 2026-07-14; same call as the App Store listing.) -->
+    <p class="sub">Dozens of legendary trails, each a complete journey from start to finish with its own offline <b>satellite map</b>: 43 km of Inca stone, 780 km of Spain, 4,265 km of the Pacific Crest. The Inca Trail is free; every other trail is a one-time purchase, yours to keep, with no subscription. Reach the finish and the trail is still yours to walk again, or in reverse, climbing a rank on its medal each time.</p>
     <!-- Twelve trails once shared one identical mountain glyph, in one identical green: the exact
          UNIFORM tell BRAND §11 rules out ("if two trails look interchangeable, the refresh is not
          done"). Each row now carries that trail's own satellite route map and its own identity
@@ -335,7 +349,7 @@
       <div class="trail" style="--tc:#6CC6B7"><img class="t-map" src="img/trailmaps/kungsleden.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Kungsleden</div><div class="t-meta">Sweden &middot; 440 km</div></div><span class="tag price">Paid</span></div>
       <div class="trail" style="--tc:#8A592E"><img class="t-map" src="img/trailmaps/nakasendo.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Nakasendo Way</div><div class="t-meta">Japan &middot; 530 km</div></div><span class="tag price">Paid</span></div>
     </div>
-    <p class="sub" style="margin-top:14px;font-size:15px">Thirty-six trails and growing. Buy one once and it is yours forever, on the same store account.</p>
+    <p class="sub" style="margin-top:14px;font-size:15px">Thirty-six trails and growing, on all seven continents &mdash; the Appalachian, the Nakasendo, the last degree of latitude to the South Pole.</p>
     <div class="cta-row" style="margin-top:20px">
       <a class="btn" href="trails.html">See the trails</a>
     </div>
@@ -463,7 +477,10 @@
        used to fire three identical buttons, two of which led to stores that are not open yet. -->
   <section class="cta-band">
     <h2>Forty-three kilometres of Inca stone, starting with tomorrow's walk to the shops.</h2>
-    <p class="sub" style="margin:0 auto 22px">The Inca Trail is free, on the watch you already wear. Nothing to start, no account, no GPS.</p>
+    <!-- The closing line used to open on the price ("The Inca Trail is free, on the watch you already
+         wear"). The free trail is stated as a fact twice in the Get section directly above, where a person
+         is actually choosing; the last word of the page is the walk, not the tag. -->
+    <p class="sub" style="margin:0 auto 22px">Twelve landmarks, from the river gate to the Sun Gate, on the watch you already wear. Nothing to start, no account, no GPS.</p>
     <div class="cta-row center">
       <a class="btn" href="join-garmin.html">Start the Inca Trail on Garmin</a>
       <a class="btn ghost" href="coming-soon.html">iPhone and Android: where they're up to</a>
