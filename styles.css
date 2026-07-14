@@ -545,7 +545,10 @@ section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
 .tc-stats b { font-family: var(--font-display); font-weight: 600; color: var(--text); font-size: 17px; }
 .tc-head .tag { flex: none; }
 @media (max-width: 640px) { .tgrid { grid-template-columns: 1fr; } }
-.sat-credit { color: var(--subtle); font-size: 12px; text-align: center; margin: 40px auto 0; opacity: .8; }
+/* The imagery credit is a LICENCE OBLIGATION, not decoration. It carried opacity:.8, which dropped it to
+   3.73:1 on the cream paper — under the 4.5:1 floor for 12px text. At full opacity it is 5.71:1 (light)
+   and 6.72:1 (dusk). Do not fade it again. */
+.sat-credit { color: var(--subtle); font-size: 12px; text-align: center; margin: 40px auto 0; }
 
 
 /* ============================================================
@@ -959,8 +962,10 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 .thero-body { padding: 26px 30px 30px; display: flex; flex-direction: column; gap: 10px; }
 .thero-body .tc-head { align-items: center; }
 .thero-body .eyebrow { flex: 1; }
-.thero-body h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 3.4vw, 40px);
-  letter-spacing: -0.02em; line-height: 1.05; }
+/* h2 since the free-trail hero was promoted out of an H1 -> H3 heading skip. h3 stays in the selector
+   so the rule survives any older markup. */
+.thero-body h2, .thero-body h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 3.4vw, 40px);
+  letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
 .thero-blurb { font-size: 16px; line-height: 1.6; }
 .thero-prof { margin-top: 6px; }
 .thero-prof .prof-svg { height: 150px; }

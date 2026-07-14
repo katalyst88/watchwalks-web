@@ -104,10 +104,13 @@
     </div>
   </section>
 
-  <!-- The catalogue is the proof. These are counted, not estimated. -->
+  <!-- The catalogue is the proof. These are counted, not estimated: 36 trails and 28,324 km are the sum
+       of the shipping catalogue (watchwalks-ios GeneratedTrails.swift == SampleData.kt), and 1,073 is the
+       sum of their milestones. The old 28,131 was the same sum with the High Atlas Traverse counted at
+       110 km when the trail in the app is 303 km. If a trail's length changes, this number changes. -->
   <section class="stats reveal" style="border-top:none;padding:0" aria-label="What is in Watch Walks">
     <div class="stat"><span class="stat-n">36</span><span class="stat-l">real trails, seven continents</span></div>
-    <div class="stat"><span class="stat-n">28,131</span><span class="stat-l">kilometres of route</span></div>
+    <div class="stat"><span class="stat-n">28,324</span><span class="stat-l">kilometres of route</span></div>
     <div class="stat"><span class="stat-n">1,073</span><span class="stat-l">landmarks with a story</span></div>
     <div class="stat"><span class="stat-n">One</span><span class="stat-l">free trail to start, no account</span></div>
   </section>
@@ -115,7 +118,11 @@
   <!-- 1. WHY IT'S MOTIVATING — story cards, milestone photos, medals, targets -->
   <section id="why">
     <span class="eyebrow">Why you'll keep coming back</span>
-    <h2>43 km of Inca stone. 12 landmarks. About a month of ordinary walking.</h2>
+    <!-- "About two weeks", not "about a month". The lead directly above says 5,000 steps carries you
+         roughly three kilometres (the app's stride is 0.72 m, so that is if anything conservative). At
+         three kilometres a day, 43 km is a fortnight — "a month" needed a walker doing 2,000 steps a day
+         and contradicted our own headline number. -->
+    <h2>43 km of Inca stone. 12 landmarks. About two weeks of ordinary walking.</h2>
     <p class="sub">The step counter you already have only ever shows a number. Watch Walks turns that number into somewhere real, and gives you a reason to keep walking.</p>
 
 
@@ -326,7 +333,7 @@
       <div class="trail" style="--tc:#439D58"><img class="t-map" src="img/trailmaps/appalachian.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Appalachian Trail</div><div class="t-meta">USA &middot; 3,536 km</div></div><span class="tag price">Paid</span></div>
       <div class="trail" style="--tc:#4FB3C0"><img class="t-map" src="img/trailmaps/pacific-crest.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Pacific Crest Trail</div><div class="t-meta">USA &middot; 4,265 km</div></div><span class="tag price">Paid</span></div>
       <div class="trail" style="--tc:#6CC6B7"><img class="t-map" src="img/trailmaps/kungsleden.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Kungsleden</div><div class="t-meta">Sweden &middot; 440 km</div></div><span class="tag price">Paid</span></div>
-      <div class="trail" style="--tc:#8A592E"><img class="t-map" src="img/trailmaps/nakasendo.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Nakasendo Way</div><div class="t-meta">Japan &middot; 534 km</div></div><span class="tag price">Paid</span></div>
+      <div class="trail" style="--tc:#8A592E"><img class="t-map" src="img/trailmaps/nakasendo.webp" width="680" height="430" alt="" loading="lazy"><div><div class="t-name">Nakasendo Way</div><div class="t-meta">Japan &middot; 530 km</div></div><span class="tag price">Paid</span></div>
     </div>
     <p class="sub" style="margin-top:14px;font-size:15px">Thirty-six trails and growing. Buy one once and it is yours forever, on the same store account.</p>
     <div class="cta-row" style="margin-top:20px">
@@ -359,11 +366,11 @@
     <!-- "turn on optional cloud backup" described a switch the app does not have. Backup rides on the
          user's own iCloud/Google account; there is no in-app toggle, and privacy.html + faq.html were
          corrected to say so. A store listing that disagrees with the binary is how an app gets pulled. -->
-    <p class="sub">No ads, no analytics, no profiling. There is no Watch Walks account to create. Your trails and badges are backed up through the iCloud or Google account you already have, so a new phone picks up where the old one left off, and <em>Settings &rarr; Start over</em> erases the lot.</p>
+    <p class="sub">No ads, no analytics, no profiling. There is no Watch Walks account to create. Your trails and medals are backed up through the iCloud or Google account you already have, so a new phone picks up where the old one left off, and <em>Settings &rarr; Start over</em> erases the lot.</p>
     <div class="grid-hero">
       <div class="card hero-card">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21V5"/><path d="M6 7.5 L16 4.5"/><path d="M6 12 L16 9"/><path d="M9.5 21 C 12 17.5, 14.5 15.5, 20 13"/></svg>
-        <h3>No account needed.</h3><p>Install and walk. There is no sign-up screen between you and the trail, and we never ask who you are. The only account in the picture is the Google or Apple one already on your phone, which is where your trails and badges are backed up so a new phone finds them.</p>
+        <h3>No account needed.</h3><p>Install and walk. There is no sign-up screen between you and the trail, and we never ask who you are. The only account in the picture is the Google or Apple one already on your phone, which is where your trails and medals are backed up so a new phone finds them.</p>
         <!-- The card spans both rows, so its short paragraph left ~280px of dead space under it — the same
              hole the Garmin card had. Three facts the privacy policy actually stands behind. -->
         <ul class="choice-facts">
