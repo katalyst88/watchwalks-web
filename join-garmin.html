@@ -40,9 +40,18 @@
 
 <main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <!-- The file was img/beta-banner.png. The beta is over; the artwork is Garmin-specific, so it is now
-         named for what it actually is and only used here. -->
-    <img class="banner" src="img/garmin-banner.png" width="1024" height="500" alt="Watch Walks: walk the world's greatest trails, the free companion for your Garmin watch">
+    <!-- img/garmin-banner.png used to sit here: a flat green gradient with the app icon on it and
+         "Walk the world's greatest trails" in a system font — a stock app-store graphic on a warm paper
+         site, repeating the headline directly beneath it. It was the first thing a Garmin visitor saw.
+         Deleted. The hero now stands on the real Camino, graded to our paper, with the route drawn
+         across it: no image file, no device art, and it recolours with the theme. -->
+    <div class="join-terrain" aria-hidden="true">
+      <img src="img/trailmaps/camino.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
+    </div>
+    <svg class="join-route" viewBox="0 0 1100 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M40 250 C 180 232, 250 176, 380 182 S 590 226, 700 156 C 800 96, 900 118, 1060 58"/>
+      <circle cx="1060" cy="58" r="7"/>
+    </svg>
     <span class="eyebrow">Garmin</span>
     <!-- All three join pages opened with "Let's get you walking." Each now leads with the thing that is
          only true of its platform. On Garmin that is: it is out, today, and it is quick. -->

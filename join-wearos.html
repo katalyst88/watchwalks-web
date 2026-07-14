@@ -40,7 +40,16 @@
 
 <main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <img class="banner" src="img/wearos-banner.png" width="1024" height="500" alt="Watch Walks: walk the world's greatest trails, the free companion for your Wear OS watch">
+    <!-- img/wearos-banner.png (flat green gradient, app icon, system-font headline — stock app-store
+         artwork on a paper site, repeating the h1 below it) deleted. Same terrain hero as the other join
+         pages: the real Camino, graded to our paper, with the route drawn across it. -->
+    <div class="join-terrain" aria-hidden="true">
+      <img src="img/trailmaps/camino.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
+    </div>
+    <svg class="join-route" viewBox="0 0 1100 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M40 250 C 180 232, 250 176, 380 182 S 590 226, 700 156 C 800 96, 900 118, 1060 58"/>
+      <circle cx="1060" cy="58" r="7"/>
+    </svg>
     <span class="eyebrow">Wear OS and Samsung</span>
     <!-- All three join pages opened with the same sentence ("Let's get you walking."), which is the
          one thing three pages about three different watches should not share. Each now leads with the

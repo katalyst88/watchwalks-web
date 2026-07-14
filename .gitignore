@@ -1,3 +1,6 @@
 _*
 *.log
 *.ps1
+
+# raw emulator captures (the published webp files are committed; these are not)
+img/_raw/

@@ -43,9 +43,16 @@
 
 <main id="main" tabindex="-1" class="wrap">
   <section class="join-hero">
-    <!-- This carried img/beta-banner.png, whose artwork reads "the free companion for your Garmin watch".
-         An Apple page was showing a Garmin banner. There is no Apple banner artwork yet, and a wrong image
-         is worse than none, so the page leads on its words until one is made. -->
+    <!-- This page once carried the GARMIN banner, on an Apple page. That artwork is now deleted from the
+         site entirely, and this page gets the same terrain hero as the other two: the real Camino, graded
+         to our paper. No banner file, no device art, nothing to go stale. -->
+    <div class="join-terrain" aria-hidden="true">
+      <img src="img/trailmaps/camino.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
+    </div>
+    <svg class="join-route" viewBox="0 0 1100 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M40 250 C 180 232, 250 176, 380 182 S 590 226, 700 156 C 800 96, 900 118, 1060 58"/>
+      <circle cx="1060" cy="58" r="7"/>
+    </svg>
     <span class="eyebrow">iPhone and Apple Watch</span>
     <!-- All three join pages opened with "Let's get you walking." Each now leads with the thing that is
          only true of its platform. On Apple that is: the steps are already being counted for you. -->

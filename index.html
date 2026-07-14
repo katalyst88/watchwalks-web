@@ -67,8 +67,12 @@
        The old hero had no terrain, no route and no place above the fold: it sold an app. The Inca route
        map now lies under it, warm-graded, with the 43 km route drawing itself across. -->
   <section class="hero" style="border-top:none">
+    <!-- The terrain under the hero is the CAMINO now, not the Inca: the hero screenshot beside it is the
+         Camino (JD's hero trail, 2026-07-13 — the same trail the Play listing opens on), and a page whose
+         picture shows one trail while the ground under it is another is a page arguing with itself.
+         The free Inca Trail keeps the CTA, and the whole section below is still its 43 km. -->
     <div class="hero-terrain" aria-hidden="true">
-      <img src="img/trailmaps/inca-trail.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
+      <img src="img/trailmaps/camino.webp" alt="" width="680" height="430" loading="eager" fetchpriority="high">
       <svg class="hero-route" viewBox="0 0 1100 460" preserveAspectRatio="none" aria-hidden="true">
         <path d="M40 392 C 150 372, 205 300, 300 296 S 470 336, 560 268 C 650 200, 700 236, 800 176 S 980 128, 1060 84"/>
         <circle cx="1060" cy="84" r="7"/>
@@ -79,23 +83,22 @@
       <h1>Walk the world's <span class="grn">greatest trails</span> with the steps you already take.</h1>
       <!-- The one genuinely brilliant sentence on this site used to live ONLY inside the FAQ's JSON-LD,
            where no human being would ever read it. It answers the only question a visitor actually has. -->
-      <p class="lead">About 5,000 steps a day carries you roughly three kilometres down the Inca Trail. Forty-three kilometres to Machu&nbsp;Picchu, so about a month of ordinary walking. Reach a landmark and its story opens. Nothing to start, no account, no GPS.</p>
+      <p class="lead">About 5,000 steps a day carries you roughly three kilometres down a real trail. On the Camino de Santiago that is 780 kilometres of Spain, reached one village at a time. Walk far enough and a landmark's story opens. Nothing to start, no account, no GPS.</p>
       <div class="cta cta-row">
         <a class="btn" href="#get">Start the Inca Trail, free</a>
       </div>
       <p class="hero-note">On Garmin, Wear OS and Apple Watch, with a free iPhone or Android companion. <a href="trails.html">See all 36 trails &rarr;</a></p>
     </div>
     <div class="hero-art">
-      <!-- ⚠️ TODO — STALE SCREENSHOT. img/shot-journey.webp is the OLD Journey screen: it heroes a giant
-           "97.7 %". The app has since been rebuilt around distance walked, with an elevation profile and
-           an inline map, and the percentage is now only the fill of the ring. Nothing in the copy on this
-           page describes the old screen, so the words are safe; the picture is not. Fresh captures are
-           being taken separately and need JD's sign-off, so DO NOT swap this image in passing.
-           The same stale shot is used at img/shot-story.webp and img/shot-medals.webp below.
-           BRAND §3 also requires the replacements to sit in a real device mockup (img/mockups/pixel.png,
-           composited by img/mockups/_composite.py) — .shot-frameless goes away at the same time.
-           The alt text below describes the trail, not the old chrome, so it survives the swap. -->
-      <img class="shot-frameless hero-shot" src="img/shot-journey.webp" width="1080" height="2172" alt="The Watch Walks app showing progress along the Inca Trail, with the route drawn across a satellite map and the landmarks still ahead" loading="eager" fetchpriority="high">
+      <!-- UNFRAMED (BRAND §3, amended by JD 2026-07-13). This is the screenshot, full stop: no device
+           mockup, and above all no CSS-drawn bezel. It stands on a .shot-plate — the trail's own gold
+           washed into the paper, the contour motif behind it, a warm shadow under it — which is what
+           stops a cream capture dissolving into cream paper. Do not "fix" it by putting a border back.
+           The shots are real captures of the real app, seeded on the Camino (470 of 780 km, day 78) and
+           re-shootable in one command: ./_shoot_web.sh   (see _shoot_web.sh's header). -->
+      <figure class="shot-plate hero-plate" style="--tc:#FBC647">
+        <img class="shot" src="img/shot-journey.webp" width="720" height="1600" alt="The Watch Walks app on the Camino de Santiago: 470 km of 780 walked, day 78, with the elevation profile of the road ahead and the route drawn across a satellite map" loading="eager" fetchpriority="high">
+      </figure>
     </div>
   </section>
 
@@ -143,10 +146,16 @@
       <div class="feature-text">
         <span class="feat-eyebrow">Story cards and real photos</span>
         <h3>Reach a landmark, and its story opens.</h3>
-        <p>Every famous place along the route has a card waiting for you. Walk far enough to reach it and the card opens, with a few warm words about where you are standing and a real photo of the spot. From the start gate on the Urubamba River to the Sun Gate above Machu Picchu, you collect the whole trail one place at a time, and the cards are yours to keep.</p>
+        <p>Every famous place along the route has a card waiting for you. Walk far enough to reach it and the card opens, with a few warm words about where you are standing and a real photograph of the spot. The pilgrims' gate at Saint-Jean-Pied-de-Port, the pass at Roncesvalles, the Sun Gate above Machu Picchu — you collect a trail one place at a time, and the cards are yours to keep.</p>
       </div>
       <div class="feature-art">
-        <img class="shot-frameless" src="img/shot-story.webp" width="750" height="1350" alt="The Watch Walks app showing milestone cards with a real photo of KM82 Piscacucho and a short story of the place" loading="lazy">
+        <!-- UNFRAMED, and the caption is the frame's job done properly. The picture must never say a
+             different thing from the paragraph beside it: this shot is the Camino, so the paragraph
+             names Camino landmarks — and they are the two cards actually on screen. -->
+        <figure class="shot-plate captioned" style="--tc:#FBC647">
+          <img class="shot" src="img/shot-story.webp" width="720" height="1600" alt="A story card in the Watch Walks app: Saint-Jean-Pied-de-Port, with a photograph of the river Nive under the old pilgrims' gate and a few lines about where the Camino Frances begins" loading="lazy">
+          <figcaption class="shot-cap">Saint-Jean-Pied-de-Port, where the Camino begins. Twenty-four of its forty-two places reached.</figcaption>
+        </figure>
       </div>
     </div>
 
@@ -158,7 +167,12 @@
         <p>Build a walking streak, rack up your best day, climb your lifetime distance, and finish trails to earn a unique medal for each one. Small feats celebrate the little wins along the way. There is always a next one just ahead, so an ordinary day out still moves something forward.</p>
       </div>
       <div class="feature-art">
-        <img class="shot-frameless" src="img/shot-medals.webp" width="1080" height="2172" alt="The Watch Walks medals wall, a grid of trail medals with the Camino de Santiago medal earned in gold" loading="lazy">
+        <!-- The alt text used to promise "the Camino de Santiago medal earned in gold". The medal that
+             is actually gold in this capture is Walk the Nile. Describe the picture you HAVE. -->
+        <figure class="shot-plate captioned" style="--tc:#E0A52E">
+          <img class="shot" src="img/shot-medals.webp" width="720" height="1600" alt="The Watch Walks medal wall: a grid of die-cut trail medals on ribbons, the Walk the Nile medal struck in gold and conquered, the rest still waiting to be earned" loading="lazy">
+          <figcaption class="shot-cap">Five trails finished, 3,537 km walked. Every trail has a medal of its own.</figcaption>
+        </figure>
       </div>
     </div>
 

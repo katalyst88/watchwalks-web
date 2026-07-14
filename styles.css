@@ -165,8 +165,9 @@ header {
           mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
 /* The CSS-drawn watch bezel (.watch/.hero-watch/.hero-phone/.devices.two) lived here and BRAND §3 bans it
-   outright ("no CSS-drawn bezels"). No page in the site used it; the only consumer, watchvid.html, carries
-   its own local copy of the rule and never loads this stylesheet. Deleted. */
+   outright ("no CSS-drawn bezels"). Deleted. Its last consumer, watchvid.html — a page that drew a round
+   black watch out of a border-radius and a 9px border, and baked it into img/watch-demo.mp4 — is deleted
+   too, along with every still it produced. Nothing on this site draws a device. */
 
 /* sections — generous vertical rhythm so blocks breathe */
 section { padding: 88px 0; border-top: 1px solid var(--line); }
@@ -243,9 +244,12 @@ footer .row a { display: inline-block; padding: 5px 0; }
   overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
 }
 
-/* beta join banner (the Reddit graphic, reused as a page banner) */
-.banner { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto 22px;
-  border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 18px 44px rgba(0,0,0,.28); }
+/* The join-page banner (img/garmin-banner.png, img/wearos-banner.png) lived here: a flat green gradient,
+   an app icon in a rounded square, and a headline in a system font — a stock app-store graphic, dropped
+   onto a warm paper site, and the first thing a Garmin visitor ever saw. It also just repeated the h1
+   underneath it. Both PNGs and this rule are deleted. The join hero now gets the same treatment as the
+   homepage's: the trail's real satellite map, graded to our paper, with the route drawn across it —
+   see .join-hero below. */
 
 /* "pick your watch" choice cards */
 .choice { display: flex; flex-direction: column; gap: 10px; }
@@ -262,8 +266,39 @@ footer .row a { display: inline-block; padding: 5px 0; }
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 14 L8 3 L12 9 L15 5 L22 14'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-/* dedicated beta / join pages (join-garmin, join-wearos) — richer than the legal layout */
-.join-hero { border-top: none; padding: 30px 0 6px; text-align: center; }
+/* dedicated join pages (join-garmin, join-wearos, join-apple) — richer than the legal layout.
+   The hero sits ON the terrain now, the same way the homepage's does: the trail's real satellite map,
+   graded warm so it reads as our paper, the route drawn across it, and the words on top. Nothing here
+   is an image file, so it recolours in both themes and never goes stale. */
+.join-hero {
+  position: relative; border-top: none; text-align: center;
+  padding: 56px 24px 30px; margin-top: 14px;
+  border-radius: var(--r-panel); overflow: hidden; isolation: isolate;
+}
+.join-hero > * { position: relative; z-index: 2; }
+.join-hero .join-terrain {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.55) 62%, transparent 96%);
+          mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.55) 62%, transparent 96%);
+}
+.join-hero .join-terrain img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: sepia(.55) saturate(.7) contrast(1.02) brightness(1.06); opacity: .26;
+}
+.join-hero .join-route { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.join-hero .join-route path {
+  fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1200; stroke-dashoffset: 1200;
+  animation: draw-route 2.6s cubic-bezier(.33,.9,.4,1) .3s forwards;
+}
+.join-hero .join-route circle { fill: var(--accent); opacity: 0; animation: node-in .5s ease-out 2.7s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .join-hero .join-route path { stroke-dashoffset: 0; animation: none; }
+  .join-hero .join-route circle { opacity: 1; animation: none; }
+}
+@media (prefers-color-scheme: dark) {
+  .join-hero .join-terrain img { filter: sepia(.3) saturate(.55) brightness(.5); opacity: .40; }
+}
 .join-hero .eyebrow { display: block; margin-top: 4px; }
 .join-hero h1 { font-size: clamp(28px, 4.6vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-top: 8px; }
 .join-hero .sub { margin: 12px auto 0; }
@@ -325,12 +360,10 @@ section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
 .postcards .postcard .pc-name { padding-right: 30px; }
 @media (max-width: 480px) { .postcards .postcard { width: 100%; max-width: 320px; } }
 
-/* companion — real phone device mockups (the frame IS the device; just float it with a shadow) */
-.phones { display: flex; gap: 56px; justify-content: center; align-items: flex-end; flex-wrap: wrap; margin: 6px auto 40px; }
-.phone-mock { margin: 0; display: grid; justify-items: center; gap: 14px; }
-.phone-mock img { width: 248px; max-width: 62vw; height: auto; display: block; filter: drop-shadow(0 34px 64px rgba(0,0,0,.34)); }
-.phone-mock figcaption { color: var(--subtle); font-size: 15px; font-weight: 600; }
-@media (max-width: 480px) { .phones { gap: 28px; } .phone-mock img { width: 168px; } }
+/* .phones / .phone-mock composited the site's screenshots into img/mockups/pixel.png. Deleted with the
+   frame itself: BRAND §3 (amended 2026-07-13) makes the WEBSITE UNFRAMED, and that frame came from a
+   repo with no licence file at all — the "genuine, commercially-licensed mockup" clause was being
+   broken by the very asset invoked to satisfy it. See .shot below for what replaced it. */
 
 /* The dead email-signup form (.signup/.email-in/.trial-msg) and the EmailOctopus embed skin (.eo-embed)
    lived here. The form was replaced by the three store buttons months ago and no page has carried an
@@ -357,20 +390,65 @@ section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
    Health Connect list, compatibility + contact pages
    ============================================================ */
 
-/* App screenshots.
-   TEMPORARY: BRAND §3 requires these to sit in a real device mockup (img/mockups/pixel.png). Fresh
-   captures + the mockup composite are a separate job, so until then the shot needs a boundary of its own:
-   the app's own UI is warm cream, the page is warm cream, and on screen shot-medals.webp dissolved into
-   the background entirely — it read as an empty box, not a screenshot. A hairline and a real shadow is
-   what makes a paper-coloured capture on paper-coloured paper read as an object. */
-.shot-frameless {
-  display: block; height: auto; width: 100%; max-width: 260px;
-  border-radius: 26px; margin: 0 auto;
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--sh-lifted);
+/* ---- APP SCREENSHOTS: UNFRAMED. ----
+   BRAND §3, amended by JD 2026-07-13: the website shows the screenshot, not a picture of a phone. The
+   ban on FAKE bezels never relaxed and is the part that matters — no CSS-drawn frame, no traced outline,
+   no faked device edge. So there is no border, no corner radius and no drawn device anywhere below. The
+   capture keeps its own square corners, because that is the shape the file actually is.
+
+   The old rule (.shot-frameless) put a 1px hairline and a 26px radius around each shot — a homemade
+   bezel in all but name, added because a cream screenshot on cream paper dissolved into the page.
+
+   The real fix for that is GROUND, not a border. Each shot now stands on a PLATE: the trail's own
+   identity colour washed into the paper, the contour motif behind it, and the shot lifted off it with a
+   warm shadow, running off the plate's bottom edge like a photograph laid on a page. The shot reads as
+   an object because it sits ON something, which is how objects read in the real world. */
+.shot-plate {
+  position: relative; margin: 0; display: grid; justify-items: center;
+  padding: 34px 22px 0; overflow: hidden;
+  border-radius: var(--r-panel);
+  background:
+    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--tc, var(--accent)) 24%, var(--bg2)), var(--bg2) 72%);
 }
-.hero-shot { max-width: 300px; }
-@media (max-width: 480px) { .shot-frameless { max-width: 220px; } .hero-shot { max-width: 240px; } }
+/* the contour motif, behind the shot, fading out before the bottom edge */
+.shot-plate::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url("img/contour.svg") center 20% / 420px auto no-repeat;
+  opacity: .30;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+          mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+}
+/* The shot itself: nothing drawn on it, nothing drawn around it. A shadow is depth, not a frame.
+   The bottom of the capture runs off the plate (the plate clips it), so the last thing you see is the
+   app, not an edge — and the gesture pill and nav bar fall away with it. */
+.shot {
+  position: relative; z-index: 1;
+  display: block; width: 100%; max-width: 258px; height: auto;
+  margin-bottom: -26px;
+  box-shadow: 0 30px 60px -20px rgba(62,44,26,.5), 0 4px 12px rgba(62,44,26,.18);
+}
+@media (prefers-color-scheme: dark) {
+  .shot { box-shadow: 0 30px 60px -20px rgba(0,0,0,.75), 0 4px 12px rgba(0,0,0,.5); }
+  .shot-plate::before { opacity: .22; }
+}
+/* The caption is the site talking about the app, in the site's voice — it is why the shot is not just
+   a bare PNG dropped on a page. */
+.shot-cap {
+  position: relative; z-index: 1; align-self: end;
+  margin: 18px 0 16px; padding-top: 14px;
+  color: var(--subtle); font-size: 14px; line-height: 1.5; text-align: center; max-width: 30ch;
+  border-top: 1px solid color-mix(in srgb, var(--tc, var(--accent)) 35%, var(--line));
+}
+/* caption BELOW the shot needs the shot to stop overhanging it */
+.shot-plate.captioned { padding-bottom: 0; }
+.shot-plate.captioned .shot { margin-bottom: 0; }
+.hero-plate { padding-top: 26px; }
+.hero-plate .shot { max-width: 288px; }
+@media (max-width: 480px) {
+  .shot { max-width: 224px; }
+  .hero-plate .shot { max-width: 236px; }
+  .shot-plate { padding: 26px 16px 0; }
+}
 
 /* repeated download CTA — three stores, always one tap away */
 .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -604,7 +682,9 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
 
 /* ---- warm shadows everywhere (several were half-black on cream, which renders as blue-grey mud) ---- */
 .card, .hc-band { box-shadow: var(--sh-raised); }
-.banner, .shot-frameless, .tcard { box-shadow: var(--sh-card); }
+/* .banner and .shot-frameless are gone (the join banners and the homemade screenshot border). .shot
+   carries its own deeper shadow — it is standing ON the plate, so it needs more lift than a card. */
+.tcard { box-shadow: var(--sh-card); }
 .postcard { box-shadow: var(--sh-card); }
 
 /* ---- trails page: continent jump-chips, so 36 cards are navigable ---- */
