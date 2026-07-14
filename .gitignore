@@ -4,3 +4,19 @@ _*
 
 # raw emulator captures (the published webp files are committed; these are not)
 img/_raw/
+
+# The generators are LOAD-BEARING and must not be ignored.
+#
+# `_*` above was ignoring every one of them, so the site's walking pace, its stride constant, its
+# length-drift check and the photo-credit builder existed ONLY on one machine. A fresh clone would
+# have regenerated the site with the old, wrong pace and nobody would have known. That is the same
+# failure as the auto-commit that reported "pushed" for months while pushing nothing: work that
+# exists but is nowhere.
+#
+# Checked before un-ignoring: none of them carry a credential. This repo is PUBLIC.
+!_gen_profiles.py
+!_gen_attribution.py
+!_gen_satmaps.py
+!_gen_trailmaps.py
+!_shots_to_web.py
+!_sync_trail_colors.py
