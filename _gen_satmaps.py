@@ -74,10 +74,38 @@ def load_track(tid):
         pts=[(float(m[0]),float(m[1]),float(m[2])) for m in
              re.findall(r"GeoPoint\(([-0-9.]+)f?,\s*([-0-9.]+),\s*([-0-9.]+)\)", open(kt,encoding="utf-8").read())]
         if pts: return pts
+    # TrailGeo.routes — where a trail with NO encoded track keeps its line. The Inca Trail (the FREE
+    # hero, the first map anyone sees) lives here with 547 points and was falling straight past this
+    # to the milestone list below, drawing its card from 12 points.
+    geo = os.path.join(ROOT, r"watchwalks-android\app\src\main\java\com\watchwalks\companion\data\TrailGeo.kt")
+    if os.path.exists(geo):
+        src = open(geo, encoding="utf-8").read()
+        m = re.search(r'"' + re.escape(tid) + r'" to listOf\(', src)
+        if m:
+            i, depth = m.end(), 1
+            while depth and i < len(src):
+                if src[i] == "(":
+                    depth += 1
+                elif src[i] == ")":
+                    depth -= 1
+                i += 1
+            pts = [(float(a), float(b), float(c)) for a, b, c in re.findall(
+                r"GeoPoint\(([-0-9.]+)f?,\s*([-0-9.]+),\s*([-0-9.]+)", src[m.end():i - 1])]
+            if len(pts) > 2:
+                return pts
+
+    # LAST RESORT: the milestone list. This is NOT a route — it is 12-26 points where the real track
+    # has thousands, and it draws a crude straight-line fake of the trail. It used to be reached
+    # SILENTLY: the 2026-07-15 intake shipped 5 trails whose card map was drawn this way for weeks
+    # because TRACK had no id->key entry and nothing said so. Say so.
     mj = os.path.join(ROOT,"trails",tid+".json")
     if os.path.exists(mj):
         d=json.load(open(mj,encoding="utf-8"))
-        return [(m["km"],m["lat"],m["lng"]) for m in d.get("milestones",[]) if "lat" in m]
+        pts=[(m["km"],m["lat"],m["lng"]) for m in d.get("milestones",[]) if m.get("lat") is not None]
+        print(f"  !! {tid}: NO real track found (looked for {sn}_encoded.txt, {sn}_track_kotlin.txt, "
+              f"TrailGeo.routes) — falling back to {len(pts)} MILESTONES. The card map will be a "
+              f"crude fake. Add an id->key entry to TRACK.")
+        return pts
     return []
 
 def merc(lat,lng,z):
