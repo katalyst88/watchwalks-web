@@ -29,7 +29,7 @@ TRACK = {"pacific-crest":"pct","length-of-britain":"britain","te-araroa":"tearar
  "cape-to-cape":"capetocape","tour-du-mont-blanc":"tmb","west-highland-way":"westhighland","john-muir-trail":"jmt",
  "tahoe-rim":"tahoerim","torres-del-paine-w":"torres","australian-alps":"ausalps","haute-route":"hauteroute",
  "long-trail":"longtrail","annapurna-circuit":"annapurna","manaslu-circuit":"manaslu","atlas-traverse":"atlas",
- "drakensberg-traverse":"drakensberg","simien-mountains":"simien","congo-nile":"congo","inca-road":"incaroad",
+ "inca-road":"incaroad",
  "inca-trail":"inca","jordan-trail":"jordan","larapinta-trail":"larapinta","lycian-way":"lycian",
  "wonderland-trail":"wonderland"}
 

@@ -4,11 +4,15 @@
 # colour) and milestone pins (coloured by type) on top. Writes img/trailmaps/<id>.webp. Tiles are cached
 # under _tilecache/ so re-runs are cheap. Attribution (Esri/Maxar/Earthstar Geographics) is shown on the
 # page. This replaces the inline-SVG maps with real satellite behind each route (JD 2026-07-11).
-import os, re, json, glob, math, io, time, urllib.request
+import os, sys, re, json, glob, math, io, time, urllib.request
 
 ROOT = r"C:\Users\jwden\WatchApps"
 WEB = os.path.join(ROOT, "watchwalks-web")
-SP = r"C:\Users\jwden\AppData\Local\Temp\claude\C--Users-jwden--local-bin\ad05301a-9dc2-4deb-8610-fe29b1f7a2f8\scratchpad\story_pass"
+# Milestones come from the REPO, not a scratchpad. This used to point at one session's temp
+# directory (%TEMP%/claude/.../ad05301a-.../scratchpad/story_pass), which has since been
+# deleted -- so the tool that builds this site's trail cards was unrunnable, and nobody noticed
+# because nobody ran it. A build input that lives in %TEMP% is a build input with an expiry date.
+SP = os.path.join(ROOT, "trails")
 IMGDIR = os.path.join(WEB, "img", "trailmaps")
 CACHE = os.path.join(WEB, "_tilecache")
 os.makedirs(IMGDIR, exist_ok=True); os.makedirs(CACHE, exist_ok=True)
@@ -16,11 +20,17 @@ os.makedirs(IMGDIR, exist_ok=True); os.makedirs(CACHE, exist_ok=True)
 from PIL import Image, ImageDraw
 
 # id -> encoded-track shortname (from _gen_trailmaps.py)
-TRACK = {"pacific-crest":"pct","length-of-britain":"britain","te-araroa":"teararoa","route-66":"route66",
+TRACK = {"kilimanjaro-lemosho":"lemosho","gr-r2":"grr2",
+         # The 2026-07-15 intake added 6 trails and their website cards but no TRACK entries, so
+         # 5 of the 6 drew their card map from the MILESTONE list -- overland-track from 14 points
+         # instead of 2,275. A missing key here does not fail; it silently draws a worse trail.
+         "routeburn-track":"routeburn","overland-track":"overland","kumano-kodo":"kumano",
+         "mount-kenya":"mountkenya","otter-trail":"otter",
+         "pacific-crest":"pct","length-of-britain":"britain","te-araroa":"teararoa","route-66":"route66",
  "cape-to-cape":"capetocape","tour-du-mont-blanc":"tmb","west-highland-way":"westhighland","john-muir-trail":"jmt",
  "tahoe-rim":"tahoerim","torres-del-paine-w":"torres","australian-alps":"ausalps","haute-route":"hauteroute",
  "long-trail":"longtrail","annapurna-circuit":"annapurna","manaslu-circuit":"manaslu","atlas-traverse":"atlas",
- "drakensberg-traverse":"drakensberg","simien-mountains":"simien","congo-nile":"congo","inca-road":"incaroad",
+ "inca-road":"incaroad",
  "inca-trail":"inca","jordan-trail":"jordan","larapinta-trail":"larapinta","lycian-way":"lycian",
  "wonderland-trail":"wonderland"}
 # Trail identity colour (c1). NOT a copy: read live from the app's TrailArt map, so the site
@@ -144,6 +154,13 @@ def build(tid, track, milestones):
 def main():
     src=open(os.path.join(ROOT,r"watchwalks-android\app\src\main\java\com\watchwalks\companion\data\SampleData.kt"),encoding="utf-8").read()
     ids=[m.group(1) for m in re.finditer(r'Trail\("([a-z0-9-]+)"',src)]
+    # Optional id filter. Without it this rebuilds all 41 webps, which churns 38 files nobody asked
+    # to change and buries the one you actually added in the diff.
+    only=[a for a in sys.argv[1:] if not a.startswith("-")]
+    if only:
+        missing=[o for o in only if o not in ids]
+        if missing: raise SystemExit(f"not in SampleData: {missing}")
+        ids=[i for i in ids if i in only]
     done=0
     for tid in ids:
         # The South Pole sits where web mercator is undefined and there is no meaningful satellite
