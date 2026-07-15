@@ -74,7 +74,12 @@ def duration(km):
     169 weeks" is a number no human converts."""
     weeks = km / KM_PER_DAY / 7.0
     if weeks < 78:
-        return f"about {round(weeks)} weeks"
+        # "about 1 weeks" shipped on the Otter Trail and the Routeburn cards. The duration is the one
+        # figure on a trail card a reader actually converts into a decision, and it was printed in broken
+        # English on the two trails most likely to be somebody's first. (78 weeks is already 1.5 years, so
+        # the years branch below can never want a singular.)
+        w = round(weeks)
+        return "about a week" if w <= 1 else f"about {w} weeks"
     years = f"{km / KM_PER_DAY / 365.25:.1f}".rstrip("0").rstrip(".")   # "3 years", never "3.0 years"
     return f"about {years} years"
 
