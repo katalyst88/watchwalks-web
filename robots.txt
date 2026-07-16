@@ -2,4 +2,8 @@ User-agent: *
 Allow: /
 # _og.html is only the render source for img/og-cover.png (the link-share card), not a page.
 Disallow: /_og.html
+# The sideload APK is v0.3.2 (June) while the app is 1.0.2 — and a sideload never updates itself, so
+# anyone who found this through a search would install a stale build, forever. Nothing on the site
+# links to it; keeping it out of the index is the least we can do until it is deleted outright.
+Disallow: /download/
 Sitemap: https://watchwalks.com/sitemap.xml

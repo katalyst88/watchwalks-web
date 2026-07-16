@@ -45,7 +45,7 @@
   <p>Watch Walks is built around a simple promise: your data stays yours. Our apps are designed to work <strong>without collecting any personal information</strong>. This policy explains exactly what that means across Garmin, Wear OS, and Apple Watch.</p>
 
   <h2>The short version</h2>
-  <p>No ads, no analytics, and no tracking or profiling. We never sell, rent, or share your personal data. There is no account to create and your step data never leaves your device. Two things do reach the outside world, and both are described below: your trails and medals are backed up through <em>your own</em> iCloud or Google account so they survive a new phone, and buying a paid trail goes through your app store.</p>
+  <p>No ads, no analytics, and no tracking or profiling. We never sell, rent, or share your personal data. Your step data never leaves your device. Two things do reach the outside world, and both are described below: your trails and medals are backed up so they survive a new phone — into your own iCloud on iPhone, and into a database of ours on Android, where signing in also means we hold your Google account's email address — and buying a paid trail goes through your app store.</p>
 
   <h2>Who we are</h2>
   <p>Watch Walks (the "data controller" for privacy laws such as the GDPR and CCPA) makes and supports these apps. You can reach us any time at <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a>.</p>
@@ -55,26 +55,29 @@
   <ul>
     <li><strong>Garmin Connect IQ</strong> on a Garmin watch;</li>
     <li><strong>Wear OS Health Services</strong> on a Wear OS watch;</li>
-    <li><strong>Apple HealthKit (Apple Health)</strong> on iPhone and Apple Watch.</li>
+    <li><strong>Apple HealthKit (Apple Health)</strong> on iPhone and Apple Watch;</li>
+    <li><strong>Android Health Connect</strong> on an Android phone, if you choose to connect it. The companion app asks for permission to <em>read</em> your step count (<code>android.permission.health.READ_STEPS</code>) so a walk your phone recorded still counts toward your trail. It reads steps and nothing else, it never writes anything back to Health Connect, and it only reads days on or after the day you granted permission;</li>
+    <li>your <strong>Android phone's own step counter</strong>, if you use the app without a watch.</li>
   </ul>
-  <p>In every case this data is read and processed <strong>on your own device only</strong>. Your health and activity data is <strong>never sold, never used for advertising, and not shared with any third party without your consent</strong>. Your trail progress is saved in the app's local storage on your watch and phone. On Apple devices, you can review or withdraw the app's Health access at any time in the Health app under Sharing.</p>
+  <p>In every case this data is read and processed <strong>on your own device only</strong>. Health and activity data — your steps, distance and elevation — is <strong>never uploaded to us, never sold, never used for advertising, and not shared with any third party</strong>. It is used for one purpose: converting the distance you have walked into progress along your chosen trail. Only that resulting distance is ever backed up (see <a href="#cloud-backup">Cloud backup</a>); the underlying step data stays on your device, and deleting the app deletes it.</p>
+  <p>You can withdraw this access at any time, and the app keeps working — it simply stops counting new walks from that source. On <strong>Apple</strong> devices, in the Health app under Sharing. On <strong>Android</strong>, in Health Connect (<em>Settings → Health Connect → App permissions</em>) or in your phone's app permissions.</p>
 
   <h2>The companion app</h2>
   <p>The free Watch Walks companion app for your phone (Android or iPhone) reads your trail progress from your watch over Bluetooth and stores it <strong>locally on your phone</strong>, so it can show your journey and the medals you've earned. It creates no Watch Walks account and asks you for nothing about yourself. The cloud backup below is the one thing that leaves the phone.</p>
 
-  <h2>Cloud backup</h2>
-  <p>So that your owned trails, progress and finisher medals survive a new phone ("buy once, sync everywhere"), they are backed up through the backup service that belongs to <strong>your own</strong> platform account:</p>
+  <h2 id="cloud-backup">Cloud backup</h2>
+  <p>So that your owned trails, progress and finisher medals survive a new phone ("buy once, sync everywhere"), they are backed up. <strong>Where that backup lives depends on your phone, and the two are genuinely different — so we describe them separately rather than averaging them into one comfortable sentence.</strong></p>
   <ul>
-    <li><strong>Google Firebase</strong> on Android and Wear OS, tied to your Google account;</li>
-    <li><strong>Apple iCloud</strong> on iPhone and Apple Watch, tied to your Apple Account.</li>
+    <li><strong>iPhone and Apple Watch — your own iCloud.</strong> The backup is written to your Apple Account's iCloud storage. There is no Watch Walks account and no sign-in, we hold no copy, and we cannot read it. It is yours in the ordinary sense of the word.</li>
+    <li><strong>Android and Wear OS — a database that belongs to us.</strong> You sign in with your Google account, but that sign-in only <em>identifies</em> you: the backup itself is stored in Watch Walks' own database (Google Firebase Firestore, hosted by Google Cloud on our behalf). It is our record, not Google's copy of your data, and <strong>we can access it</strong>. Saying otherwise would be untrue, and an earlier version of this page did say otherwise.</li>
   </ul>
-  <p>The backup lives in an account you already have, not in one of ours, and we never see it. Here is exactly what it holds:</p>
+  <p>Here is exactly what the backup holds, on either platform:</p>
   <ul>
-    <li>your progress along each trail (the distance you've covered), the finisher medals you've earned, your walking-day streak, and which trails you own;</li>
-    <li>on Android, the <strong>email address</strong> of the Google account you sign in with, so your journey can be found again on a new phone.</li>
+    <li>your progress along each trail (the distance you've covered), the finisher medals you've earned, your walking-day streak, which trails you own, and which trails you spent Any-Five credits on;</li>
+    <li>on Android, the <strong>email address</strong> of the Google account you sign in with, so your journey can be found again on a new phone. This is personal data, and on Android it is held by us.</li>
   </ul>
-  <p>That is all. Your raw step data is <strong>never</strong> backed up: only the distance it has already carried you along a trail. We store no payment details, and we never share any of it with anyone.</p>
-  <p>To <strong>delete</strong> your backup, open the app and go to <em>Settings → Start over</em>. It permanently erases your backup <em>and</em> the progress on the device in your hand, and it asks you to type to confirm first, because it cannot be undone. Backup rides on your own Apple or Google account, so you can also switch it off there: on an iPhone in <em>iOS Settings → your name → iCloud</em>, on Android in your Google account’s backup settings. You can also email us and we will delete it for you.</p>
+  <p>That is all. Your raw step data is <strong>never</strong> backed up: only the distance it has already carried you along a trail. We store no payment details, and we never sell or share any of it with anyone.</p>
+  <p>To <strong>delete</strong> your backup, open the app and go to <em>Settings → Start over</em>. It permanently erases your backup <em>and</em> the progress on the device in your hand, and it asks you to type to confirm first, because it cannot be undone. On an <strong>iPhone</strong>, because the backup sits in your own iCloud, you can also switch it off yourself in <em>iOS Settings → your name → iCloud</em>. On <strong>Android</strong> there is no equivalent switch in your Google account settings — the data is in our database, not your Google backup — so use <em>Settings → Start over</em>, or email us and we will delete it for you.</p>
 
   <h2>Downloading a trail's map</h2>
   <p>Trail maps are downloaded once, then work entirely offline. On Android some are fetched from a public file store (GitHub's content delivery network) and the rest through Google Play; on iPhone they come from Apple's App Store. As with any download, the service delivering the file can see the request and your IP address. We send it nothing about you: no account, no identifier, and no information about your walking. Once a map is on your phone, nothing further is requested.</p>
@@ -92,10 +95,10 @@
   <p>This website is a set of static pages. We do not set tracking cookies, run analytics, or embed advertising. Our hosting provider may keep basic, anonymised server logs (such as IP addresses) for security and reliability, as is standard for any website; we do not use these to identify or profile you.</p>
 
   <h2>Children</h2>
-  <p>Watch Walks is not directed at children, and because we collect no personal data, we do not knowingly collect any information from anyone, including children.</p>
+  <p>Watch Walks is not directed at children. We ask for nothing about you, and there is nothing in the app that invites you to tell us anything about yourself. The one piece of personal data we ever hold is the email address of the Google account an Android walker chooses to sign in with, and we do not knowingly collect that, or anything else, from a child.</p>
 
   <h2>Your control and your rights</h2>
-  <p>You are always in control. By default your data lives only on your own devices. <em>Settings → Start over</em> erases your backup and your progress for good. Backup rides on your own Apple or Google account, so you can also switch it off there: on an iPhone in <em>iOS Settings → your name → iCloud</em>, on Android in your Google account’s backup settings. On Apple devices you can withdraw Health access in the Health app at any time; on Android you can withdraw step access in your phone's app permissions. Uninstalling an app removes its stored progress from that device. Because we hold no personal profile on you, there is nothing for us to sell or profile, and you can email us with any privacy request.</p>
+  <p>You are always in control. By default your data lives only on your own devices. <em>Settings → Start over</em> erases your backup and your progress for good. On an <strong>iPhone</strong> the backup sits in your own iCloud, so you can also switch it off in <em>iOS Settings → your name → iCloud</em>. On <strong>Android</strong> the backup is in a database of ours rather than your Google backup, so there is no switch in your Google account settings — use <em>Settings → Start over</em>, or email us and we will delete it. On Apple devices you can withdraw Health access in the Health app at any time; on Android you can withdraw step access in Health Connect or your phone's app permissions. Uninstalling an app removes its stored progress from that device. The only personal data we ever hold is an Android walker's sign-in email, we build no profile on you, and there is nothing for us to sell — and you can email us with any privacy request, including a request to see or delete what we hold.</p>
 
   <h2>Changes to this policy</h2>
   <p>If we ever change how the apps handle data, we will update this page and revise the date above. Material changes will be reflected here before they take effect.</p>

@@ -49,6 +49,28 @@ LICENCE_URL = {
 
 TRAIL_TITLE = {}   # pack key -> pretty trail name, read from the master
 
+# ── NOT NAMING THE PASS ─────────────────────────────────────────────────────────────────────────
+# JD's standing rule: "Dead Woman's Pass" never appears on a marketing surface — website, mockups,
+# copy, or store screenshots. `_gen_profiles.py` already honours it (see its docstring); this
+# generator did not, because it prints milestone names straight from the shipped manifests, and so
+# the name went live on attribution.html. A rule implemented in one generator and not the other is
+# not implemented.
+#
+# The milestone itself STAYS as it is in the trail data — the rule is about featuring the name, not
+# about the trail. So this is a display name, applied only here, on the way to the page.
+#
+# Warmiwañusca is the pass's actual Quechua name (the app's own story for it opens
+# "Warmiwañusca — Dead Woman's Pass"), so the credit still names the real place and stays honest:
+# a photo credit that misnames its subject is not a credit, it is an error.
+MARKETING_NAME = {
+    "Dead Woman's Pass": "Warmiwañusca",
+}
+
+
+def marketing_name(name):
+    """The name as a marketing surface may show it. See MARKETING_NAME."""
+    return MARKETING_NAME.get(name, name)
+
 
 def pretty_names():
     """Pack key -> trail title, from the Kotlin master. The manifests carry no trail title."""
@@ -98,7 +120,7 @@ def main():
                 continue
             total += 1
             trails[key].append({
-                "landmark": m.get("name", "").strip(),
+                "landmark": marketing_name(m.get("name", "").strip()),
                 "author":   (m.get("author") or "").strip(),
                 "licence":  (m.get("license") or "").strip(),
                 "source":   (m.get("source") or "Wikimedia Commons").strip(),
