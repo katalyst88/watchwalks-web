@@ -59,7 +59,13 @@
     <li><strong>Android Health Connect</strong> on an Android phone, if you choose to connect it. The companion app asks for permission to <em>read</em> your step count (<code>android.permission.health.READ_STEPS</code>) so a walk your phone recorded still counts toward your trail. It reads steps and nothing else, it never writes anything back to Health Connect, and it only reads days on or after the day you granted permission;</li>
     <li>your <strong>Android phone's own step counter</strong>, if you use the app without a watch.</li>
   </ul>
-  <p>In every case this data is read and processed <strong>on your own device only</strong>. Health and activity data — your steps, distance and elevation — is <strong>never uploaded to us, never sold, never used for advertising, and not shared with any third party</strong>. It is used for one purpose: converting the distance you have walked into progress along your chosen trail. Only that resulting distance is ever backed up (see <a href="#cloud-backup">Cloud backup</a>); the underlying step data stays on your device, and deleting the app deletes it.</p>
+  <p>Your health and activity data is read and turned into trail progress <strong>on your own device</strong>, and it is used for one purpose only: working out how far along your chosen trail you have walked. It is <strong>never sold, never used for advertising, and never shared with any third party</strong>.</p>
+  <p><strong>Your steps and your elevation readings never leave your phone.</strong> They are read, converted to a distance, and discarded — deleting the app deletes them. But the <strong>distance</strong> they produce is your trail progress, and that is the thing the app backs up, so where it goes depends on your phone — and it is worth being plain about this rather than giving you one comfortable sentence that is only half true:</p>
+  <ul>
+    <li>On an <strong>iPhone</strong>, your progress is written to your own iCloud. We hold no copy and cannot read it.</li>
+    <li>On <strong>Android</strong>, if you sign in for backup, your progress is written to <strong>our</strong> database — the distance you have walked on each trail, and nothing else about your health. <strong>We can access it.</strong> If you never sign in, it stays on your phone.</li>
+  </ul>
+  <p>So: no step count of yours, and no elevation reading of yours, is ever uploaded anywhere. On Android, the distance derived from them is — see <a href="#cloud-backup">Cloud backup</a>, which describes exactly what that record holds and how to delete it.</p>
   <p>You can withdraw this access at any time, and the app keeps working — it simply stops counting new walks from that source. On <strong>Apple</strong> devices, in the Health app under Sharing. On <strong>Android</strong>, in Health Connect (<em>Settings → Health Connect → App permissions</em>) or in your phone's app permissions.</p>
 
   <h2>The companion app</h2>
