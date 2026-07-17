@@ -231,7 +231,7 @@ HEAD = '''<!doctype html>
 <meta name="theme-color" content="#1F5C3D">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20260717">
 </head>
 <body>
 
