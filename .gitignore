@@ -20,3 +20,18 @@ img/_raw/
 !_gen_trailmaps.py
 !_shots_to_web.py
 !_sync_trail_colors.py
+# 2026-07-17. The allowlist above un-ignored the six generators but MISSED THE MODULE THEY IMPORT.
+# `_trail_colors.py` -- the ONE source of truth for trail colour, the fix for the four-hand-copied-
+# palettes drift -- starts with an underscore, so `_*` ate it and it was never pushed. PROVEN, not
+# assumed: `git archive origin/main | tar -x` into a temp dir, then `python -c "import _gen_satmaps"`
+# -> ModuleNotFoundError: No module named '_trail_colors'. Every generator on the remote was dead on
+# arrival, which is the exact "work that exists but is nowhere" failure described above -- fixed for
+# the callers and left live for the dependency. An allowlist has to cover the import graph, not the
+# entry points.
+# `_gen_polarmap.py` builds the South Pole card (mercator is undefined at the poles) and was ignored
+# the same way. `_gen_route_overlay.py` draws the route as vector over the basemap; without it
+# `_gen_trailmaps.py` cannot build a card.
+# Checked before un-ignoring, same as above: none of the three carries a credential. This repo is PUBLIC.
+!_trail_colors.py
+!_gen_polarmap.py
+!_gen_route_overlay.py

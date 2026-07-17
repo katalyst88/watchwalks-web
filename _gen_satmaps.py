@@ -142,7 +142,19 @@ def fetch_tile(z,x,y):
             time.sleep(0.6*(att+1))
     return Image.new("RGB",(256,256),(40,44,40))
 
-def build(tid, track, milestones):
+def build(tid, track, milestones, route=True, out=None):
+    """route=False emits the BASEMAP ONLY (no route, no pins).
+
+    The route is then drawn over it as an inline SVG (see _gen_route_overlay.py), which registers
+    pixel-exactly because that module reuses this one's merc()/pick_zoom() and centring. Two reasons
+    to stop baking the line into the pixels:
+      * SHARPNESS. This canvas is 680x430 but the card displays it at ~311 CSS px (measured), so at
+        DPR1 the browser downscales it 2.19x. A width-4 hard-edged line in a width-7 casing does not
+        survive that; terrain does. Vector line = sharp at every DPR.
+      * PALETTE. COLOR is read live from _trail_colors, but once baked the pixels freeze it -- the
+        shipped webps can silently disagree with the app and only a 41-image re-render fixes it. In
+        SVG the colour comes from the DOM (var(--tc)) and cannot go stale.
+    Kept as a flag rather than a deletion so the baked path stays available for comparison."""
     color=hx(COLOR.get(tid,"#4E9E5A"))
     W,H=680,430; pad=0.10
     z=pick_zoom(track,W,H,pad)
@@ -162,20 +174,21 @@ def build(tid, track, milestones):
     img=canvas.crop((cropx,cropy,cropx+W,cropy+H)).convert("RGB")
     # slight darken for route legibility
     ov=Image.new("RGB",(W,H),(0,0,0)); img=Image.blend(img,ov,0.12)
-    dr=ImageDraw.Draw(img,"RGBA")
-    pl=[(x-ox,y-oy) for x,y in zip(xs,ys)]
-    dr.line(pl,fill=(255,255,255,235),width=7,joint="curve")
-    dr.line(pl,fill=color+(255,),width=4,joint="curve")
-    # pins
-    tk=[p[0] for p in track]
-    for m in milestones:
-        j=min(range(len(track)),key=lambda i:abs(track[i][0]-m["km"]))
-        px=xs[j]-ox; py=ys[j]-oy
-        c=hx(pin_color(tid,m["type"]))
-        r=4.5
-        dr.ellipse([px-r-1.4,py-r-1.4,px+r+1.4,py+r+1.4],fill=(255,255,255,255))
-        dr.ellipse([px-r,py-r,px+r,py+r],fill=c+(255,))
-    out=os.path.join(IMGDIR,tid+".webp")
+    if route:
+        dr=ImageDraw.Draw(img,"RGBA")
+        pl=[(x-ox,y-oy) for x,y in zip(xs,ys)]
+        dr.line(pl,fill=(255,255,255,235),width=7,joint="curve")
+        dr.line(pl,fill=color+(255,),width=4,joint="curve")
+        # pins
+        tk=[p[0] for p in track]
+        for m in milestones:
+            j=min(range(len(track)),key=lambda i:abs(track[i][0]-m["km"]))
+            px=xs[j]-ox; py=ys[j]-oy
+            c=hx(pin_color(tid,m["type"]))
+            r=4.5
+            dr.ellipse([px-r-1.4,py-r-1.4,px+r+1.4,py+r+1.4],fill=(255,255,255,255))
+            dr.ellipse([px-r,py-r,px+r,py+r],fill=c+(255,))
+    out=out or os.path.join(IMGDIR,tid+".webp")
     img.save(out,"WEBP",quality=82,method=6)
     return out
 
@@ -189,6 +202,8 @@ def main():
         missing=[o for o in only if o not in ids]
         if missing: raise SystemExit(f"not in SampleData: {missing}")
         ids=[i for i in ids if i in only]
+    # --no-route: basemap only; the route ships as an inline SVG overlay instead (see build()).
+    route = "--no-route" not in sys.argv[1:]
     done=0
     for tid in ids:
         # The South Pole sits where web mercator is undefined and there is no meaningful satellite
@@ -196,9 +211,18 @@ def main():
         if tid=="south-pole-last-degree": print("  SKIP",tid,"(pole: uses SVG)"); continue
         track=load_track(tid)
         if len(track)<2: print("  SKIP",tid,"(no route)"); continue
-        ms=json.load(open(os.path.join(SP,tid+".json"),encoding="utf-8"))["milestones"]
-        build(tid,track,ms); done+=1
-        print(f"  {tid}: satellite map built ({len(track)} route pts, {len(ms)} pins)")
+        # Milestones are OPTIONAL. inca-trail -- the FREE trail and the site's hero -- is in
+        # SampleData.kt but has NO trails/inca-trail.json (its milestones live in SampleData.kt),
+        # so this line used to abort the whole run with FileNotFoundError on the first trail in the
+        # catalogue. A missing pin list must cost that trail its pins, not everyone their maps.
+        mp=os.path.join(SP,tid+".json")
+        if os.path.exists(mp):
+            ms=json.load(open(mp,encoding="utf-8"))["milestones"]
+        else:
+            ms=[]; print(f"  !! {tid}: no {tid}.json -- building with NO pins")
+        build(tid,track,ms,route=route); done+=1
+        print(f"  {tid}: {'satellite map' if route else 'BASEMAP (no route)'} built "
+              f"({len(track)} route pts, {len(ms)} pins)")
     print(f"built {done} satellite maps -> {IMGDIR}")
 
 if __name__=="__main__":

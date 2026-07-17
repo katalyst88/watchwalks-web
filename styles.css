@@ -528,8 +528,59 @@ section .sub + .feat { margin-top: 0; }   /* .sub already carries the 40px */
   border-radius: 13px; overflow: hidden; line-height: 0;
   border: 1px solid color-mix(in srgb, var(--tc) 45%, transparent);
   box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  position: relative;          /* anchors .tm-route over the basemap */
 }
 .tm { display: block; width: 100%; height: auto; aspect-ratio: 680 / 430; object-fit: cover; }
+
+/* ROUTE OVERLAY -- vector line + pins drawn over the satellite basemap raster.
+   The route used to be baked into the .webp pixels. The card shows that 680x430 raster at ~311 CSS
+   px (measured), i.e. a 2.19x DOWNSCALE at DPR1 -- terrain survives that, a width-4 hard-edged line
+   in a width-7 casing does not. It is NOT an upscale problem, so @2x/srcset would not have fixed it.
+   Vector renders at the device's own resolution at every DPR, and the colour now comes from --tc
+   (the DOM) instead of being frozen in the pixels, so it can never go stale against the app again.
+
+   REGISTRATION: _gen_route_overlay.py reuses _gen_satmaps' own merc()/pick_zoom() and centring, so
+   the viewBox is the raster's exact 680x430 pixel frame (proved: 0.000000000 px max vertex delta
+   against the real bake). preserveAspectRatio="none" is safe ONLY because .tm pins aspect-ratio to
+   680/430, so the img box is always exactly 680:430 and object-fit:cover never crops. If either the
+   raster dimensions or that aspect-ratio ever change, BOTH must change together or the line will
+   drift off the valley. */
+.tm-route {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block; pointer-events: none;
+}
+/* Stroke widths are in viewBox units (680 wide) so they scale with the card exactly as the baked
+   line did. At the real 311px display that makes the casing ~4.3 and the line ~2.5 CSS px. */
+.tm-route .tm-casing {
+  fill: none; stroke: rgba(255,255,255,.92); stroke-width: 9.5;
+  stroke-linejoin: round; stroke-linecap: round;
+}
+.tm-route .tm-line {
+  fill: none; stroke: var(--tc, var(--accent)); stroke-width: 5.5;
+  stroke-linejoin: round; stroke-linecap: round;
+}
+/* Pin geometry matches the raster's (r=4.5 + a 1.4 white ring) so this change is about sharpness
+   only and does not smuggle in a redesign. Start/finish keep the two brand tokens; every other node
+   wears the trail's own colour (BRAND s11) -- same rule as _gen_satmaps.pin_color(). */
+/* paint-order:stroke is LOAD-BEARING, not decoration. The raster draws a white disc at r+1.4 and
+   then the colour disc at r on top, so the white is a ring OUTSIDE the pin. An SVG stroke is
+   centred on the radius, so without paint-order it eats 1.4 INTO the disc and -- because a mid pin
+   is the same colour as the line it sits on -- each pin reads as a white donut punched through the
+   route. Painting the stroke first and the fill over it puts the white back outside, matching the
+   raster exactly. (Seen in the DPR2 before/after crop, not reasoned about.) */
+.tm-route .tm-pins circle { stroke: #fff; stroke-width: 2.8; paint-order: stroke; }
+.tm-route .p-mid    { fill: var(--tc, var(--accent)); }
+.tm-route .p-start  { fill: #1F5C3D; }   /* BRAND s3 pine */
+.tm-route .p-finish { fill: #E0A52E; }   /* BRAND s3 gold */
+
+/* THE ICE CARD. south-pole-last-degree is the only trail whose basemap is WHITE -- polar-projected
+   MODIS imagery of Antarctica -- and every rule above assumes dark satellite ground. A white casing
+   and a white pin ring simply VANISH on ice: the line would read as a bare thread and the pins as
+   floating dots. The raster solved this years ago with a dark casing (12,22,34); this does the same
+   for the vector, so the pole matches the other forty instead of quietly degrading.
+   The LINE needs no rule: the pole's --tc is #BDD3DB, already the exact colour the raster drew. */
+.tm-route.tm-ice .tm-casing       { stroke: rgba(12,22,34,.92); }
+.tm-route.tm-ice .tm-pins circle  { stroke: #0C1622; }
 /* Body is a flex column that fills the (grid-stretched) card, so the stats row pins to the bottom and
    aligns across every card in a row regardless of title/blurb length (research: equal-height cards). */
 .tc-body { padding: 13px 8px 8px; display: flex; flex-direction: column; gap: 6px; flex: 1; }

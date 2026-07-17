@@ -109,16 +109,21 @@
     </div>
   </section>
 
-  <!-- The catalogue is the proof. These are counted, not estimated: 41 trails, 28,250 km and 1,117 landmarks
+  <!-- The catalogue is the proof. These are counted, not estimated: 41 trails, 28,460 km and 1,117 landmarks
        are the sum of the shipping catalogue (watchwalks-ios GeneratedTrails.swift == SampleData.kt).
        2026-07-16: the tiles still read 36 / 28,421 / 1,091 — bare numbers in a span, so every grep for
        "36 trails" or "42 trails" missed them while the rest of the site was updated twice. The most
        prominent number on the site was five trails stale. Re-count from SampleData, do not edit by hand.
        The 3 fictional African trails were de-listed and Kilimanjaro (Lemosho) + GR R2 added; the earlier
-       28,131 was this sum with the High Atlas counted at 110 km when the app ships it at 303. -->
+       28,131 was this sum with the High Atlas counted at 110 km when the app ships it at 303.
+       2026-07-17: 28,250 -> 28,460. The delta is exactly 210, which is inca-road 600 -> 810 — the trail
+       was published at a length its own drawn line could not walk (crow-flight floor 505 km), so JD
+       re-published it at the routed 810. ONE trail moving retunes the headline number of the whole site,
+       which is precisely why `verify_web_parity.py` now counts this from the master instead of trusting
+       the span. It caught this; a human would not have. -->
   <section class="stats reveal" style="border-top:none;padding:0" aria-label="What is in Watch Walks">
     <div class="stat"><span class="stat-n">41</span><span class="stat-l">real trails, seven continents</span></div>
-    <div class="stat"><span class="stat-n">28,250</span><span class="stat-l">kilometres of route</span></div>
+    <div class="stat"><span class="stat-n">28,460</span><span class="stat-l">kilometres of route</span></div>
     <div class="stat"><span class="stat-n">1,117</span><span class="stat-l">landmarks with a story</span></div>
     <!-- This tile used to read "One — free trail to start". Three tiles about the world and a fourth about
          the price tag: that is selling on price, and JD pulled the same line out of the App Store listing.

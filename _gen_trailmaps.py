@@ -20,7 +20,14 @@
 import os, re, json, glob, math
 
 ROOT = r"C:\Users\jwden\WatchApps"
-SP = r"C:\Users\jwden\AppData\Local\Temp\claude\C--Users-jwden--local-bin\ad05301a-9dc2-4deb-8610-fe29b1f7a2f8\scratchpad\story_pass"
+# Milestones come from the REPO, not a scratchpad. This pointed at ONE SESSION'S temp directory
+# (%TEMP%/claude/.../ad05301a-.../scratchpad/story_pass), which was deleted with that session -- so
+# the generator that builds trails.html has been UNRUNNABLE (FileNotFoundError on the first trail),
+# and nobody noticed because nobody ran it. verify_web_parity.py tells you to "re-run the
+# generators" to fix drift; this one could not run, which is part of why the drift persists.
+# _gen_satmaps.py carries a comment saying this exact bug was fixed -- it was fixed THERE ONLY.
+# A build input that lives in %TEMP% is a build input with an expiry date.
+SP = os.path.join(ROOT, "trails")
 SD = os.path.join(ROOT, r"watchwalks-android\app\src\main\java\com\watchwalks\companion\data\SampleData.kt")
 OUT = os.path.join(ROOT, "watchwalks-web", "trails.html")
 
@@ -136,9 +143,29 @@ def main():
     for t in trails:
         tid = t["id"]
         track = load_track(tid)
-        ms = json.load(open(os.path.join(SP, tid + ".json"), encoding="utf-8"))["milestones"]
+        # Milestones are OPTIONAL here. inca-trail -- the FREE trail, index 0 of the catalogue and
+        # the hero of the site -- is in SampleData.kt but has NO trails/inca-trail.json (its
+        # milestones live in SampleData.kt itself). Unguarded, that one missing file aborted the
+        # generation of ALL 41 cards. A trail missing its pins must cost that trail its pins.
+        mp = os.path.join(SP, tid + ".json")
+        if os.path.exists(mp):
+            ms = json.load(open(mp, encoding="utf-8"))["milestones"]
+        else:
+            ms = []
+            print(f"  !! {tid}: no {tid}.json -- card will claim 0 landmarks and draw NO pins")
         color = COLOR.get(tid, "#4E9E5A")
         svg = svg_for(tid, track, ms, color)
+        # Vector route drawn over the satellite basemap. svg_for() CANNOT do this job: it projects
+        # equirectangular (x=lng*cos(lat0)) into a 300x190 viewBox while the raster is web mercator,
+        # tile-based, 680x430 -- two different projections, so its line would sit off the valley. It
+        # stays as the no-raster fallback only.
+        try:
+            from _gen_route_overlay import overlay_svg
+            t["overlay"] = overlay_svg(tid)[0]
+        except Exception as e:
+            # A trail without an overlay loses its route line entirely, so this must be loud.
+            print(f"  !! {tid}: NO route overlay ({e.__class__.__name__}: {e})")
+            t["overlay"] = ""
         t["svg"] = svg; t["mcount"] = len(ms); t["color"] = color
         t["blurb"] = blurbs.get(tid, "")
         cards.setdefault(t["continent"], []).append(t)
@@ -150,16 +177,39 @@ def main():
         cardhtml = []
         for t in group:
             tag = '<span class="tag free">Free</span>' if t["free"] else '<span class="tag price">Paid</span>'
-            # Satellite composite (route + pins baked in). Falls back to the inline SVG only if the
-            # image wasn't generated for this trail.
+            # Satellite BASEMAP + the route as a vector overlay on top (registers pixel-exactly --
+            # _gen_route_overlay reuses _gen_satmaps' own projection; proved to 0.000000000 px).
+            #
+            # The route used to be baked into these pixels. The card shows the 680x430 raster at
+            # ~311 CSS px (measured in Chrome), a 2.19x DOWNSCALE at DPR1 -- terrain survives that,
+            # a width-4 hard-edged line does not, which is the "low res" JD reported. It is NOT an
+            # upscale problem, so @2x/srcset was the wrong fix. Vector is sharp at every DPR AND the
+            # colour now comes from --tc (the DOM) rather than being frozen in the pixels, so the
+            # site can no longer drift from the app's palette the way it already had once.
+            #
+            # NOTE: the overlay only lines up with a basemap built by `_gen_satmaps.py --no-route`.
+            # Until those are regenerated the shipped webps still have the old line baked in and you
+            # would see BOTH. Regenerate maps and this page together.
             img = os.path.join(os.path.dirname(__file__), "img", "trailmaps", t["id"] + ".webp")
             if os.path.exists(img):
                 mapel = (f'<img class="tm" src="img/trailmaps/{t["id"]}.webp" width="680" height="430" '
-                         f'loading="lazy" alt="Satellite route map of the {t["name"]}">')
+                         f'loading="lazy" alt="Satellite route map of the {t["name"]}">'
+                         + t["overlay"])
             else:
                 mapel = t["svg"]
+            # ⚠️ data-trail IS LOAD-BEARING — do not "tidy" it away. The LIVE page carries it
+            # (`data-trail="alpamayo"`) but this generator did not emit it, so the first honest
+            # regeneration silently stripped it from all 41 cards. `verify_web_parity.py` anchors on
+            # exactly this attribute, and its sanity floor caught the loss at once: "found 0 trail
+            # cards ... It is NOT green — it is blind". Without that floor a blind checker would have
+            # reported a clean site while reading nothing — which is the failure this whole codebase
+            # keeps re-learning. It is also simply correct: a card should say which trail it is.
+            # ⚠️ t["id"], NOT tid. `tid` belongs to the PARSE loop above and is long dead here — this
+            # is the emit loop (`for t in group`). My first go used `tid` and Python happily handed
+            # back its leftover value, so all 41 cards were stamped data-trail="gr-r2", the last trail
+            # parsed. It rendered perfectly and looked completely normal.
             cardhtml.append(
-                f'<article class="tcard" style="--tc:{t["color"]}">'
+                f'<article class="tcard" data-trail="{t["id"]}" style="--tc:{t["color"]}">'
                 f'<div class="tm-wrap">{mapel}</div>'
                 f'<div class="tc-body"><div class="tc-head"><h3>{t["name"]}</h3>{tag}</div>'
                 f'<p class="tc-region">{t["region"]}</p>'
@@ -204,7 +254,18 @@ HEAD = '''<!doctype html>
   <section class="hero" style="border-top:none;display:block;padding:60px 0 18px">
     <span class="eyebrow">The trails</span>
     <h1 style="font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;margin-top:10px">Every trail, start to finish.</h1>
-    <p class="lead" style="max-width:42em">Around three dozen of the world's great long walks, each a complete journey with its own route and landmarks. Start free on the Inca Trail; unlock any other with a one-time purchase, yours to keep. Each map below traces the real route, with a pin at every landmark whose story you unlock as you walk.</p>
+    <!-- ⚠️ THIS LEAD IS HAND-TYPED IN A GENERATOR, which is the worst of both worlds: it looks
+         generated, so nobody proofreads it, and it is code, so nobody re-counts it. It carried THREE
+         defects at once until 2026-07-17.
+         "Around three dozen" = 36. We ship 41. The site's own tiles said 41 two pages away. Hedging
+         with a vague count does not make it safe — it just makes it wrong more quietly, and it
+         undersells the catalogue by five trails.
+         "unlock" x2 — BANNED by the LOCKED BRAND.md. ("journey" is NOT banned and stays.) Both rode
+         in here for weeks because verify_web_parity's brand check ABORTED before it ever ran: the
+         card check died first on a sanity floor, so [4] never executed. A checker that stops early
+         is a checker that is not checking.
+         If the catalogue count changes again, this sentence is the one that will lie. -->
+    <p class="lead" style="max-width:42em">Forty-one of the world's great long walks, each a complete journey with its own route and landmarks. Start free on the Inca Trail; add any other with a one-time purchase, yours to keep. Each map below traces the real route, with a pin at every landmark whose story opens as you walk.</p>
     <div class="cta-row" style="margin-top:20px" data-cta>
       <a class="btn" href="join-apple.html" data-p="ios">Get it on the App&nbsp;Store</a>
       <a class="btn" href="join-wearos.html" data-p="android">Get it on Google&nbsp;Play</a>
