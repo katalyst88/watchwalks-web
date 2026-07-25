@@ -1,21 +1,27 @@
 <!doctype html>
 <html lang="en">
-<!-- STORE STATUS PAGE. Two of the three stores are not public yet, and a button that 404s is worse
-     than one that tells the truth, so every not-yet-live store button on the site lands here.
+<!-- STORE STATUS PAGE. A button that 404s is worse than one that tells the truth, so any not-yet-live
+     store button on the site lands here. Only ONE thing is still not live: the Wear OS WATCH app.
 
-     TO GO LIVE, one edit per store:
-       Google Play  https://play.google.com/store/apps/details?id=com.watchwalks.companion
-                    (verified 404 on 2026-07-13: the listing is in closed testing, so the public URL
-                     does not resolve). Restore it in join-wearos.html (3 buttons), join-garmin.html
-                     (companion button) and the row below.
-       App Store    LIVE 2026-07-21: https://apps.apple.com/app/id6787276123 — linked in
-                    join-apple.html (2 buttons) and the row below.
-     Garmin Connect IQ is LIVE (verified 200) and is linked directly everywhere. -->
+     WHERE EACH STORE STANDS (2026-07-26):
+       Garmin Connect IQ  LIVE. https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950
+       App Store          LIVE 2026-07-21. https://apps.apple.com/app/id6787276123 — join-apple.html.
+       Google Play PHONE  LIVE. https://play.google.com/store/apps/details?id=com.watchwalks.companion
+                          ⚠️ It had been live since 12 JULY while this page said "coming soon" for two
+                          weeks. Nothing tells you a track went public. The 404 noted here on 07-13 was
+                          real at the time, and it was never re-checked.
+       Google Play WATCH  NOT LIVE. wear:production was EMPTY until 2026-07-26 — the watch app had
+                          never had a public release at all, only closed testing. vc1024 was promoted
+                          to wear:production on 2026-07-26 and is in review.
+
+     BEFORE EDITING ANY STORE CLAIM ON THIS SITE, run the check, do not trust this comment:
+       node C:\Users\jwden\WatchApps\playstore\_api_list_tracks.js     (prints every Play track)
+     "production" is the phone app. "wear:production" is the watch app. They are separate releases. -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where to get Watch Walks | Watch Walks</title>
-<meta name="description" content="Watch Walks is on the Garmin Connect IQ store and the App Store today. The Android app is on its way. Here is exactly where each one stands.">
+<meta name="description" content="Watch Walks is on the Garmin Connect IQ store, the App Store and Google Play today. The Wear OS watch app is the last one in review. Here is exactly where each one stands.">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -54,10 +60,10 @@
 <main id="main" tabindex="-1" class="wrap">
   <section class="join-hero" style="text-align:left">
     <span class="eyebrow">Where to get it</span>
-    <h1>On Garmin and iPhone today. Android is close.</h1>
-    <p class="sub" style="margin-left:0">Watch Walks is out on the Garmin Connect IQ store and the App Store right now, with the Inca Trail free.
-      The Android app is finished and waiting on Google Play. Rather than send you to a
-      page that does not exist yet, here is exactly where it stands.</p>
+    <h1>On Garmin, iPhone and Android today. The Wear OS watch app is close.</h1>
+    <p class="sub" style="margin-left:0">Watch Walks is out on the Garmin Connect IQ store, the App Store and Google Play right now, with the Inca Trail free.
+      The one thing still to come is the watch app for Wear OS, which is with Google for review. Rather than send you to a
+      page that does not exist yet, here is exactly where each one stands.</p>
   </section>
 
   <!-- A status list, not three hopeful cards. Each row says what is true today, and what you can do
@@ -77,10 +83,19 @@
           <a class="btn" style="display:inline-block;margin-top:12px" href="https://apps.apple.com/app/id6787276123" target="_blank" rel="noopener">Get it on the App Store</a></dd>
       </div>
       <div>
-        <dt>Android and Wear OS</dt>
-        <dd><b>Not on Google Play yet.</b> It is in closed testing while Google reviews it for public
-          release. Same promise: the link lands here and on the <a href="join-wearos.html">Wear OS page</a>
-          the day it opens.</dd>
+        <dt>Android phone</dt>
+        <dd><b>Out now.</b> Any Android phone. Your steps come from the phone itself, or from Health
+          Connect if you already count them elsewhere, and the Inca Trail is free.
+          <a class="btn" style="display:inline-block;margin-top:12px" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Get it on Google Play</a></dd>
+      </div>
+      <div>
+        <dt>Wear OS watch app</dt>
+        <dd><b>In review.</b> The watch app for Samsung Galaxy Watch, Google Pixel Watch, TicWatch and
+          other Wear OS 3+ watches went to Google on 26 July and is being reviewed for public release.
+          The moment it clears, you will find it in the Play Store on the watch itself, and the link
+          lands here and on the <a href="join-wearos.html">Wear OS page</a>. Until then the free
+          <a href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">phone app</a>
+          walks your trail on its own.</dd>
       </div>
     </dl>
   </section>

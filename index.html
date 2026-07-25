@@ -460,10 +460,15 @@
   <section id="get" class="privacy-band">
     <span class="eyebrow">Get the app</span>
     <h2>Pick your watch and start walking.</h2>
-    <p class="sub">Garmin and iPhone are out now, with the Inca Trail free. The Android app is built and waiting on Google Play, and the link goes up here the day it opens.</p>
+    <p class="sub">Garmin, iPhone and Android are out now, with the Inca Trail free. The Wear OS watch app is the last one in the queue, and the link goes up here the day it opens.</p>
     <!-- Garmin is the primary watch path (the trail runs on the watch itself), so it keeps the weight.
-         Garmin and iPhone are both live and link straight through; Android alone stays labelled coming
-         soon: a button that promises a store you cannot reach is worse than none. -->
+         Garmin, iPhone and the Android phone app are live and link straight through. The Wear OS WATCH
+         app is the one thing still not public (wear:production went up 2026-07-26 and is in review), so
+         it alone stays labelled coming soon: a button that promises a store you cannot reach is worse
+         than none.
+         ⚠️ The Android phone app had been PUBLIC ON PLAY SINCE 12 JULY while this page said "coming
+         soon" — nothing notifies you that a track went live. Check the track, never the memory:
+         playstore/_api_list_tracks.js prints exactly what each track is serving. -->
     <div class="grid-hero">
       <div class="card choice hero-card">
         <h3>Garmin</h3>
@@ -484,8 +489,9 @@
       </div>
       <div class="card choice">
         <h3>Android and Wear OS</h3>
-        <p>Any Android phone, plus Samsung Galaxy Watch, Google Pixel Watch and other Wear OS watches. In closed testing on Google&nbsp;Play.</p>
-        <a class="btn ghost" href="join-wearos.html">Google Play: coming soon &rarr;</a>
+        <p>Any Android phone, counting steps on its own or pulling them in through Health Connect. Out now on Google&nbsp;Play. The watch app for Samsung Galaxy Watch, Google Pixel Watch and other Wear OS watches is in review, and lands here the day it clears.</p>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion" target="_blank" rel="noopener">Get it on Google&nbsp;Play &rarr;</a>
+        <p class="sub" style="margin-top:10px"><a href="join-wearos.html">Walking with a Wear OS watch? &rarr;</a></p>
       </div>
     </div>
   </section>
