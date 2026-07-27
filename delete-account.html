@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<!-- ACCOUNT DELETION PAGE. Required by Google Play for any app that lets a user create an account,
+     and linked from the Play listing as the "Delete account URL". Play requires three things, all
+     present below: it names the app and developer as they appear on the listing, it leads with the
+     steps, and it says exactly what is deleted, what is kept, and for how long.
+
+     ⚠️ EVERY CLAIM HERE IS CHECKED AGAINST CloudSync.kt. If that file changes, this page changes.
+     In particular: deleteCloudData (CloudSync.kt:156) deletes the Firestore document FIRST, then
+     attempts to delete the Firebase Auth user — and Firebase can REFUSE the second step when the
+     sign-in is old, in which case the code logs it, signs out, and still reports success. So this
+     page must NOT promise the account record always disappears at that moment. It promises the data
+     does, and gives an email route for the remainder. Do not "tidy" that nuance away. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your account and data | Watch Walks</title>
+<meta name="description" content="How to delete your Watch Walks account and the data stored with it: the steps to take in the app, what is deleted, what stays on your phone, and how to ask us to do it for you.">
+<link rel="canonical" href="https://watchwalks.com/delete-account.html">
+<meta name="theme-color" content="#1F5C3D">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="stylesheet" href="styles.css?v=20260717">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+      Watch Walks
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="trails.html">Trails</a>
+    <a class="navlink" href="compatibility.html">Watches</a>
+    <a class="navlink" href="faq.html">Questions</a>
+    <a class="btn-nav" href="index.html#get">Get Watch&nbsp;Walks</a>
+    <details class="mnav">
+      <summary aria-label="Menu" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <nav class="mnav-panel">
+        <a href="index.html#how">How it works</a>
+        <a href="trails.html">Trails</a>
+        <a href="compatibility.html">Watches</a>
+        <a href="faq.html">Questions</a>
+        <a href="index.html#get">Get Watch&nbsp;Walks</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="wrap">
+  <section class="join-hero" style="text-align:left">
+    <span class="eyebrow">Watch Walks</span>
+    <h1>Delete your account and your data</h1>
+    <p class="sub" style="margin-left:0">This page is about <b>Watch Walks</b>, the walking app published by
+      <b>Watch Walks</b> on Google Play. Most people never make an account at all: you only have one if you
+      chose to sign in with Google so your journey would survive a new phone. If you did, here is how to
+      remove it.</p>
+  </section>
+
+  <section>
+    <h2>Delete it yourself, in the app</h2>
+    <ol>
+      <li>Open <strong>Watch Walks</strong> on your Android phone.</li>
+      <li>Tap the <strong>settings</strong> icon at the top of the screen.</li>
+      <li>Choose <strong>Your journey</strong>.</li>
+      <li>Tap <strong>Delete cloud backup</strong>.</li>
+      <li>Confirm with <strong>Yes, delete it</strong>.</li>
+    </ol>
+    <p>That removes your backup and your Watch Walks account from our database. It happens straight away,
+      not on a queue.</p>
+  </section>
+
+  <section>
+    <h2>Or ask us to do it</h2>
+    <p>If you have already uninstalled the app, or you would rather we did it, email
+      <a href="mailto:watchwalksupport@gmail.com">watchwalksupport@gmail.com</a> from the Google address you
+      signed in with, and say you want your account deleted. We will delete it and reply to confirm,
+      <strong>within 30 days</strong> and usually within a few.</p>
+    <p>Email from the same address if you can. It is how we know the account is yours.</p>
+  </section>
+
+  <section>
+    <h2>What is deleted</h2>
+    <ul class="feat">
+      <li><b>Your backup record.</b> The distance you have walked on each trail, which trails you own, your
+        walking streak and your best streak, and the time it was last updated.</li>
+      <li><b>Your Watch Walks account.</b> The sign-in record itself, which holds the email address of the
+        Google account you used.</li>
+    </ul>
+    <p>Both are removed permanently. We do not keep a copy, and there is no archive to restore from, so it
+      cannot be undone.</p>
+    <p>One honest detail: the app deletes your data first and then the account record. Occasionally Google
+      asks for a fresh sign-in before it will remove an account record, and if that happens while you are
+      deleting, <b>your data is still gone</b> but the empty account may remain. If you want that tidied up
+      too, email us and we will remove it.</p>
+  </section>
+
+  <section>
+    <h2>What is kept, and why</h2>
+    <ul class="feat">
+      <li><b>The journey on your phone stays.</b> Deleting the backup does not wipe the app on the device in
+        your hand. To clear that as well, use <em>Settings &rarr; Start over</em>, or uninstall the app.</li>
+      <li><b>Your purchases belong to Google Play, not to us.</b> Any trails you bought are recorded against
+        your Google account by Play, under Google's own terms. Deleting your Watch Walks account does not
+        cancel or refund them, and we cannot delete Play's records. If you reinstall and sign in again, Play
+        will still know what you own.</li>
+      <li><b>Nothing else.</b> We hold no other record of you. There are no analytics, no advertising
+        profile and no mailing list, because the app collects none of that in the first place.</li>
+    </ul>
+    <p>Retention: your backup and account are deleted immediately when you confirm, or within 30 days if you
+      email us. We keep no separate backups of the database and apply no additional retention period.</p>
+  </section>
+
+  <section class="privacy-band">
+    <span class="eyebrow">If you are not sure</span>
+    <h2>You may not have an account at all.</h2>
+    <p class="sub">Watch Walks works fully without one, and signing in is optional. Open
+      <em>Settings &rarr; Your journey</em>: if it invites you to sign in, there is no account and nothing to
+      delete. The full detail of what is stored, and where, is in our
+      <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <span class="brand" style="font-size:16px">
+          <img src="favicon.svg" alt="" width="26" height="26" aria-hidden="true">
+          Watch Walks
+        </span>
+        <p class="foot-blurb">Your everyday steps, carried down the world's greatest trails. No ads, no tracking, no account.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="trails.html">All 41 trails</a>
+        <a href="index.html#how">How it works</a>
+        <a href="faq.html">Questions</a>
+      </div>
+      <div>
+        <h2>Set up</h2>
+        <a href="compatibility.html">Compatible devices</a>
+        <a href="setup-garmin.html">Garmin</a>
+        <a href="setup-wearos.html">Wear OS</a>
+        <a href="setup-apple.html">Apple</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="delete-account.html">Delete your account</a>
+        <a href="terms.html">Terms</a>
+        <a href="attribution.html">Attribution</a>
+      </div>
+    </div>
+    <div class="foot-note">&copy; 2026 Watch Walks</div>
+  </div>
+</footer>
+
+<script src="openin.js"></script>
+</body>
+</html>
