@@ -319,15 +319,41 @@ def rewrite_trails(data):
 
     h = CARD_RE.sub(one, h)
 
-    # The free trail is the hero, so it must not also sit in the South America grid as one of twelve —
-    # the same card twice on one page reads as a bug.
-    h = re.sub(r'<article class="tcard" data-trail="inca-trail".*?</article>', "", h, flags=re.S)
+    # ⚠️ THE DELETION IS CONDITIONAL ON THE HERO ACTUALLY LANDING, AND THAT IS THE WHOLE POINT.
+    #
+    # The free trail is the hero, so it must not ALSO sit in the South America grid — the same card
+    # twice on one page reads as a bug. But the deletion below was unconditional while the two
+    # insertions were plain `str.replace`, which SILENTLY DOES NOTHING when its anchor is absent. The
+    # page has since been rebuilt without `nav.tnav` and without `id="south-america"`, so on
+    # 2026-08-10 running this script deleted the Inca Trail's card, inserted no hero, left the page
+    # claiming "Forty-one of the world's great long walks" above 40 cards — with the one trail you
+    # can walk FREE missing from all of them — and printed "hero rebuilt".
+    #
+    # `verify_web_parity.py` reported IN SYNC on that page, so the checker did not catch it either.
+    #
+    # Now: find the anchors first, and if either is gone, leave the free trail where it is and SAY SO.
+    # Losing the free trail's card is far worse than showing it in the grid.
     h = re.sub(r"<!-- GEN:hero.*?<!-- /GEN:hero -->\n?", "", h, flags=re.S)
     h = re.sub(r"<!-- GEN:legend.*?<!-- /GEN:legend -->\n?", "", h, flags=re.S)
     anchor = '  <nav class="tnav"'
-    h = h.replace(anchor, hero(data["inca-trail"]) + "\n\n" + anchor, 1)
     anchor2 = '<section class="tcont" id="south-america">'
-    h = h.replace(anchor2, legend(data) + "\n\n" + anchor2, 1)
+    missing_anchors = [a for a in (anchor, anchor2) if a not in h]
+    if missing_anchors:
+        print("  !! HERO/LEGEND NOT PLACED — anchor(s) missing from trails.html: "
+              + ", ".join(repr(a.strip()) for a in missing_anchors))
+        print("  !! keeping the free trail's card in the grid instead of deleting it. Re-point the")
+        print("  !! anchors at the current markup if the hero is wanted back.")
+    else:
+        h = re.sub(r'<article class="tcard" data-trail="inca-trail".*?</article>', "", h, flags=re.S)
+        h = h.replace(anchor, hero(data["inca-trail"]) + "\n\n" + anchor, 1)
+        h = h.replace(anchor2, legend(data) + "\n\n" + anchor2, 1)
+
+    # Belt and braces: every trail must be REPRESENTED, as a card or as the hero. This is the check
+    # that would have stopped the silent deletion on its own.
+    shown = len(re.findall(r'class="tcard"', h)) + (0 if missing_anchors else 1)
+    if shown != len(data):
+        raise SystemExit(f"REFUSING TO WRITE: {shown} trails would appear on the page, catalogue has "
+                         f"{len(data)}. The free trail is the one this has dropped before.")
     open(p, "w", encoding="utf-8").write(h)
     print(f"trails.html: {len(done)} cards given a profile + a duration at "
           f"{STEPS_PER_DAY:,} steps/day ({KM_PER_DAY:.1f} km/day); hero rebuilt"
