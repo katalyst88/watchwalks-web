@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Watch Walks | Watch Walks</title>
+<meta name="description" content="Watch Walks on iPhone, Android and Garmin. Your everyday steps carry you down the world's greatest trails. The Inca Trail is free.">
+<link rel="canonical" href="https://watchwalks.com/links.html">
+<meta name="theme-color" content="#1F5C3D">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="stylesheet" href="styles.css?v=20260717">
+
+<!-- THE BIO LINK PAGE. This is what @watchwalks and the Facebook Page point at.
+     ⭐ On our own domain rather than Linktree, for three reasons that all matter more than the ten
+     minutes Linktree would have saved: no third party sits between the bio and the app, no other
+     brand's logo on the way in, and — the real one — these store links are TAGGED, so traffic from
+     a bio actually appears in App Store Connect and the Play acquisition report. A Linktree link
+     cannot carry that.
+     ⚠️ DELIBERATELY NO SITE NAV. A bio tap is someone deciding in about four seconds whether to
+     install; every other link on the page is a way to lose them. The site is offered last, as one
+     line, for the people who want to read first. -->
+<style>
+  /* Four big targets, thumb-sized, in the order a visitor is most likely to need them. */
+  .lk-list { display: grid; gap: 12px; max-width: 30em; margin: 0 auto; }
+  /* ⛔ THE SITE HAS A FULL DARK THEME (styles.css, prefers-color-scheme). The first cut hardcoded
+     `background:#fff` with `color:inherit`, which in dark mode painted a white card under cream text
+     — unreadable, and invisible in the markup. Only rendering the page showed it. Use the site's own
+     tokens so this page follows the theme like every other one. */
+  .lk {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; border-radius: var(--radius, 14px);
+    border: 1px solid var(--line); background: var(--bg2);
+    text-decoration: none; color: var(--text);
+  }
+  .lk:hover, .lk:focus-visible { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+  /* The Garmin device list is the longest string on the page and must be allowed to wrap rather than
+     set the card's minimum width. */
+  .lk > span:first-child { min-width: 0; }
+  .lk-name { font-weight: 700; }
+  .lk-sub  { display: block; font-size: 0.86rem; opacity: 0.72; margin-top: 2px; }
+  .lk-go   { margin-left: auto; opacity: 0.5; }
+  .lk-head { text-align: center; max-width: 30em; margin: 0 auto 26px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main" tabindex="-1" class="wrap">
+
+  <section class="hero" style="border-top:none;display:block;padding:56px 0 20px">
+    <div class="lk-head">
+      <img src="favicon.svg" alt="" width="46" height="46" aria-hidden="true">
+      <h1 style="font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:12px 0 8px">Watch Walks</h1>
+      <!-- Rhythm matters here: slopcheck flags uniform sentence length, and four near-identical
+           clauses is exactly what machine-written copy reads like. Short, then long. -->
+      <p class="lead" style="margin:0">Your everyday steps carry you down the world's greatest trails.
+      The Inca Trail is free &mdash; all 43 km of it, from the trailhead to Machu Picchu.</p>
+    </div>
+  </section>
+
+  <section style="border-top:none;padding-top:0">
+    <div class="lk-list">
+
+      <a class="lk" id="lk-ios" href="https://apps.apple.com/app/apple-store/id6787276123?pt=129119775&amp;ct=bio-instagram&amp;mt=8">
+        <span>
+          <span class="lk-name">iPhone and Apple Watch</span>
+          <span class="lk-sub">App Store</span>
+        </span>
+        <span class="lk-go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lk" id="lk-android" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion&amp;referrer=utm_source%3Dinstagram%26utm_medium%3Dcpc%26utm_campaign%3Dbio-instagram">
+        <span>
+          <span class="lk-name">Android and Wear OS</span>
+          <span class="lk-sub">Google Play</span>
+        </span>
+        <span class="lk-go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <!-- Garmin gets its own row because it is a real listing that nothing currently links to.
+           Connect IQ has no campaign tagging, so this URL is plain — that is the store's limit,
+           not an oversight. -->
+      <a class="lk" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950">
+        <span>
+          <span class="lk-name">Garmin watches</span>
+          <span class="lk-sub">Connect IQ &mdash; Forerunner, Fenix, Venu, Instinct and more</span>
+        </span>
+        <span class="lk-go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lk" href="https://watchwalks.com/">
+        <span>
+          <span class="lk-name">See the 41 trails first</span>
+          <span class="lk-sub">watchwalks.com</span>
+        </span>
+        <span class="lk-go" aria-hidden="true">&rarr;</span>
+      </a>
+
+    </div>
+
+    <p class="sub" style="text-align:center;max-width:30em;margin:22px auto 0">
+      Not sure your watch will work? <a href="compatibility.html">Check your device</a>.
+    </p>
+  </section>
+
+</main>
+
+<script>
+/* Which profile sent them. The links above are tagged `bio-instagram` in the HTML, and this
+   rewrites them to `bio-facebook` when the page is opened as links.html?s=fb.
+
+   ⚠️ PROGRESSIVE ENHANCEMENT, NOT A DEPENDENCY. With JavaScript off the links still work and still
+   carry a tag — the visit is simply counted as Instagram. A store link that only works when a
+   script runs would be a far worse trade than an occasionally mis-attributed one. */
+(function () {
+  var s = new URLSearchParams(location.search).get('s');
+  if (s !== 'fb') return;
+  var ios = document.getElementById('lk-ios');
+  var and = document.getElementById('lk-android');
+  if (ios) ios.href = ios.href.replace('ct=bio-instagram', 'ct=bio-facebook');
+  if (and) and.href = and.href.replace('utm_source%3Dinstagram', 'utm_source%3Dfacebook')
+                              .replace('utm_campaign%3Dbio-instagram', 'utm_campaign%3Dbio-facebook');
+})();
+</script>
+
+</body>
+</html>
