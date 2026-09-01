@@ -14,7 +14,40 @@ WEB = os.path.join(ROOT, "watchwalks-web")
 # because nobody ran it. A build input that lives in %TEMP% is a build input with an expiry date.
 SP = os.path.join(ROOT, "trails")
 IMGDIR = os.path.join(WEB, "img", "trailmaps")
-CACHE = os.path.join(WEB, "_tilecache")
+# --- Basemap source ------------------------------------------------------------------------------
+# Switched off Esri 2026-08-27. Esri's own Terms of Use say Services are for "noncommercial external
+# purposes" and "may not be reproduced or transmitted for commercial purposes" -- and this script
+# reproduces their tiles into .webp files that ship in a product which sells trails. NASA GIBS is
+# open data, free for commercial use with courtesy attribution.
+# See project_watchwalks_esri_imagery_licence_2026-08-27. Override with WW_BASEMAP=esri to compare.
+SOURCES = {
+    # Colour shaded relief terrain. Static layer, max zoom 12.
+    "aster": ("https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/ASTER_GDEM_Color_Shaded_Relief"
+              "/default/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+              "Terrain: ASTER GDEM, NASA GIBS", 12),
+    # TRUE-COLOUR satellite, NASA open data. Added 2026-09-01 to compare against ASTER, because
+    # ASTER is shaded RELIEF and swapping to it costs the photographic look the trail cards sell on
+    # (side by side, Annapurna goes from snow-capped colour to a grey hillshade).
+    # ⚠️ LEVEL 9 ONLY at ~250 m. Wide routes (Appalachian, Te Araroa) frame at z6-z8 and look right;
+    # short mountain routes want z10-z11 and will clamp to z9, i.e. visibly soft. There is no single
+    # source that serves both, which is the actual finding here.
+    "modis": ("https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/"
+              "MODIS_Terra_CorrectedReflectance_TrueColor/default/2024-08-01"
+              "/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg",
+              "Imagery: MODIS Terra, NASA GIBS", 9),
+    # ⭐ SENTINEL-2 CLOUDLESS (EOX) — the licence-clean replacement for Esri. Real Sentinel-2, tiled,
+    # no API key, CC BY 4.0, so commercial use is fine provided the credit travels with the imagery.
+    # ⚠️ THE ATTRIBUTION IS A LICENCE CONDITION, NOT A COURTESY.
+    # ⚠️ Native 10 m/px (~z14); z15 is served but upsampled, so short routes look softer than Esri.
+    "s2":    ("https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg",
+              "Sentinel-2 cloudless (2020) by EOX, modified Copernicus Sentinel data", 15),
+    "esri":  ("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+              "/tile/{z}/{y}/{x}",
+              "Esri, Maxar, Earthstar Geographics", 15),
+}
+BASEMAP = os.environ.get("WW_BASEMAP", "aster")
+TILE, ATTRIBUTION, MAXZ = SOURCES[BASEMAP]
+CACHE = os.path.join(WEB, "_tilecache", BASEMAP)
 os.makedirs(IMGDIR, exist_ok=True); os.makedirs(CACHE, exist_ok=True)
 
 from PIL import Image, ImageDraw
@@ -54,7 +87,6 @@ def pin_color(tid, mtype):
     if mtype == "finish":
         return PIN_FINISH
     return COLOR.get(tid, PIN_START)   # the trail's own identity colour
-TILE = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 
 def hx(c): return tuple(int(c[i:i+2],16) for i in (1,3,5))
 
@@ -140,6 +172,9 @@ def fetch_tile(z,x,y):
             return Image.open(io.BytesIO(data)).convert("RGB")
         except Exception as e:
             time.sleep(0.6*(att+1))
+    # A grey placeholder is a map with a hole in it. It used to be returned silently, which is how a
+    # broken mosaic could ship looking fine. Say so, loudly, every time.
+    print(f"  !! TILE FAILED z{z} x{x} y{y} ({BASEMAP}) -- grey placeholder used", flush=True)
     return Image.new("RGB",(256,256),(40,44,40))
 
 def build(tid, track, milestones, route=True, out=None):
@@ -158,6 +193,9 @@ def build(tid, track, milestones, route=True, out=None):
     color=hx(COLOR.get(tid,"#4E9E5A"))
     W,H=680,430; pad=0.10
     z=pick_zoom(track,W,H,pad)
+    # Past a source's max zoom the endpoint 404s and fetch_tile below quietly returns a
+    # GREY SQUARE, so the map ships with holes in it and nothing says so. Clamp instead.
+    z=min(z,MAXZ)
     xs=[merc(la,lo,z)[0] for _,la,lo in track]; ys=[merc(la,lo,z)[1] for _,la,lo in track]
     minx,maxx,miny,maxy=min(xs),max(xs),min(ys),max(ys)
     cx=(minx+maxx)/2; cy=(miny+maxy)/2

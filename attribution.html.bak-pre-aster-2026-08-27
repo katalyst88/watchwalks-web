@@ -62,24 +62,11 @@
         contributors, under the <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener license">ODbL</a>;
         tiles by <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>.</li>
       <!-- The route maps ON THIS SITE are not the same imagery as the maps IN THE APP, and this page
-           credited only the app's. Every .webp route map here (the hero, the teaser rows, the trail
-           cards, the join pages) is rendered by _gen_satmaps.py.
-           2026-08-27: switched OFF Esri World Imagery. Esri's Terms of Use say Services are for
-           "noncommercial external purposes" and "may not be reproduced or transmitted for commercial
-           purposes" -- and this script reproduces their tiles into .webp that ship in a product which
-           sells trails. NASA GIBS is open data and free for commercial use with courtesy attribution.
+           credited only the app's. Every .webp route map here (the hero, the twelve teaser rows, the
+           thirty-six trail cards, the three join pages) is Esri World Imagery, fetched by _gen_satmaps.py.
            trails.html carries the visible credit; this is the page that has to name it too. -->
-      <!-- 2026-09-02: ASTER out, Sentinel-2 back in, and this bullet now covers BOTH the site's route
-           maps AND the 41 trail cards inside the app. Those cards were still Esri World Imagery long
-           after the site had switched off it — the app is the copy that actually sells trails, so it
-           was the one that mattered most and the one that got missed.
-           ⚠️ CC BY 4.0 is an ATTRIBUTION licence: this credit is a condition of use, not a courtesy.
-           Remove it and the imagery goes back to being used without permission. -->
-      <li><b>The trail cards, on this site and in the app.</b> Imagery from
-        <a href="https://s2maps.eu" target="_blank" rel="noopener">Sentinel-2 cloudless (2020)</a> by
-        EOX IT Services GmbH, made from modified
-        <a href="https://sentinels.copernicus.eu/" target="_blank" rel="noopener">Copernicus Sentinel-2</a>
-        data, under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener license">CC&nbsp;BY&nbsp;4.0</a>.</li>
+      <li><b>The route maps on this site.</b> Satellite imagery &copy; Esri &mdash; sources: Esri, Maxar,
+        Earthstar Geographics, and the GIS User Community (Esri World Imagery).</li>
       <!-- The satellite basemap was credited to nobody at all, on a page whose whole job is crediting.
            sentinel.esa.int no longer resolves at all (ESA retired that portal), so the licence link on
            the imagery we are obliged to credit was dead. It points at the live Copernicus site now. -->
