@@ -1041,3 +1041,9 @@ section .sub { max-width: 34em; }   /* was 44em, about 85 characters, well past 
   .hero-terrain { inset: -8px -16px auto -16px; }
   .hero::before { left: -16px; right: -16px; }
 }
+
+/* Social links in the footer's first column. `rel="me"` on each — see _add_social.py. Laid out as a
+   row rather than the stacked `.foot-cols a` default, so two short words do not eat two lines. */
+.foot-social { display: flex; gap: 16px; margin-top: 12px; }
+.foot-social a { display: inline; padding: 0; font-size: 14px; color: var(--subtle); }
+.foot-social a:hover { color: var(--text); }
