@@ -35,3 +35,6 @@ img/_raw/
 !_trail_colors.py
 !_gen_polarmap.py
 !_gen_route_overlay.py
+# 2026-09-02. `_*` above would have eaten the per-trail page builder too -- the same trap that hid
+# `_trail_colors.py` on one machine. Checked before un-ignoring: it carries no credential.
+!_gen_trailpages.py

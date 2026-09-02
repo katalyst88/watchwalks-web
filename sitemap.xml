@@ -1,17 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://watchwalks.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://watchwalks.com/attribution.html</loc><priority>0.3</priority></url>
+  <url><loc>https://watchwalks.com/compatibility.html</loc><priority>0.7</priority></url>
+  <url><loc>https://watchwalks.com/contact.html</loc><priority>0.6</priority></url>
+  <url><loc>https://watchwalks.com/delete-account.html</loc><priority>0.3</priority></url>
+  <url><loc>https://watchwalks.com/faq.html</loc><priority>0.7</priority></url>
+  <url><loc>https://watchwalks.com/join-apple.html</loc><priority>0.8</priority></url>
   <url><loc>https://watchwalks.com/join-garmin.html</loc><priority>0.8</priority></url>
   <url><loc>https://watchwalks.com/join-wearos.html</loc><priority>0.8</priority></url>
-  <url><loc>https://watchwalks.com/join-apple.html</loc><priority>0.8</priority></url>
-  <url><loc>https://watchwalks.com/trails.html</loc><priority>0.8</priority></url>
-  <url><loc>https://watchwalks.com/compatibility.html</loc><priority>0.7</priority></url>
-  <url><loc>https://watchwalks.com/faq.html</loc><priority>0.7</priority></url>
-  <url><loc>https://watchwalks.com/contact.html</loc><priority>0.6</priority></url>
+  <url><loc>https://watchwalks.com/links.html</loc><priority>0.6</priority></url>
+  <url><loc>https://watchwalks.com/privacy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://watchwalks.com/setup-apple.html</loc><priority>0.5</priority></url>
   <url><loc>https://watchwalks.com/setup-garmin.html</loc><priority>0.5</priority></url>
   <url><loc>https://watchwalks.com/setup-wearos.html</loc><priority>0.5</priority></url>
-  <url><loc>https://watchwalks.com/setup-apple.html</loc><priority>0.5</priority></url>
-  <url><loc>https://watchwalks.com/privacy.html</loc><priority>0.4</priority></url>
   <url><loc>https://watchwalks.com/terms.html</loc><priority>0.3</priority></url>
-  <url><loc>https://watchwalks.com/attribution.html</loc><priority>0.3</priority></url>
+  <url><loc>https://watchwalks.com/trails.html</loc><priority>0.8</priority></url>
+  <url><loc>https://watchwalks.com/trails/inca-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/appalachian-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/pacific-crest-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/route-66.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/camino-de-santiago.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/length-of-britain.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/inca-road.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/shikoku-pilgrimage.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/walk-the-nile.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/te-araroa.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/bibbulmun-track.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/last-degree-to-the-south-pole.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/annapurna-circuit.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/gr20.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/john-muir-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/larapinta-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/tour-du-mont-blanc.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/west-highland-way.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/wonderland-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/alpamayo-circuit.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/high-atlas-traverse.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/australian-alps-walking-track.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/cape-to-cape-track.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/walkers-haute-route.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/cordillera-huayhuash-circuit.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/jordan-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/kungsleden-the-kings-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/the-long-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/lycian-way.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/manaslu-circuit.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/nakasendo-way.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/tahoe-rim-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/torres-del-paine-o-circuit.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/routeburn-track.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/overland-track.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/kumano-kodo.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/kilimanjaro-machame-route.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/mount-kenya-chogoria-route.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/otter-trail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/kilimanjaro-lemosho-route.html</loc><priority>0.9</priority></url>
+  <url><loc>https://watchwalks.com/trails/gr-r2-reunion.html</loc><priority>0.9</priority></url>
 </urlset>

@@ -1,0 +1,86 @@
+/* Per-trail page styles. Generated pages only — styles.css is untouched, so its cache buster
+   (v=20260717) stays valid for every existing page.
+
+   ⚠️ EVERY COLOUR HERE IS A styles.css TOKEN. Hardcoding one broke a page on 2026-09-01; the dark
+   theme is entirely token-driven, so a literal colour is a page that is unreadable at night.
+   The single exception is --tc, the trail's own identity colour, set inline on <main> from the app's
+   TrailArt map — and it is used only as a spine and a tint, never as text, so it cannot fail contrast. */
+
+.tp { padding-bottom: 24px; }
+
+.bc { font-size: 13px; color: var(--subtle); padding: 20px 0 0; }
+.bc a { color: var(--subtle); text-decoration: underline; text-underline-offset: 2px; }
+.bc a:hover { color: var(--text); }
+.bc span[aria-hidden] { padding: 0 4px; }
+
+.tp-hero { border-top: none; padding: 22px 0 30px; }
+.tp-hero h1 {
+  font-size: clamp(30px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.02em;
+  line-height: 1.08; margin-top: 10px;
+}
+.tp-hero h1 .tag { vertical-align: middle; margin-left: 8px; }
+.tp-blurb { font-size: 19px; color: var(--text); margin-top: 14px; max-width: 40em; }
+.tp-hero .lead { max-width: 42em; margin-top: 14px; }
+
+.tp-stats {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0;
+}
+.tp-stats li {
+  flex: 1 1 150px; padding: 14px 16px; border-radius: var(--r-card);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tc, var(--accent)) 10%, var(--bg2)), var(--bg2) 70%);
+  border: 1px solid color-mix(in srgb, var(--tc, var(--accent)) 30%, var(--line));
+  border-left: 4px solid var(--tc, var(--accent));   /* the trail's own spine, as in the app */
+}
+.tp-stats b { display: block; font-family: var(--font-display); font-size: 24px; line-height: 1.1; }
+.tp-stats span { display: block; margin-top: 4px; font-size: 13px; color: var(--subtle); }
+
+.tp-map {
+  display: block; width: 100%; height: auto; margin-top: 26px;
+  border-radius: var(--r-panel); border: 1px solid var(--line); box-shadow: var(--sh-card);
+}
+
+.tp-lms { border-top: 1px solid var(--line); padding: 44px 0 10px; }
+.tp-lms h2, .tp-cta h2, .tp-rel h2 { font-size: clamp(22px, 3vw, 30px); letter-spacing: -0.01em; }
+.tp-lms .sub, .tp-cta .sub, .tp-rel .sub { color: var(--subtle); font-size: 15px; margin-top: 8px; }
+
+.lm-list { list-style: none; margin: 30px 0 0; display: grid; gap: 26px; }
+/* The site header is sticky, so a link to #roncesvalles lands with the landmark's own heading tucked
+   underneath it. Measured against the real header height, not guessed. */
+.lm, .tp-lms h2 { scroll-margin-top: 84px; }
+.lm {
+  display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start;
+  padding-bottom: 26px; border-bottom: 1px solid var(--line);
+}
+.lm:last-child { border-bottom: none; }
+.lm-shot { margin: 0; }
+/* ⛔ The photograph is served exactly as licensed: nothing is drawn over it, and the credit below is
+   part of the licence, not decoration. object-fit crops the frame, it does not alter the file. */
+.lm-shot img {
+  /* Natural aspect ratio, never a fixed height with object-fit: cover. A crop is a display decision
+     we do not get to make on somebody else's photograph, and a 300x200 box was cutting the top and
+     bottom off every portrait shot in the library. Ragged column heights are the editorial layout
+     BRAND §3 asks for anyway. */
+  display: block; width: 100%; height: auto; max-height: 400px; object-fit: contain;
+  border-radius: var(--r-card); border: 1px solid var(--line); background: var(--bg3);
+}
+.lm-shot figcaption { margin-top: 7px; font-size: 12px; line-height: 1.45; color: var(--subtle); }
+.lm-meta {
+  font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent);
+}
+.lm-body h3 { font-size: 21px; margin-top: 5px; }
+.lm-story { margin-top: 9px; font-size: 16px; line-height: 1.65; color: var(--text); max-width: 44em; }
+
+.tp-cta { border-top: 1px solid var(--line); padding: 44px 0; }
+.tp-cta p { max-width: 44em; margin-top: 12px; font-size: 17px; line-height: 1.6; }
+.tp-rel { border-top: 1px solid var(--line); padding: 40px 0 10px; }
+.rel-list { list-style: none; margin: 22px 0 0; display: grid; gap: 8px; grid-template-columns: repeat(2, 1fr); }
+.rel-list li { padding: 11px 14px; border: 1px solid var(--line); border-radius: var(--r-card); background: var(--bg2); }
+.rel-list a { font-weight: 700; }
+.rel-list span { display: block; font-size: 13px; color: var(--subtle); margin-top: 2px; }
+
+@media (max-width: 860px) {
+  .lm { grid-template-columns: 1fr; gap: 14px; }
+  .lm-shot { max-width: 420px; }
+  .rel-list { grid-template-columns: 1fr; }
+}
