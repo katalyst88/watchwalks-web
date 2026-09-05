@@ -161,6 +161,7 @@
               (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);   /* iPadOS lies as a Mac */
   var isAndroid = /Android/.test(ua);
   var demote = isIOS ? 'lk-android' : (isAndroid ? 'lk-ios' : null);
+  var keep   = isIOS ? 'lk-ios' : (isAndroid ? 'lk-android' : null);
   if (demote) {
     var el = document.getElementById(demote);
     if (el) {
@@ -170,6 +171,13 @@
       if (nm) nm.textContent = demote === 'lk-ios' ? 'iPhone and Apple Watch'
                                                    : 'Android and Wear OS';
     }
+    /* ⭐ AND MOVE IT TO THE TOP, not just recolour it. On Android the Play button was the right
+       colour and still SECOND, sitting under an App Store link the visitor cannot use -- the
+       first thing on the page was the one thing they could not do. Position is the stronger
+       signal of the two: people read down and stop at the first thing that answers them. */
+    var top = document.getElementById(keep);
+    var list = top && top.parentNode;
+    if (top && list && list.firstElementChild !== top) list.insertBefore(top, list.firstElementChild);
   }
 })();
 
