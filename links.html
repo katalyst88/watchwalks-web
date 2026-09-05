@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get Watch Walks | Watch Walks</title>
-<meta name="description" content="Watch Walks on iPhone, Android and Garmin. Your everyday steps carry you down the world's greatest trails. The Inca Trail is free.">
+<meta name="description" content="Watch Walks on iPhone, Android and Garmin. Your everyday steps, spent on the Camino, the Appalachian, Shikoku. The Inca Trail is free.">
 <link rel="canonical" href="https://watchwalks.com/links.html">
 <meta name="theme-color" content="#1F5C3D">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -41,6 +41,36 @@
   .lk-sub  { display: block; font-size: 0.86rem; opacity: 0.72; margin-top: 2px; }
   .lk-go   { margin-left: auto; opacity: 0.5; }
   .lk-head { text-align: center; max-width: 30em; margin: 0 auto 26px; }
+
+  /* ⭐ ONE PRIMARY ACTION, AND IT LOOKS LIKE ONE. Every row on this page used to be the same
+     bordered card, so "install the app" and "have a browse of the website" were offered with equal
+     weight -- four choices, no answer. The install is the only thing this page exists to cause. */
+  .lk-primary {
+    background: var(--accent); border-color: var(--accent);
+    color: var(--on-accent); min-height: 60px; padding: 18px 20px;
+  }
+  .lk-primary .lk-sub { opacity: 0.85; }
+  .lk-primary .lk-go  { opacity: 0.9; }
+  .lk-primary:hover, .lk-primary:focus-visible {
+    background: var(--accent-dark, var(--accent)); border-color: var(--accent-dark, var(--accent));
+  }
+  /* ⛔⛔ THE LABEL COLOUR MUST FLIP WITH THE THEME. --accent is deep pine #1F5C3D on paper and the
+     BRIGHTER #3FB477 on dusk. Measured: white on the light accent is 7.91:1, and white on the dark
+     accent is 2.62:1 -- a WCAG failure hiding behind a token that looks like it means the same
+     thing in both themes. Ink on the dark accent is 6.95:1. */
+  :root { --on-accent: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --on-accent: var(--bg); } }
+
+  /* Everything that is not an install is quieter: no card, no border, just a line of text. */
+  .lk-quiet {
+    border: none; background: none; padding: 10px 4px; min-height: 44px;
+  }
+  .lk-quiet .lk-name { font-weight: 600; }
+  .lk-quiet:hover .lk-name, .lk-quiet:focus-visible .lk-name { text-decoration: underline; }
+  /* 44px is the floor Apple and Google both set for a tap target, and a link people miss on the
+     first try is a link they do not press twice. */
+  .lk { min-height: 48px; }
+  .lk-other { margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -54,26 +84,30 @@
       <h1 style="font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:12px 0 8px">Watch Walks</h1>
       <!-- Rhythm matters here: slopcheck flags uniform sentence length, and four near-identical
            clauses is exactly what machine-written copy reads like. Short, then long. -->
-      <p class="lead" style="margin:0">Your everyday steps carry you down the world's greatest trails.
-      The Inca Trail is free &mdash; all 43 km of it, from the trailhead to Machu Picchu.</p>
+      <p class="lead" style="margin:0">Your everyday steps, spent on the Camino, the Appalachian, Shikoku.
+      The Inca Trail is free. All 43 km of it, from the trailhead to Machu Picchu.</p>
     </div>
   </section>
 
   <section style="border-top:none;padding-top:0">
     <div class="lk-list">
 
-      <a class="lk" id="lk-ios" href="https://apps.apple.com/app/apple-store/id6787276123?pt=129119775&amp;ct=bio-instagram&amp;mt=8">
+      <!-- ⭐ BOTH STORES ARE PRIMARY BY DEFAULT, and the script below demotes the one that is
+           not this visitor's. That order matters: with JavaScript off, or on a device nothing
+           recognises, the page still puts an install first rather than hiding it behind a
+           detection that did not run. -->
+      <a class="lk lk-primary" id="lk-ios" href="https://apps.apple.com/app/apple-store/id6787276123?pt=129119775&amp;ct=bio-instagram&amp;mt=8">
         <span>
-          <span class="lk-name">iPhone and Apple Watch</span>
-          <span class="lk-sub">App Store</span>
+          <span class="lk-name">Start your first trail, free</span>
+          <span class="lk-sub">App Store &middot; iPhone and Apple Watch</span>
         </span>
         <span class="lk-go" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="lk" id="lk-android" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion&amp;referrer=utm_source%3Dinstagram%26utm_medium%3Dcpc%26utm_campaign%3Dbio-instagram">
+      <a class="lk lk-primary" id="lk-android" href="https://play.google.com/store/apps/details?id=com.watchwalks.companion&amp;referrer=utm_source%3Dinstagram%26utm_medium%3Dcpc%26utm_campaign%3Dbio-instagram">
         <span>
-          <span class="lk-name">Android and Wear OS</span>
-          <span class="lk-sub">Google Play</span>
+          <span class="lk-name">Start your first trail, free</span>
+          <span class="lk-sub">Google Play &middot; Android and Wear OS</span>
         </span>
         <span class="lk-go" aria-hidden="true">&rarr;</span>
       </a>
@@ -81,7 +115,7 @@
       <!-- Garmin gets its own row because it is a real listing that nothing currently links to.
            Connect IQ has no campaign tagging, so this URL is plain — that is the store's limit,
            not an oversight. -->
-      <a class="lk" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950">
+      <a class="lk lk-quiet lk-other" href="https://apps.garmin.com/apps/8a304638-5308-468a-b47b-b08c863c8950">
         <span>
           <span class="lk-name">Garmin watches</span>
           <span class="lk-sub">Connect IQ &mdash; Forerunner, Fenix, Venu, Instinct and more</span>
@@ -89,9 +123,9 @@
         <span class="lk-go" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="lk" href="https://watchwalks.com/">
+      <a class="lk lk-quiet" href="https://watchwalks.com/">
         <span>
-          <span class="lk-name">See the 41 trails first</span>
+          <span class="lk-name">See all 41 trails first</span>
           <span class="lk-sub">watchwalks.com</span>
         </span>
         <span class="lk-go" aria-hidden="true">&rarr;</span>
@@ -100,7 +134,7 @@
     </div>
 
     <p class="sub" style="text-align:center;max-width:30em;margin:22px auto 0">
-      Not sure your watch will work? <a href="compatibility.html">Check your device</a>.
+      Not sure yours will work? <a href="compatibility.html">Check your device</a>.
     </p>
   </section>
 
@@ -113,6 +147,32 @@
    ⚠️ PROGRESSIVE ENHANCEMENT, NOT A DEPENDENCY. With JavaScript off the links still work and still
    carry a tag — the visit is simply counted as Instagram. A store link that only works when a
    script runs would be a far worse trade than an occasionally mis-attributed one. */
+/* ⭐ SHOW ONE INSTALL, NOT A CHOICE. Offering an iPhone owner a Google Play link is asking them
+   to do the sorting we can do for them, and the store they cannot install from is pure friction.
+   The other platform stays on the page, just demoted -- an iPad reading as neither, or a desktop
+   sending the link to themselves, must still be able to reach it.
+
+   ⚠️ PROGRESSIVE ENHANCEMENT. Both buttons ship as primary in the HTML; this only ever DEMOTES
+   one. With the script blocked the page is still correct, just less tailored -- the opposite
+   arrangement would leave a no-JS visitor with no install button at all. */
+(function () {
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua) ||
+              (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);   /* iPadOS lies as a Mac */
+  var isAndroid = /Android/.test(ua);
+  var demote = isIOS ? 'lk-android' : (isAndroid ? 'lk-ios' : null);
+  if (demote) {
+    var el = document.getElementById(demote);
+    if (el) {
+      el.classList.remove('lk-primary');
+      el.classList.add('lk-quiet', 'lk-other');
+      var nm = el.querySelector('.lk-name');
+      if (nm) nm.textContent = demote === 'lk-ios' ? 'iPhone and Apple Watch'
+                                                   : 'Android and Wear OS';
+    }
+  }
+})();
+
 (function () {
   var s = new URLSearchParams(location.search).get('s');
   if (s !== 'fb') return;
